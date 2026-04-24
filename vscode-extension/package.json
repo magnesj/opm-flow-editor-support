@@ -138,11 +138,10 @@
     "sync-manual-ref": "node scripts/sync-manual-ref.js README.md"
   },
   "jest": {
-    "preset": "ts-jest",
     "testEnvironment": "node",
     "testMatch": ["**/src/**/*.test.ts"],
-    "globals": {
-      "ts-jest": {
+    "transform": {
+      "^.+\\.tsx?$": ["ts-jest", {
         "tsconfig": {
           "module": "commonjs",
           "target": "ES2020",
@@ -150,7 +149,7 @@
           "esModuleInterop": true,
           "types": ["jest", "node"]
         }
-      }
+      }]
     }
   },
   "devDependencies": {
