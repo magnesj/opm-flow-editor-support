@@ -34,6 +34,24 @@ pane. Keywords that are valid in every section (e.g. `INCLUDE`, `ECHO`) list
 them all. Completions are triggered when typing uppercase letters at the start
 of a line.
 
+For keywords that have required parameters (fields with no default value), selecting
+the completion inserts a ready-to-fill template consisting of:
+
+- The **keyword name** on its own line
+- A **`--` column-header comment** with the parameter names
+- A **data record** with tab-stops for each required field and literal defaults for
+  optional fields
+- A closing **`/`** terminator
+
+Press `Tab` to jump between the required fields. Example — completing `WCONPROD`:
+
+```
+WCONPROD
+-- WELNAME STATUS TARGET ORAT WRAT GRAT LRAT RESV
+WELL1 OPEN 1* 5000 1* 1* 1* 1* /
+/
+```
+
 ### Hover Tooltips
 
 Hover over any keyword to see a quick tooltip with:

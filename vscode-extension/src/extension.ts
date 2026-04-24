@@ -273,6 +273,58 @@ function appendParameterTable(md: vscode.MarkdownString, parameters: Parameter[]
 }
 
 // ---------------------------------------------------------------------------
+// Keyword template / snippet builder
+// ---------------------------------------------------------------------------
+
+/**
+ * Build a VS Code SnippetString that inserts a minimal, useful template for the
+ * keyword: the keyword name, a column-header comment, one data record with
+ * tabstops for required parameters (those whose default is "None"), and a
+ * trailing "/" terminator line.
+ *
+ * Returns null when there are no required parameters (nothing meaningful to
+ * template) or when the keyword has no parameters at all.
+ */
+function buildKeywordTemplate(entry: KeywordEntry): vscode.SnippetString | null {
+  const params = entry.parameters;
+  if (!params || params.length === 0) return null;
+
+  const isRequired = (p: Parameter): boolean => p.default === 'None';
+
+  // Find the index of the last required parameter so we know where to stop.
+  let lastRequiredIdx = -1;
+  for (let i = 0; i < params.length; i++) {
+    if (isRequired(params[i])) lastRequiredIdx = i;
+  }
+  if (lastRequiredIdx < 0) return null; // No required params — skip template.
+
+  const includedParams = params.slice(0, lastRequiredIdx + 1);
+
+  // Column-header comment: one word per included parameter.
+  const headerLine = '-- ' + includedParams.map(p => p.name).join(' ');
+
+  // Data-record tokens: tabstops for required params, literal values otherwise.
+  let tabIdx = 1;
+  const tokens = includedParams.map(p => {
+    if (isRequired(p)) {
+      return `\${${tabIdx++}:${p.name}}`;
+    }
+    const def = p.default.trim();
+    // Use the default if it looks like a single valid OPM token.
+    if (/^[A-Za-z0-9_.+-]+$/.test(def)) return def;
+    // Fall back to the "default all" token.
+    return '1*';
+  });
+
+  const recordLine = tokens.join(' ') + ' /';
+
+  // $0 places the final cursor after the closing "/" line.
+  return new vscode.SnippetString(
+    `${entry.name}\n${headerLine}\n${recordLine}\n/$0`
+  );
+}
+
+// ---------------------------------------------------------------------------
 // Record-column alignment
 // ---------------------------------------------------------------------------
 
@@ -720,6 +772,8 @@ export function activate(context: vscode.ExtensionContext): void {
           const item = new vscode.CompletionItem(kw, vscode.CompletionItemKind.Keyword);
           item.detail = `[${entry.sections.join(', ')}] OPM Flow`;
           if (entry.summary) item.documentation = new vscode.MarkdownString(entry.summary);
+          const template = buildKeywordTemplate(entry);
+          if (template) item.insertText = template;
           return item;
         });
       },
