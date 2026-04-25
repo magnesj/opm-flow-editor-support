@@ -7,6 +7,7 @@ import {
   parseHeadingPositions,
   formatRecordGroupWithHeading,
   buildHeadingAndAlignedRecords,
+  tokenColumnCount,
   RecordLine,
 } from './formatting';
 
@@ -83,6 +84,35 @@ describe('tokenizeLine', () => {
 
   test('line with only comment returns empty array', () => {
     expect(tokenizeLine('-- just a comment')).toEqual([]);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// tokenColumnCount
+// ---------------------------------------------------------------------------
+
+describe('tokenColumnCount', () => {
+  test('plain numeric token spans 1 column', () => {
+    expect(tokenColumnCount('1.5')).toBe(1);
+    expect(tokenColumnCount('100')).toBe(1);
+  });
+
+  test('quoted string token spans 1 column', () => {
+    expect(tokenColumnCount("'WELL-1'")).toBe(1);
+  });
+
+  test('bare * default marker spans 1 column', () => {
+    expect(tokenColumnCount('*')).toBe(1);
+  });
+
+  test('N* repeats span N columns', () => {
+    expect(tokenColumnCount('3*')).toBe(3);
+    expect(tokenColumnCount('5*')).toBe(5);
+    expect(tokenColumnCount('10*')).toBe(10);
+  });
+
+  test('1* spans 1 column', () => {
+    expect(tokenColumnCount('1*')).toBe(1);
   });
 });
 

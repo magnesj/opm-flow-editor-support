@@ -59,6 +59,12 @@ export const NUMERIC_TOKEN_RE = /^(\*|\d+\*|[-+]?(\d+\.?\d*|\.\d+)([eE][-+]?\d+)
 
 export const KEYWORD_TOKEN_RE = /^[A-Z][A-Z0-9_+-]*$/;
 
+/** Number of parameter columns a record token represents (N for "N*", 1 otherwise). */
+export function tokenColumnCount(token: string): number {
+  const m = token.match(/^(\d+)\*$/);
+  return m ? parseInt(m[1], 10) : 1;
+}
+
 export interface RecordLine {
   indent: string;
   tokens: string[];

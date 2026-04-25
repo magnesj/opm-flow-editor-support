@@ -14,6 +14,7 @@ import {
   parseHeadingPositions,
   formatRecordGroupWithHeading,
   buildHeadingAndAlignedRecords,
+  tokenColumnCount,
 } from './formatting';
 
 interface Parameter {
@@ -575,11 +576,14 @@ export function activate(context: vscode.ExtensionContext): void {
     const groupStartLine = groupLines[0];
     const kwName = findActiveKeyword(doc, new vscode.Position(groupStartLine, 0));
     const entry = kwName ? index[kwName] : undefined;
-    const nCols = group[0].tokens.length;
+    const tokens = group[0].tokens;
+    const nCols = tokens.length;
     const names: string[] = [];
-    for (let c = 0; c < nCols; c++) {
-      const param = entry?.parameters.find(p => Number(p.index) === c + 1);
-      names.push(param?.name ?? `COL${c + 1}`);
+    let paramIdx = 1;
+    for (const tok of tokens) {
+      const param = entry?.parameters.find(p => Number(p.index) === paramIdx);
+      names.push(param?.name ?? `COL${paramIdx}`);
+      paramIdx += tokenColumnCount(tok);
     }
     const prevLineIdx = groupStartLine - 1;
     const hasHeading = prevLineIdx >= 0 && /^\s*--/.test(doc.lineAt(prevLineIdx).text);
