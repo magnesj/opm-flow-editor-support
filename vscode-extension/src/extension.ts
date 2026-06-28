@@ -13,6 +13,8 @@ import {
   SECTION_KEYWORDS,
   matchSectionLine,
   formatRecordGroup,
+  isUdqExpressionRecord,
+  formatUdqExpressionGroup,
   parseHeadingPositions,
   formatRecordGroupWithHeading,
   buildHeadingAndAlignedRecords,
@@ -727,6 +729,47 @@ function computeAlignEdits(document: vscode.TextDocument, range?: vscode.Range):
   while (i <= last) {
     const rec = parseRecordLine(document.lineAt(i).text);
     if (!rec) { i++; continue; }
+
+    // UDQ expression block (DEFINE/ASSIGN/UNITS/UPDATE name expr…). These have
+    // varying token counts so they are grouped by being UDQ expression lines
+    // rather than by equal column count, and aligned with a dedicated formatter
+    // that right-aligns the control word so the names line up.
+    if (isUdqExpressionRecord(rec)) {
+      const udqEntries: Array<{ lineNum: number; record: RecordLine | null }> = [
+        { lineNum: i, record: rec }
+      ];
+      let k = i + 1;
+      while (k <= last) {
+        const lineText = document.lineAt(k).text;
+        const r2 = parseRecordLine(lineText);
+        if (r2 && isUdqExpressionRecord(r2)) {
+          udqEntries.push({ lineNum: k, record: r2 });
+          k++;
+        } else if (isCommentLine(lineText)) {
+          udqEntries.push({ lineNum: k, record: null });
+          k++;
+        } else {
+          break;
+        }
+      }
+      const udqRecords = udqEntries.filter(e => e.record !== null).map(e => e.record as RecordLine);
+      if (udqRecords.length > 1) {
+        const formatted = formatUdqExpressionGroup(udqRecords);
+        let recordIdx = 0;
+        for (const entry of udqEntries) {
+          if (entry.record === null) { continue; }
+          const lineRange = document.lineAt(entry.lineNum).range;
+          const orig = document.lineAt(entry.lineNum).text;
+          if (formatted[recordIdx] !== orig) {
+            edits.push(vscode.TextEdit.replace(lineRange, formatted[recordIdx]));
+          }
+          recordIdx++;
+        }
+      }
+      i = k;
+      continue;
+    }
+
     const nCols = rec.tokens.length;
 
     // Collect the group: record lines and interspersed comment lines.

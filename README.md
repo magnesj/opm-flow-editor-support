@@ -77,7 +77,9 @@ Marketplace listing: <https://marketplace.visualstudio.com/items?itemName=magne-
   section keyword to the next) or individual keywords in the gutter.
 - **Align Record Columns** — tidy up record blocks so every column lines up;
   handles comment lines inside the group and aligns to heading comments above
-  the group.
+  the group. For `UDQ` expression blocks the control word
+  (`DEFINE`/`ASSIGN`/`UNITS`/`UPDATE`) is right-aligned so the variable names
+  line up even though the expressions vary in length.
 - **Add Column Headers** — insert a `--` heading comment with parameter names
   from the reference manual and align the record group to those positions
   (idempotent). For multi-record keywords the names come from the record

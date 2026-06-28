@@ -5,6 +5,8 @@ import {
   parseRecordLine,
   isCommentLine,
   formatRecordGroup,
+  isUdqExpressionRecord,
+  formatUdqExpressionGroup,
   parseHeadingPositions,
   formatRecordGroupWithHeading,
   buildHeadingAndAlignedRecords,
@@ -348,6 +350,61 @@ describe('formatRecordGroup — integer columns', () => {
     const result = formatRecordGroup(records);
     expect(result[0]).toBe(' 1  2 -- row A');
     expect(result[1]).toBe('10 20');
+  });
+});
+
+// ---------------------------------------------------------------------------
+// UDQ expression group alignment
+// ---------------------------------------------------------------------------
+
+describe('formatUdqExpressionGroup', () => {
+  function makeRecord(tokens: string[], opts?: Partial<RecordLine>): RecordLine {
+    return { indent: '', tokens, trailComment: '', hasTerminator: true, ...opts };
+  }
+
+  test('isUdqExpressionRecord recognises control words with a name', () => {
+    expect(isUdqExpressionRecord(makeRecord(['DEFINE', 'WUPR1', '1']))).toBe(true);
+    expect(isUdqExpressionRecord(makeRecord(['ASSIGN', 'WU2', '3.0']))).toBe(true);
+    expect(isUdqExpressionRecord(makeRecord(['UNITS', 'WUPR1', 'BARSA']))).toBe(true);
+    expect(isUdqExpressionRecord(makeRecord(['UPDATE', 'WUPR1', 'ON']))).toBe(true);
+    // a control word with no name is not an expression record
+    expect(isUdqExpressionRecord(makeRecord(['DEFINE']))).toBe(false);
+    // unrelated keyword
+    expect(isUdqExpressionRecord(makeRecord(['COMPDAT', 'OP1']))).toBe(false);
+  });
+
+  test('control word is right-aligned and names line up', () => {
+    const records: RecordLine[] = [
+      makeRecord(['DEFINE', 'WUPR1', "1/(WWCT", "'OP*')"]),
+      makeRecord(['UNITS', 'WUPR1', 'BARSA']),
+      makeRecord(['DEFINE', 'WUPR3', 'SORTA(WUPR1)']),
+      makeRecord(['ASSIGN', 'WU2', '3.0']),
+    ];
+    const result = formatUdqExpressionGroup(records);
+    expect(result[0]).toBe("DEFINE WUPR1 1/(WWCT 'OP*') /");
+    expect(result[1]).toBe(' UNITS WUPR1 BARSA /');
+    expect(result[2]).toBe('DEFINE WUPR3 SORTA(WUPR1) /');
+    expect(result[3]).toBe('ASSIGN WU2   3.0 /');
+  });
+
+  test('indent and trailing comment are preserved', () => {
+    const records: RecordLine[] = [
+      makeRecord(['DEFINE', 'WU1', '1'], { indent: '  ', trailComment: '-- note' }),
+      makeRecord(['ASSIGN', 'WU22', '2'], { indent: '  ' }),
+    ];
+    const result = formatUdqExpressionGroup(records);
+    expect(result[0]).toBe('  DEFINE WU1  1 / -- note');
+    expect(result[1]).toBe('  ASSIGN WU22 2 /');
+  });
+
+  test('control word + name only, no terminator, drops name padding', () => {
+    const records: RecordLine[] = [
+      makeRecord(['UPDATE', 'WUPR1'], { hasTerminator: false }),
+      makeRecord(['DEFINE', 'WUPR3', 'X'], { hasTerminator: false }),
+    ];
+    const result = formatUdqExpressionGroup(records);
+    expect(result[0]).toBe('UPDATE WUPR1');
+    expect(result[1]).toBe('DEFINE WUPR3 X');
   });
 });
 

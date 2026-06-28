@@ -346,6 +346,42 @@ export function formatRecordGroup(records: RecordLine[]): string[] {
   });
 }
 
+// ---------------------------------------------------------------------------
+// UDQ expression group formatting
+// ---------------------------------------------------------------------------
+
+/** UDQ body control words that introduce a UDQ expression line. */
+const UDQ_CONTROL_WORDS = new Set(['DEFINE', 'ASSIGN', 'UNITS', 'UPDATE']);
+
+/** True for a UDQ expression record: a control word followed by a name. */
+export function isUdqExpressionRecord(r: RecordLine): boolean {
+  return r.tokens.length >= 2 && UDQ_CONTROL_WORDS.has(r.tokens[0]);
+}
+
+/**
+ * Align a group of UDQ expression records (`DEFINE`/`ASSIGN`/`UNITS`/`UPDATE`
+ * name expression…). Unlike ordinary record groups these have varying token
+ * counts (the expression is free-form), so the generic column aligner does not
+ * apply. Here the control-word column is right-aligned and the name column
+ * left-aligned so the variable names start at a common column; the remaining
+ * expression tokens are kept verbatim, single-space separated.
+ */
+export function formatUdqExpressionGroup(records: RecordLine[]): string[] {
+  const ctrlWidth = Math.max(...records.map(r => r.tokens[0].length));
+  const nameWidth = Math.max(...records.map(r => (r.tokens[1] ?? '').length));
+  const groupIndent = records[0].indent;
+  return records.map(r => {
+    const ctrl = r.tokens[0].padStart(ctrlWidth);
+    const name = (r.tokens[1] ?? '').padEnd(nameWidth);
+    const expr = r.tokens.slice(2).join(' ');
+    let body = groupIndent + ctrl + ' ' + name;
+    if (expr) body += ' ' + expr;
+    body = body.trimEnd();
+    if (r.hasTerminator) body += ' /';
+    return r.trailComment ? `${body} ${r.trailComment}` : body;
+  });
+}
+
 // Parse absolute char positions of each word in a heading comment line (-- word1 word2 ...)
 export function parseHeadingPositions(line: string): number[] | null {
   const m = line.match(/^(\s*--\s*)(.*)/);
