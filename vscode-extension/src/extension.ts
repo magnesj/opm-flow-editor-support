@@ -13,9 +13,8 @@ import {
   SECTION_KEYWORDS,
   matchSectionLine,
   formatRecordGroup,
-  UdqRecord,
   parseUdqExpressionLine,
-  formatUdqExpressionGroup,
+  formatUdqBlock,
   parseHeadingPositions,
   formatRecordGroupWithHeading,
   buildHeadingAndAlignedRecords,
@@ -736,40 +735,27 @@ function computeAlignEdits(document: vscode.TextDocument, range?: vscode.Range):
   while (i <= last) {
     // UDQ expression block (DEFINE/ASSIGN/UNITS/UPDATE name expr…). These are
     // parsed specially (a '/' in the expression is division, not the
-    // terminator) and grouped by being UDQ statements rather than by equal
-    // column count, then aligned with a dedicated formatter. Checked before
+    // terminator) and aligned with a dedicated formatter. Interspersed comment
+    // lines are kept verbatim and do not split the table. Checked before
     // parseRecordLine, which would mis-tokenize a division '/'.
-    const udqRec = parseUdqExpressionLine(document.lineAt(i).text);
-    if (udqRec) {
-      const udqEntries: Array<{ lineNum: number; record: UdqRecord | null }> = [
-        { lineNum: i, record: udqRec }
-      ];
-      let k = i + 1;
+    if (parseUdqExpressionLine(document.lineAt(i).text)) {
+      const blockLineNums: number[] = [];
+      const blockLines: string[] = [];
+      let k = i;
       while (k <= last) {
         const lineText = document.lineAt(k).text;
-        const r2 = parseUdqExpressionLine(lineText);
-        if (r2) {
-          udqEntries.push({ lineNum: k, record: r2 });
-          k++;
-        } else if (isCommentLine(lineText)) {
-          udqEntries.push({ lineNum: k, record: null });
+        if (parseUdqExpressionLine(lineText) || isCommentLine(lineText)) {
+          blockLineNums.push(k);
+          blockLines.push(lineText);
           k++;
         } else {
           break;
         }
       }
-      const udqRecords = udqEntries.filter(e => e.record !== null).map(e => e.record as UdqRecord);
-      if (udqRecords.length > 1) {
-        const formatted = formatUdqExpressionGroup(udqRecords);
-        let recordIdx = 0;
-        for (const entry of udqEntries) {
-          if (entry.record === null) { continue; }
-          const lineRange = document.lineAt(entry.lineNum).range;
-          const orig = document.lineAt(entry.lineNum).text;
-          if (formatted[recordIdx] !== orig) {
-            edits.push(vscode.TextEdit.replace(lineRange, formatted[recordIdx]));
-          }
-          recordIdx++;
+      const formatted = formatUdqBlock(blockLines);
+      for (let j = 0; j < blockLines.length; j++) {
+        if (formatted[j] !== blockLines[j]) {
+          edits.push(vscode.TextEdit.replace(document.lineAt(blockLineNums[j]).range, formatted[j]));
         }
       }
       i = k;

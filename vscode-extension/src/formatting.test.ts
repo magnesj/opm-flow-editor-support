@@ -7,6 +7,7 @@ import {
   formatRecordGroup,
   parseUdqExpressionLine,
   formatUdqExpressionGroup,
+  formatUdqBlock,
   parseHeadingPositions,
   formatRecordGroupWithHeading,
   buildHeadingAndAlignedRecords,
@@ -429,6 +430,44 @@ describe('formatUdqExpressionGroup', () => {
     ]));
     expect(result[0]).toBe('  DEFINE WU1  1 / -- note');
     expect(result[1]).toBe('  ASSIGN WU22 2 /');
+  });
+});
+
+describe('formatUdqBlock — comments inside a UDQ block', () => {
+  test('comment lines are left unchanged and do not split the table', () => {
+    const lines = [
+      'DEFINE WUPR1 1/(WWCT \'OP*\') /',
+      '-- sort the production wells worst-first',
+      'DEFINE WUPR3 SORTA(WUPR1) /',
+      'ASSIGN WU2 3.0 /',
+    ];
+    const result = formatUdqBlock(lines);
+    // The comment is returned byte-for-byte unchanged.
+    expect(result[1]).toBe('-- sort the production wells worst-first');
+    // All UDQ statements (above and below the comment) align as one table:
+    // their terminators share a single column.
+    const dataLines = [result[0], result[2], result[3]];
+    const slashCols = dataLines.map(l => l.lastIndexOf('/'));
+    expect(new Set(slashCols).size).toBe(1);
+    expect(result[0]).toBe("DEFINE WUPR1 1/(WWCT 'OP*') /");
+  });
+
+  test('an indented comment keeps its exact original indentation', () => {
+    const lines = [
+      'ASSIGN WU1 1.0 /',
+      '    -- indented note, untouched',
+      'DEFINE WULONGNAME 2.0 /',
+    ];
+    const result = formatUdqBlock(lines);
+    expect(result[1]).toBe('    -- indented note, untouched');
+    // names left-aligned to the widest (WULONGNAME), terminators still aligned.
+    expect(result[0].lastIndexOf('/')).toBe(result[2].lastIndexOf('/'));
+    expect(result[0].endsWith('1.0 /')).toBe(true);
+  });
+
+  test('returns input unchanged when fewer than two statements', () => {
+    const lines = ['-- just a comment', 'DEFINE WU1 1 /'];
+    expect(formatUdqBlock(lines)).toEqual(lines);
   });
 });
 

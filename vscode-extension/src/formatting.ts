@@ -479,6 +479,24 @@ export function formatUdqExpressionGroup(records: UdqRecord[]): string[] {
   });
 }
 
+/**
+ * Align a contiguous UDQ block that may contain interspersed comment lines.
+ * Comment lines are returned verbatim and do not participate in the column
+ * computation; every UDQ statement in the block is aligned together (the
+ * comment does not split the table), so all columns stay consistent across it.
+ * Returns one output line per input line (same length). When the block holds
+ * fewer than two UDQ statements there is nothing to align and the input is
+ * returned unchanged.
+ */
+export function formatUdqBlock(lines: string[]): string[] {
+  const parsed = lines.map(parseUdqExpressionLine);
+  const records = parsed.filter((r): r is UdqRecord => r !== null);
+  if (records.length < 2) return lines.slice();
+  const formatted = formatUdqExpressionGroup(records);
+  let idx = 0;
+  return lines.map((line, i) => (parsed[i] !== null ? formatted[idx++] : line));
+}
+
 // Parse absolute char positions of each word in a heading comment line (-- word1 word2 ...)
 export function parseHeadingPositions(line: string): number[] | null {
   const m = line.match(/^(\s*--\s*)(.*)/);
