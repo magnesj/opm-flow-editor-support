@@ -5,7 +5,7 @@ import {
   parseRecordLine,
   isCommentLine,
   formatRecordGroup,
-  isUdqExpressionRecord,
+  parseUdqExpressionLine,
   formatUdqExpressionGroup,
   parseHeadingPositions,
   formatRecordGroupWithHeading,
@@ -357,54 +357,78 @@ describe('formatRecordGroup — integer columns', () => {
 // UDQ expression group alignment
 // ---------------------------------------------------------------------------
 
-describe('formatUdqExpressionGroup', () => {
-  function makeRecord(tokens: string[], opts?: Partial<RecordLine>): RecordLine {
-    return { indent: '', tokens, trailComment: '', hasTerminator: true, ...opts };
-  }
-
-  test('isUdqExpressionRecord recognises control words with a name', () => {
-    expect(isUdqExpressionRecord(makeRecord(['DEFINE', 'WUPR1', '1']))).toBe(true);
-    expect(isUdqExpressionRecord(makeRecord(['ASSIGN', 'WU2', '3.0']))).toBe(true);
-    expect(isUdqExpressionRecord(makeRecord(['UNITS', 'WUPR1', 'BARSA']))).toBe(true);
-    expect(isUdqExpressionRecord(makeRecord(['UPDATE', 'WUPR1', 'ON']))).toBe(true);
-    // a control word with no name is not an expression record
-    expect(isUdqExpressionRecord(makeRecord(['DEFINE']))).toBe(false);
-    // unrelated keyword
-    expect(isUdqExpressionRecord(makeRecord(['COMPDAT', 'OP1']))).toBe(false);
+describe('parseUdqExpressionLine', () => {
+  test('keeps a division "/" in the expression, not as the terminator', () => {
+    const r = parseUdqExpressionLine("DEFINE WUPR1 1/(WWCT 'OP*') /")!;
+    expect(r.control).toBe('DEFINE');
+    expect(r.name).toBe('WUPR1');
+    expect(r.expr).toBe("1/(WWCT 'OP*')");
+    expect(r.hasTerminator).toBe(true);
   });
 
-  test('control word is right-aligned and names line up', () => {
-    const records: RecordLine[] = [
-      makeRecord(['DEFINE', 'WUPR1', "1/(WWCT", "'OP*')"]),
-      makeRecord(['UNITS', 'WUPR1', 'BARSA']),
-      makeRecord(['DEFINE', 'WUPR3', 'SORTA(WUPR1)']),
-      makeRecord(['ASSIGN', 'WU2', '3.0']),
-    ];
-    const result = formatUdqExpressionGroup(records);
+  test('keeps a trailing glued division "/" in the expression', () => {
+    const r = parseUdqExpressionLine("DEFINE WU_TEST  WUBHPINI '*' - (WGPR '*')/2000.0 /")!;
+    expect(r.name).toBe('WU_TEST');
+    expect(r.expr).toBe("WUBHPINI '*' - (WGPR '*')/2000.0");
+    expect(r.hasTerminator).toBe(true);
+  });
+
+  test('returns null for a non-UDQ line', () => {
+    expect(parseUdqExpressionLine("COMPDAT 'OP1' 1 1 1 1 OPEN /")).toBeNull();
+    expect(parseUdqExpressionLine('DEFINE')).toBeNull(); // control word, no name
+  });
+
+  test('captures a trailing comment', () => {
+    const r = parseUdqExpressionLine('ASSIGN WU2 3.0 / -- a note')!;
+    expect(r.expr).toBe('3.0');
+    expect(r.trailComment).toBe('-- a note');
+  });
+});
+
+describe('formatUdqExpressionGroup', () => {
+  const parse = (lines: string[]) => lines.map(l => parseUdqExpressionLine(l)!);
+
+  test('control word right-aligned, name left-aligned, expression right-aligned', () => {
+    const result = formatUdqExpressionGroup(parse([
+      "DEFINE WUPR1 1/(WWCT 'OP*') /",
+      'UNITS WUPR1 BARSA /',
+      'DEFINE WUPR3 SORTA(WUPR1) /',
+      'ASSIGN WU2 3.0 /',
+    ]));
+    // The longest expression sits one space past the name column.
     expect(result[0]).toBe("DEFINE WUPR1 1/(WWCT 'OP*') /");
-    expect(result[1]).toBe(' UNITS WUPR1 BARSA /');
-    expect(result[2]).toBe('DEFINE WUPR3 SORTA(WUPR1) /');
-    expect(result[3]).toBe('ASSIGN WU2   3.0 /');
+    // Control words right-aligned (UNITS gets a leading space).
+    expect(result[1].startsWith(' UNITS WUPR1')).toBe(true);
+    // Shorter expressions are pushed right so the terminators line up.
+    const slashCols = result.map(l => l.lastIndexOf('/'));
+    expect(new Set(slashCols).size).toBe(1);
+    expect(result[1].endsWith('BARSA /')).toBe(true);
+    expect(result[3].endsWith('3.0 /')).toBe(true);
+  });
+
+  test('matches the right-aligned-expression layout from the example', () => {
+    const result = formatUdqExpressionGroup(parse([
+      'UPDATE FUBHPP1 OFF /',
+      'UPDATE WUBHPINI OFF /',
+      "DEFINE WUDELTA WBHP '*' - FUBHPP1 /",
+      "DEFINE WU_TEST  WUBHPINI '*' - (WGPR '*')/2000.0 /",
+    ]));
+    // Terminators all align.
+    const slashCols = result.map(l => l.lastIndexOf('/'));
+    expect(new Set(slashCols).size).toBe(1);
+    // The longest (unpadded) expression line is reproduced verbatim.
+    expect(result[3]).toBe("DEFINE WU_TEST  WUBHPINI '*' - (WGPR '*')/2000.0 /");
+    expect(result[0].endsWith('OFF /')).toBe(true);
+    expect(result[2].endsWith("WBHP '*' - FUBHPP1 /")).toBe(true);
   });
 
   test('indent and trailing comment are preserved', () => {
-    const records: RecordLine[] = [
-      makeRecord(['DEFINE', 'WU1', '1'], { indent: '  ', trailComment: '-- note' }),
-      makeRecord(['ASSIGN', 'WU22', '2'], { indent: '  ' }),
-    ];
-    const result = formatUdqExpressionGroup(records);
+    const result = formatUdqExpressionGroup(parse([
+      '  DEFINE WU1 1 / -- note',
+      '  ASSIGN WU22 2 /',
+    ]));
     expect(result[0]).toBe('  DEFINE WU1  1 / -- note');
     expect(result[1]).toBe('  ASSIGN WU22 2 /');
-  });
-
-  test('control word + name only, no terminator, drops name padding', () => {
-    const records: RecordLine[] = [
-      makeRecord(['UPDATE', 'WUPR1'], { hasTerminator: false }),
-      makeRecord(['DEFINE', 'WUPR3', 'X'], { hasTerminator: false }),
-    ];
-    const result = formatUdqExpressionGroup(records);
-    expect(result[0]).toBe('UPDATE WUPR1');
-    expect(result[1]).toBe('DEFINE WUPR3 X');
   });
 });
 

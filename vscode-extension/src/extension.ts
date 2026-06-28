@@ -13,7 +13,8 @@ import {
   SECTION_KEYWORDS,
   matchSectionLine,
   formatRecordGroup,
-  isUdqExpressionRecord,
+  UdqRecord,
+  parseUdqExpressionLine,
   formatUdqExpressionGroup,
   parseHeadingPositions,
   formatRecordGroupWithHeading,
@@ -733,22 +734,21 @@ function computeAlignEdits(document: vscode.TextDocument, range?: vscode.Range):
   const last = range ? range.end.line : document.lineCount - 1;
   let i = first;
   while (i <= last) {
-    const rec = parseRecordLine(document.lineAt(i).text);
-    if (!rec) { i++; continue; }
-
-    // UDQ expression block (DEFINE/ASSIGN/UNITS/UPDATE name expr…). These have
-    // varying token counts so they are grouped by being UDQ expression lines
-    // rather than by equal column count, and aligned with a dedicated formatter
-    // that right-aligns the control word so the names line up.
-    if (isUdqExpressionRecord(rec)) {
-      const udqEntries: Array<{ lineNum: number; record: RecordLine | null }> = [
-        { lineNum: i, record: rec }
+    // UDQ expression block (DEFINE/ASSIGN/UNITS/UPDATE name expr…). These are
+    // parsed specially (a '/' in the expression is division, not the
+    // terminator) and grouped by being UDQ statements rather than by equal
+    // column count, then aligned with a dedicated formatter. Checked before
+    // parseRecordLine, which would mis-tokenize a division '/'.
+    const udqRec = parseUdqExpressionLine(document.lineAt(i).text);
+    if (udqRec) {
+      const udqEntries: Array<{ lineNum: number; record: UdqRecord | null }> = [
+        { lineNum: i, record: udqRec }
       ];
       let k = i + 1;
       while (k <= last) {
         const lineText = document.lineAt(k).text;
-        const r2 = parseRecordLine(lineText);
-        if (r2 && isUdqExpressionRecord(r2)) {
+        const r2 = parseUdqExpressionLine(lineText);
+        if (r2) {
           udqEntries.push({ lineNum: k, record: r2 });
           k++;
         } else if (isCommentLine(lineText)) {
@@ -758,7 +758,7 @@ function computeAlignEdits(document: vscode.TextDocument, range?: vscode.Range):
           break;
         }
       }
-      const udqRecords = udqEntries.filter(e => e.record !== null).map(e => e.record as RecordLine);
+      const udqRecords = udqEntries.filter(e => e.record !== null).map(e => e.record as UdqRecord);
       if (udqRecords.length > 1) {
         const formatted = formatUdqExpressionGroup(udqRecords);
         let recordIdx = 0;
@@ -776,6 +776,8 @@ function computeAlignEdits(document: vscode.TextDocument, range?: vscode.Range):
       continue;
     }
 
+    const rec = parseRecordLine(document.lineAt(i).text);
+    if (!rec) { i++; continue; }
     const nCols = rec.tokens.length;
 
     // Collect the group: record lines and interspersed comment lines.
