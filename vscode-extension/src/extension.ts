@@ -736,29 +736,35 @@ function computeAlignEdits(document: vscode.TextDocument, range?: vscode.Range):
     // UDQ expression block (DEFINE/ASSIGN/UNITS/UPDATE name expr…). These are
     // parsed specially (a '/' in the expression is division, not the
     // terminator) and aligned with a dedicated formatter. Interspersed comment
-    // lines are kept verbatim and do not split the table. Checked before
-    // parseRecordLine, which would mis-tokenize a division '/'.
+    // and blank lines are kept verbatim and do not split the table. Checked
+    // before parseRecordLine, which would mis-tokenize a division '/'.
     if (parseUdqExpressionLine(document.lineAt(i).text)) {
       const blockLineNums: number[] = [];
       const blockLines: string[] = [];
+      // Index (within the block) of the last actual UDQ statement, so trailing
+      // comment/blank lines after the table are not swallowed into it.
+      let lastUdqPos = -1;
       let k = i;
       while (k <= last) {
         const lineText = document.lineAt(k).text;
-        if (parseUdqExpressionLine(lineText) || isCommentLine(lineText)) {
-          blockLineNums.push(k);
-          blockLines.push(lineText);
-          k++;
-        } else {
+        if (parseUdqExpressionLine(lineText)) {
+          lastUdqPos = blockLines.length;
+        } else if (!isCommentLine(lineText) && lineText.trim() !== '') {
           break;
         }
+        blockLineNums.push(k);
+        blockLines.push(lineText);
+        k++;
       }
-      const formatted = formatUdqBlock(blockLines);
-      for (let j = 0; j < blockLines.length; j++) {
+      // Drop trailing comment/blank lines that follow the final statement.
+      const tableLen = lastUdqPos + 1;
+      const formatted = formatUdqBlock(blockLines.slice(0, tableLen));
+      for (let j = 0; j < tableLen; j++) {
         if (formatted[j] !== blockLines[j]) {
           edits.push(vscode.TextEdit.replace(document.lineAt(blockLineNums[j]).range, formatted[j]));
         }
       }
-      i = k;
+      i = blockLineNums[tableLen - 1] + 1;
       continue;
     }
 

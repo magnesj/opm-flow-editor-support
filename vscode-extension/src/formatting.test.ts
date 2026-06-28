@@ -469,6 +469,23 @@ describe('formatUdqBlock — comments inside a UDQ block', () => {
     const lines = ['-- just a comment', 'DEFINE WU1 1 /'];
     expect(formatUdqBlock(lines)).toEqual(lines);
   });
+
+  test('blank lines are left unchanged and do not split the table', () => {
+    const lines = [
+      'ASSIGN WU1 1.0 /',
+      '',
+      'DEFINE WULONGNAME 2.0 /',
+      '   ',
+      'UNITS WU1 BARSA /',
+    ];
+    const result = formatUdqBlock(lines);
+    // Blank lines preserved verbatim.
+    expect(result[1]).toBe('');
+    expect(result[3]).toBe('   ');
+    // All three statements align as one table despite the blank lines.
+    const slashCols = [result[0], result[2], result[4]].map(l => l.lastIndexOf('/'));
+    expect(new Set(slashCols).size).toBe(1);
+  });
 });
 
 // ---------------------------------------------------------------------------
