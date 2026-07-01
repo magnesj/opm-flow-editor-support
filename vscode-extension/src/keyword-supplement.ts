@@ -72,6 +72,45 @@ export function applyKeywordSupplement(index: AnalysisIndex): AnalysisIndex {
   return index;
 }
 
+/** One ResInsight-sourced SUMMARY-vector description (see
+ *  `data/summary_vectors.json`, built by `scripts/build_summary_vectors.py`). */
+export interface SummaryVectorInfo {
+  summary: string;
+  category: string;
+}
+
+export type SummaryVectorTable = Record<string, SummaryVectorInfo>;
+
+/**
+ * Fold the ResInsight SUMMARY-vector description table into `index`, adding an
+ * entry for every mnemonic not already known (an authoritative opm-common /
+ * manual entry always wins). This gives several hundred otherwise-unrecognised
+ * vectors — all network vectors plus foam / surfactant / polymer / interfacial-
+ * tension / relative-permeability / aquifer-molar block, field, group, well and
+ * segment vectors — a description (hover / docs / completion) and recognition
+ * (no false-positive "unknown keyword" in the SUMMARY section).
+ *
+ * The added entries are marked SUMMARY-only; `normalizeSummaryVectorShapes`
+ * then gives them the same `array` shape as opm-common's probe vectors (an
+ * optional '/'-terminated name list). Mutates and returns `index`.
+ */
+export function applySummaryVectorSupplement(
+  index: AnalysisIndex,
+  vectors: SummaryVectorTable,
+): AnalysisIndex {
+  for (const name in vectors) {
+    if (index[name] !== undefined) continue;
+    const info = vectors[name];
+    index[name] = {
+      name,
+      sections: ['SUMMARY'],
+      summary: info.summary,
+      category: info.category,
+    };
+  }
+  return index;
+}
+
 /**
  * Give every SUMMARY-section vector that lacks an explicit `size_kind` the
  * `array` shape. opm-common's probe expansion (and the L-modifier variants such
@@ -102,8 +141,12 @@ export function normalizeSummaryVectorShapes(index: AnalysisIndex): AnalysisInde
  * add the curated supplement, then normalise SUMMARY-vector shapes. Mutates and
  * returns `index`.
  */
-export function prepareKeywordIndex(index: AnalysisIndex): AnalysisIndex {
+export function prepareKeywordIndex(
+  index: AnalysisIndex,
+  summaryVectors?: SummaryVectorTable,
+): AnalysisIndex {
   applyKeywordSupplement(index);
+  if (summaryVectors) applySummaryVectorSupplement(index, summaryVectors);
   normalizeSummaryVectorShapes(index);
   return index;
 }

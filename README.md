@@ -105,6 +105,10 @@ Marketplace listing: <https://marketplace.visualstudio.com/items?itemName=magne-
 ## References
 
 - [equinor/vscode-lang-e100e300](https://github.com/equinor/vscode-lang-e100e300) — VS Code language extension for Eclipse E100/E300 decks
+- [OPM/ResInsight](https://github.com/OPM/ResInsight) — post-processing and 3D
+  visualization for reservoir models; its curated SUMMARY-vector descriptions
+  (GPL-3.0) supplement this extension's hover/completion coverage for network
+  and other vectors the reference manual does not document
 - [Pyrus Suite](https://pkirkham.github.io/pyrus/) — Peter Kirkham's free toolkit of oil & gas technical tools, including an ECLIPSE deck editor and OPM Flow integration
 
 ## Development

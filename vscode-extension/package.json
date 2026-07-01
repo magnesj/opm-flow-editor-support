@@ -373,6 +373,7 @@
     "watch": "tsc -watch -p ./",
     "test": "jest",
     "build-index": "py ../scripts/build_keyword_index.py --manual-dir ../opm-reference-manual --output data/keyword_index.json --compact data/keyword_index_compact.json",
+    "build-summary-vectors": "py ../scripts/build_summary_vectors.py --output data/summary_vectors.json",
     "sync-manual-ref": "node scripts/sync-manual-ref.js README.md"
   },
   "jest": {

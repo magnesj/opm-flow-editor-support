@@ -9,6 +9,7 @@ opm-flow-editor-support/
 │                            #   opm/input/eclipse/share/keywords)
 ├── scripts/                 # keyword-index builder (Python)
 │   ├── build_keyword_index.py
+│   ├── build_summary_vectors.py      # ResInsight SUMMARY-vector descriptions
 │   ├── test_build_keyword_index.py   # pytest suite for the builder
 │   └── requirements.txt
 ├── demo-decks/              # runnable sample decks + VIDEO-SCRIPT.md walkthrough
@@ -33,6 +34,7 @@ opm-flow-editor-support/
     ├── syntaxes/opm-flow.tmLanguage.json
     ├── language-configuration.json
     ├── data/keyword_index_compact.json
+    ├── data/summary_vectors.json     # ResInsight SUMMARY-vector descriptions
     └── package.json
 ```
 
@@ -40,6 +42,14 @@ The two upstream sources are merged into a single index: `opm-reference-manual`
 provides descriptions, units, and examples; `opm-common` provides authoritative
 section validity and per-parameter `value_type` (INT/DOUBLE/STRING/…) and
 `dimension` (Length/Pressure/…) — both surfaced in hover and the docs sidebar.
+
+At load time the index is further supplemented with `data/summary_vectors.json`
+(see below), which adds a description — and thus recognition, hover, completion,
+and docs — for several hundred SUMMARY vectors that neither upstream source
+documents (all network vectors, plus foam / surfactant / polymer / interfacial-
+tension / relative-permeability / aquifer-molar block, field, group, well, and
+segment vectors). An authoritative opm-common entry always wins, so this only
+fills gaps.
 
 ## Clone
 
@@ -129,6 +139,30 @@ Or run the wrapper from the extension, which writes the compact index in place:
 ```sh
 cd vscode-extension
 npm run build-index
+```
+
+## Regenerate the SUMMARY-vector descriptions
+
+`vscode-extension/data/summary_vectors.json` is built from ResInsight's curated
+SUMMARY-vector tables (`keywords_eclipse.json` + `keywords_network.json`; the
+`keywords_6x.json` INTERSECT-format variant is excluded). ResInsight is
+GPL-3.0-licensed, compatible with this extension's GPL-3.0-only licence.
+
+The builder fetches from a pinned ResInsight commit (see `DEFAULT_REF` in the
+script) so regeneration is reproducible; bump that ref to pick up upstream
+additions:
+
+```sh
+cd vscode-extension
+npm run build-summary-vectors
+```
+
+Or invoke the script directly (it accepts `--ref <sha>` and, for offline use,
+`--local-dir <dir>` to read the two source JSON files from a local checkout):
+
+```sh
+cd scripts
+python build_summary_vectors.py --output ../vscode-extension/data/summary_vectors.json
 ```
 
 `vscode-extension/README.md` carries the manual commit it was built from inside a

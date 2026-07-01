@@ -53,6 +53,13 @@ export interface AnalysisEntry {
   parameters?: AnalysisParam[];
   /** Authoritative section list (from opm-common when available). */
   sections?: string[];
+  /** One-line description, surfaced in hover / docs / completion. Carried on
+   *  the runtime index (the compact JSON and the ResInsight SUMMARY-vector
+   *  supplement both supply it) though the diagnostics engine never reads it. */
+  summary?: string;
+  /** SUMMARY-object class for a ResInsight-sourced vector (SUMMARY_WELL,
+   *  SUMMARY_FIELD, …). Metadata only; not read by the diagnostics engine. */
+  category?: string;
   /**
    * Record-arity kind:
    *   - 'none': the keyword takes no records and no terminating '/'.

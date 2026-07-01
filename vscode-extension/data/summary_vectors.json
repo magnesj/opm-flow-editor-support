@@ -1,0 +1,7486 @@
+{
+"AACMR": {
+"summary": "Aquifer component molar influx rate",
+"category": "SUMMARY_AQUIFER"
+},
+"AACMT": {
+"summary": "Aquifer component molar influx totals",
+"category": "SUMMARY_AQUIFER"
+},
+"AAQENTH": {
+"summary": "Aquifer molar enthalpy",
+"category": "SUMMARY_AQUIFER"
+},
+"AAQER": {
+"summary": "Aquifer thermal energy influx rate",
+"category": "SUMMARY_AQUIFER"
+},
+"AAQET": {
+"summary": "Cumulative aquifer thermal energy influx",
+"category": "SUMMARY_AQUIFER"
+},
+"AAQP": {
+"summary": "Aquifer pressure",
+"category": "SUMMARY_AQUIFER"
+},
+"AAQPD": {
+"summary": "Aquifer dimensionless pressure",
+"category": "SUMMARY_AQUIFER"
+},
+"AAQR": {
+"summary": "Aquifer influx rate",
+"category": "SUMMARY_AQUIFER"
+},
+"AAQRG": {
+"summary": "Aquifer influx rate",
+"category": "SUMMARY_AQUIFER"
+},
+"AAQT": {
+"summary": "Cumulative aquifer influx",
+"category": "SUMMARY_AQUIFER"
+},
+"AAQTD": {
+"summary": "Aquifer dimensionless time",
+"category": "SUMMARY_AQUIFER"
+},
+"AAQTEMP": {
+"summary": "Aquifer temperature",
+"category": "SUMMARY_AQUIFER"
+},
+"AAQTG": {
+"summary": "Cumulative aquifer influx",
+"category": "SUMMARY_AQUIFER"
+},
+"ALQR": {
+"summary": "Aquifer influx rate",
+"category": "SUMMARY_AQUIFER"
+},
+"ALQRG": {
+"summary": "Aquifer influx rate",
+"category": "SUMMARY_AQUIFER"
+},
+"ALQT": {
+"summary": "Cumulative aquifer influx",
+"category": "SUMMARY_AQUIFER"
+},
+"ALQTG": {
+"summary": "Cumulative aquifer influx",
+"category": "SUMMARY_AQUIFER"
+},
+"ANQP": {
+"summary": "Aquifer pressure",
+"category": "SUMMARY_AQUIFER"
+},
+"ANQR": {
+"summary": "Aquifer influx rate",
+"category": "SUMMARY_AQUIFER"
+},
+"ANQT": {
+"summary": "Cumulative aquifer influx",
+"category": "SUMMARY_AQUIFER"
+},
+"BAMF": {
+"summary": "Component aqueous mole fraction",
+"category": "SUMMARY_BLOCK"
+},
+"BAPI": {
+"summary": "Oil API",
+"category": "SUMMARY_BLOCK"
+},
+"BCABnnn": {
+"summary": "Adsorbed polymer by highest temperature band at which RRF was calculated",
+"category": "SUMMARY_BLOCK"
+},
+"BCAD": {
+"summary": "Polymer Adsorption concentration",
+"category": "SUMMARY_BLOCK"
+},
+"BCCN": {
+"summary": "Polymer Concentration",
+"category": "SUMMARY_BLOCK"
+},
+"BCDCA": {
+"summary": "Polymer thermal degradation adsorbed degradation rate",
+"category": "SUMMARY_BLOCK"
+},
+"BCDCP": {
+"summary": "Polymer thermal degradation solution degradation rate",
+"category": "SUMMARY_BLOCK"
+},
+"BCDCR": {
+"summary": "Polymer thermal degradation - total degradation rate",
+"category": "SUMMARY_BLOCK"
+},
+"BCDCS": {
+"summary": "Polymer thermal degradation - total mass degraded in previous timestep",
+"category": "SUMMARY_BLOCK"
+},
+"BCGC": {
+"summary": "Bulk Coal Gas Concentration",
+"category": "SUMMARY_BLOCK"
+},
+"BCIP": {
+"summary": "Polymer In Solution",
+"category": "SUMMARY_BLOCK"
+},
+"BCSC": {
+"summary": "Bulk Coal Solvent Concentration",
+"category": "SUMMARY_BLOCK"
+},
+"BCTRA_X": {
+"summary": "Tracer concentration interpolated at a defined coordinate",
+"category": "SUMMARY_BLOCK"
+},
+"BEMVIS": {
+"summary": "Effective mixture",
+"category": "SUMMARY_BLOCK"
+},
+"BEPVIS": {
+"summary": "Effective polymer solution viscosity",
+"category": "SUMMARY_BLOCK"
+},
+"BESALPLY": {
+"summary": "Effective Salinity with respect to Polymer",
+"category": "SUMMARY_BLOCK"
+},
+"BESALSUR": {
+"summary": "Effective Salinity with respect to Surfactant",
+"category": "SUMMARY_BLOCK"
+},
+"BESVIS": {
+"summary": "Effective water viscosity due to surfactant concentration",
+"category": "SUMMARY_BLOCK"
+},
+"BEWKR": {
+"summary": "Water effective relative permeability due to polymer",
+"category": "SUMMARY_BLOCK"
+},
+"BEWV_POL": {
+"summary": "Effective water viscosity",
+"category": "SUMMARY_BLOCK"
+},
+"BEWV_SAL": {
+"summary": "Effective water viscosity due to salt concentration",
+"category": "SUMMARY_BLOCK"
+},
+"BEWV_SUR": {
+"summary": "Effective water viscosity due to surfactant concentration",
+"category": "SUMMARY_BLOCK"
+},
+"BFLOW0I": {
+"summary": "Inter-block water flow rate in the positive I direction multiplied by the corresponding shear multiplier",
+"category": "SUMMARY_BLOCK"
+},
+"BFLOW0J": {
+"summary": "Inter-block water flow rate in the positive J direction multiplied by the corresponding shear multiplier",
+"category": "SUMMARY_BLOCK"
+},
+"BFLOW0K": {
+"summary": "Inter-block water flow rate in the positive K direction multiplied by the corresponding shear multiplier",
+"category": "SUMMARY_BLOCK"
+},
+"BFMISC": {
+"summary": "Miscibility Factor",
+"category": "SUMMARY_BLOCK"
+},
+"BFOAM": {
+"summary": "Surfactant concentration",
+"category": "SUMMARY_BLOCK"
+},
+"BFOAMCNM": {
+"summary": "Capillary number",
+"category": "SUMMARY_BLOCK"
+},
+"BFOAMMOB": {
+"summary": "Gas mobility factor",
+"category": "SUMMARY_BLOCK"
+},
+"BGI": {
+"summary": "Block Gi value",
+"category": "SUMMARY_BLOCK"
+},
+"BGKR": {
+"summary": "Gas relative permeability",
+"category": "SUMMARY_BLOCK"
+},
+"BGKRI": {
+"summary": "Gas relative permeability in the I direction",
+"category": "SUMMARY_BLOCK"
+},
+"BGKRJ": {
+"summary": "Gas relative permeability in the J direction",
+"category": "SUMMARY_BLOCK"
+},
+"BGKRK": {
+"summary": "Gas relative permeability in the K direction",
+"category": "SUMMARY_BLOCK"
+},
+"BGKRR": {
+"summary": "Gas relative permeability in the R",
+"category": "SUMMARY_BLOCK"
+},
+"BGKRT": {
+"summary": "Gas relative permeability in the T",
+"category": "SUMMARY_BLOCK"
+},
+"BGKRX": {
+"summary": "Gas relative permeability in the X direction",
+"category": "SUMMARY_BLOCK"
+},
+"BGKRY": {
+"summary": "Gas relative permeability in the Y direction",
+"category": "SUMMARY_BLOCK"
+},
+"BGKRZ": {
+"summary": "Gas relative permeability in the Z direction",
+"category": "SUMMARY_BLOCK"
+},
+"BGPC": {
+"summary": "Gas-Oil capillary pressure",
+"category": "SUMMARY_BLOCK"
+},
+"BGPR": {
+"summary": "Gas phase Pressure",
+"category": "SUMMARY_BLOCK"
+},
+"BGPV": {
+"summary": "Pore Volume containing Gas",
+"category": "SUMMARY_BLOCK"
+},
+"BGSHY": {
+"summary": "Departure saturation from drainage to imbibition for gas capillary pressure hysteresis",
+"category": "SUMMARY_BLOCK"
+},
+"BGSTRP": {
+"summary": "Trapped gas critical saturation for gas capillary pressure hysteresis",
+"category": "SUMMARY_BLOCK"
+},
+"BGTPD": {
+"summary": "Dynamic trapped gas saturation",
+"category": "SUMMARY_BLOCK"
+},
+"BGTRP": {
+"summary": "Trapped gas saturation",
+"category": "SUMMARY_BLOCK"
+},
+"BHD": {
+"summary": "Hydraulic head",
+"category": "SUMMARY_BLOCK"
+},
+"BHDF": {
+"summary": "Hydraulic head at fresh water conditions",
+"category": "SUMMARY_BLOCK"
+},
+"BHDF_X": {
+"summary": "Hydraulic head at fresh water conditions interpolated at a defined coordinate",
+"category": "SUMMARY_BLOCK"
+},
+"BHD_X": {
+"summary": "Hydraulic head interpolated at a defined coordinate",
+"category": "SUMMARY_BLOCK"
+},
+"BHPV": {
+"summary": "Pore Volume containing Hydrocarbon",
+"category": "SUMMARY_BLOCK"
+},
+"BIFTGO": {
+"summary": "Gas-oil interfacial tension",
+"category": "SUMMARY_BLOCK"
+},
+"BIFTGW": {
+"summary": "Gas-water interfacial tension",
+"category": "SUMMARY_BLOCK"
+},
+"BIFTOG": {
+"summary": "Oil-gas interfacial tension",
+"category": "SUMMARY_BLOCK"
+},
+"BIFTOW": {
+"summary": "Oil-water interfacial tension",
+"category": "SUMMARY_BLOCK"
+},
+"BIFTWG": {
+"summary": "Water-gas interfacial tension",
+"category": "SUMMARY_BLOCK"
+},
+"BIFTWO": {
+"summary": "Water-oil interfacial tension",
+"category": "SUMMARY_BLOCK"
+},
+"BJV": {
+"summary": "In",
+"category": "SUMMARY_BLOCK"
+},
+"BKRG": {
+"summary": "Gas relative permeability",
+"category": "SUMMARY_BLOCK"
+},
+"BKRGO": {
+"summary": "Two-phase gas relative permeability to oil",
+"category": "SUMMARY_BLOCK"
+},
+"BKRGOE": {
+"summary": "Equivalent relative permeability to gas for gas-oil system",
+"category": "SUMMARY_BLOCK"
+},
+"BKRGOT": {
+"summary": "Opposite saturation direction turning point relative permeability to gas for gas-oil system",
+"category": "SUMMARY_BLOCK"
+},
+"BKRGW": {
+"summary": "Two-phase gas relative permeability to water",
+"category": "SUMMARY_BLOCK"
+},
+"BKRGWE": {
+"summary": "Equivalent relative permeability to gas for gas-water system",
+"category": "SUMMARY_BLOCK"
+},
+"BKRGWT": {
+"summary": "Opposite saturation direction turning point relative permeability to gas for gas-water system",
+"category": "SUMMARY_BLOCK"
+},
+"BKRO": {
+"summary": "Oil relative permeability",
+"category": "SUMMARY_BLOCK"
+},
+"BKROG": {
+"summary": "Two-phase oil relative permeability to gas",
+"category": "SUMMARY_BLOCK"
+},
+"BKROGT": {
+"summary": "Opposite saturation direction turning point relative permeability to oil for oil-gas system",
+"category": "SUMMARY_BLOCK"
+},
+"BKROW": {
+"summary": "Two-phase oil relative permeability to water",
+"category": "SUMMARY_BLOCK"
+},
+"BKROWT": {
+"summary": "Opposite saturation direction turning point relative permeability to oil for oil-water system",
+"category": "SUMMARY_BLOCK"
+},
+"BKRW": {
+"summary": "Water relative permeability",
+"category": "SUMMARY_BLOCK"
+},
+"BKRWG": {
+"summary": "Two-phase water relative permeability to gas",
+"category": "SUMMARY_BLOCK"
+},
+"BKRWGE": {
+"summary": "Equivalent relative permeability to water for water-gas system",
+"category": "SUMMARY_BLOCK"
+},
+"BKRWGT": {
+"summary": "Opposite saturation direction turning point relative permeability to water for water-gas system",
+"category": "SUMMARY_BLOCK"
+},
+"BKRWO": {
+"summary": "Two-phase water relative permeability to oil",
+"category": "SUMMARY_BLOCK"
+},
+"BKRWOT": {
+"summary": "Opposite saturation direction turning point relative permeability to water for water-oil system",
+"category": "SUMMARY_BLOCK"
+},
+"BMLSC": {
+"summary": "Hydrocarbon molar density",
+"category": "SUMMARY_BLOCK"
+},
+"BMLST": {
+"summary": "Total hydrocarbon molar density",
+"category": "SUMMARY_BLOCK"
+},
+"BMWAT": {
+"summary": "Water molar density",
+"category": "SUMMARY_BLOCK"
+},
+"BNIP": {
+"summary": "Solvent In Place",
+"category": "SUMMARY_BLOCK"
+},
+"BNKR": {
+"summary": "Solvent relative permeability",
+"category": "SUMMARY_BLOCK"
+},
+"BNSAT": {
+"summary": "Solvent SATuration",
+"category": "SUMMARY_BLOCK"
+},
+"BOKR": {
+"summary": "Oil relative permeability",
+"category": "SUMMARY_BLOCK"
+},
+"BOKRI": {
+"summary": "Oil relative permeability in the I direction",
+"category": "SUMMARY_BLOCK"
+},
+"BOKRJ": {
+"summary": "Oil relative permeability in the J direction",
+"category": "SUMMARY_BLOCK"
+},
+"BOKRK": {
+"summary": "Oil relative permeability in the K direction",
+"category": "SUMMARY_BLOCK"
+},
+"BOKRR": {
+"summary": "Oil relative permeability in the R",
+"category": "SUMMARY_BLOCK"
+},
+"BOKRT": {
+"summary": "Oil relative permeability in the T",
+"category": "SUMMARY_BLOCK"
+},
+"BOKRX": {
+"summary": "Oil relative permeability in the X direction",
+"category": "SUMMARY_BLOCK"
+},
+"BOKRY": {
+"summary": "Oil relative permeability in the Y direction",
+"category": "SUMMARY_BLOCK"
+},
+"BOKRZ": {
+"summary": "Oil relative permeability in the Z direction",
+"category": "SUMMARY_BLOCK"
+},
+"BOPV": {
+"summary": "Pore Volume containing Oil",
+"category": "SUMMARY_BLOCK"
+},
+"BPBUB": {
+"summary": "Bubble point pressure",
+"category": "SUMMARY_BLOCK"
+},
+"BPCG": {
+"summary": "Gas Capillary Pressures",
+"category": "SUMMARY_BLOCK"
+},
+"BPCGOR": {
+"summary": "Representative gas-oil capillary pressure",
+"category": "SUMMARY_BLOCK"
+},
+"BPCGWR": {
+"summary": "Representative gas-water capillary pressure",
+"category": "SUMMARY_BLOCK"
+},
+"BPCO": {
+"summary": "Oil Capillary Pressures",
+"category": "SUMMARY_BLOCK"
+},
+"BPCOGR": {
+"summary": "Representative oil-gas capillary pressure",
+"category": "SUMMARY_BLOCK"
+},
+"BPCOWR": {
+"summary": "Representative oil-water capillary pressure",
+"category": "SUMMARY_BLOCK"
+},
+"BPCW": {
+"summary": "Water Capillary Pressures",
+"category": "SUMMARY_BLOCK"
+},
+"BPCWGR": {
+"summary": "Representative water-gas capillary pressure",
+"category": "SUMMARY_BLOCK"
+},
+"BPCWOR": {
+"summary": "Representative water-oil capillary pressure",
+"category": "SUMMARY_BLOCK"
+},
+"BPDEW": {
+"summary": "Dew point pressure",
+"category": "SUMMARY_BLOCK"
+},
+"BPERMMDX": {
+"summary": "Directional Transmissibility Multipliers in the X direction, associated with rock compaction",
+"category": "SUMMARY_BLOCK"
+},
+"BPERMMDY": {
+"summary": "Directional Transmissibility Multipliers in the Y direction, associated with rock compaction",
+"category": "SUMMARY_BLOCK"
+},
+"BPERMMDZ": {
+"summary": "Directional Transmissibility Multipliers in the Z direction, associated with rock compaction",
+"category": "SUMMARY_BLOCK"
+},
+"BPERMMOD": {
+"summary": "Transmissibility Multiplier associated with rock compaction",
+"category": "SUMMARY_BLOCK"
+},
+"BPORV": {
+"summary": "Cell Pore Volumes at Reference conditions",
+"category": "SUMMARY_BLOCK"
+},
+"BPORVMOD": {
+"summary": "Pore Volume Multiplier associated with rock compaction",
+"category": "SUMMARY_BLOCK"
+},
+"BPPC": {
+"summary": "Initial Contact Corrected Potential",
+"category": "SUMMARY_BLOCK"
+},
+"BPR": {
+"summary": "Oil phase Pressure",
+"category": "SUMMARY_BLOCK"
+},
+"BPRESSUR": {
+"summary": "Oil phase Pressure",
+"category": "SUMMARY_BLOCK"
+},
+"BPR_X": {
+"summary": "Pressure interpolated at a defined coordinate",
+"category": "SUMMARY_BLOCK"
+},
+"BPSAT": {
+"summary": "Saturation Pressures",
+"category": "SUMMARY_BLOCK"
+},
+"BPSHLZI": {
+"summary": "Viscosity multiplier due to sheared water flow in the positive I direction",
+"category": "SUMMARY_BLOCK"
+},
+"BPSHLZJ": {
+"summary": "Viscosity multiplier due to sheared water flow in the positive J direction",
+"category": "SUMMARY_BLOCK"
+},
+"BPSHLZK": {
+"summary": "Viscosity multiplier due to sheared water flow in the positive K direction",
+"category": "SUMMARY_BLOCK"
+},
+"BREAC": {
+"summary": "Reaction rate. The reaction number is given as a component index",
+"category": "SUMMARY_BLOCK"
+},
+"BRK": {
+"summary": "Water relative permeability reduction factor due to polymer",
+"category": "SUMMARY_BLOCK"
+},
+"BROMLS": {
+"summary": "Residual oil moles/ reservoir volume",
+"category": "SUMMARY_BLOCK"
+},
+"BRPV": {
+"summary": "Pore Volume at Reservoir conditions",
+"category": "SUMMARY_BLOCK"
+},
+"BRS": {
+"summary": "Gas-oil ratio",
+"category": "SUMMARY_BLOCK"
+},
+"BRSSAT": {
+"summary": "Saturated gas-oil ratio",
+"category": "SUMMARY_BLOCK"
+},
+"BRTM": {
+"summary": "Transmissibility Multiplier associated with rock compaction",
+"category": "SUMMARY_BLOCK"
+},
+"BRV": {
+"summary": "Oil-gas ratio",
+"category": "SUMMARY_BLOCK"
+},
+"BRVSAT": {
+"summary": "Saturated oil-gas ratio",
+"category": "SUMMARY_BLOCK"
+},
+"BSCN": {
+"summary": "Salt Cell Concentration",
+"category": "SUMMARY_BLOCK"
+},
+"BSCN_X": {
+"summary": "Brine concentration interpolated at a defined coordinate",
+"category": "SUMMARY_BLOCK"
+},
+"BSHWVISI": {
+"summary": "Shear viscosity of the water/polymer solution due to shear thinning/thickening in the positive I direction",
+"category": "SUMMARY_BLOCK"
+},
+"BSHWVISJ": {
+"summary": "Shear viscosity of the water/polymer solution due to shear thinning/thickening in the positive J direction",
+"category": "SUMMARY_BLOCK"
+},
+"BSHWVISK": {
+"summary": "Shear viscosity of the water/polymer solution due to shear thinning/thickening in the positive K direction",
+"category": "SUMMARY_BLOCK"
+},
+"BSIGMMOD": {
+"summary": "Dual Porosity Sigma Multiplier associated with rock compaction",
+"category": "SUMMARY_BLOCK"
+},
+"BSIP": {
+"summary": "Salt In Place",
+"category": "SUMMARY_BLOCK"
+},
+"BSMF": {
+"summary": "CO2STORE with SOLID option only Solid hydrocarbon component mole fraction",
+"category": "SUMMARY_BLOCK"
+},
+"BSRTW0I": {
+"summary": "Water shear rate in the positive I direction prior to shear effects",
+"category": "SUMMARY_BLOCK"
+},
+"BSRTW0J": {
+"summary": "Water shear rate in the positive J direction prior to shear effects",
+"category": "SUMMARY_BLOCK"
+},
+"BSRTW0K": {
+"summary": "Water shear rate in the positive K direction prior to shear effects",
+"category": "SUMMARY_BLOCK"
+},
+"BSRTWI": {
+"summary": "Water shear rate in the positive I direction following shear effects",
+"category": "SUMMARY_BLOCK"
+},
+"BSRTWJ": {
+"summary": "Water shear rate in the positive J direction following shear effects",
+"category": "SUMMARY_BLOCK"
+},
+"BSRTWK": {
+"summary": "Water shear rate in the positive K direction following shear effects",
+"category": "SUMMARY_BLOCK"
+},
+"BSTATE": {
+"summary": "Gas-oil state indicator",
+"category": "SUMMARY_BLOCK"
+},
+"BSTEN": {
+"summary": "Surface Tension",
+"category": "SUMMARY_BLOCK"
+},
+"BSURF": {
+"summary": "Concentration in solution",
+"category": "SUMMARY_BLOCK"
+},
+"BSURFCNM": {
+"summary": "Log",
+"category": "SUMMARY_BLOCK"
+},
+"BSURFST": {
+"summary": "Surface tension",
+"category": "SUMMARY_BLOCK"
+},
+"BTADS": {
+"summary": "Tracer Adsorption",
+"category": "SUMMARY_BLOCK"
+},
+"BTADSALK": {
+"summary": "Adsorption",
+"category": "SUMMARY_BLOCK"
+},
+"BTADSFOA": {
+"summary": "Adsorption",
+"category": "SUMMARY_BLOCK"
+},
+"BTADSUR": {
+"summary": "Adsorption",
+"category": "SUMMARY_BLOCK"
+},
+"BTCASUR": {
+"summary": "Log",
+"category": "SUMMARY_BLOCK"
+},
+"BTCN": {
+"summary": "Tracer Concentration",
+"category": "SUMMARY_BLOCK"
+},
+"BTCN#": {
+"summary": "Tracer concentration in phase # (1,2,3,...)",
+"category": "SUMMARY_BLOCK"
+},
+"BTCNF": {
+"summary": "Tracer Concentration",
+"category": "SUMMARY_BLOCK"
+},
+"BTCNFALK": {
+"summary": "Concentration",
+"category": "SUMMARY_BLOCK"
+},
+"BTCNFANI": {
+"summary": "Anion Flowing Concentration",
+"category": "SUMMARY_BLOCK"
+},
+"BTCNFCAT": {
+"summary": "Cation Flowing Concentration",
+"category": "SUMMARY_BLOCK"
+},
+"BTCNFFOA": {
+"summary": "Concentration",
+"category": "SUMMARY_BLOCK"
+},
+"BTCNFHEA": {
+"summary": "Block Temperature",
+"category": "SUMMARY_BLOCK"
+},
+"BTCNFSUR": {
+"summary": "Concentration",
+"category": "SUMMARY_BLOCK"
+},
+"BTCNMFOA": {
+"summary": "Capillary number",
+"category": "SUMMARY_BLOCK"
+},
+"BTCNS": {
+"summary": "Tracer Concentration",
+"category": "SUMMARY_BLOCK"
+},
+"BTDCY": {
+"summary": "Decayed tracer",
+"category": "SUMMARY_BLOCK"
+},
+"BTDCYFOA": {
+"summary": "Decayed tracer",
+"category": "SUMMARY_BLOCK"
+},
+"BTHLFFOA": {
+"summary": "Decay Half life",
+"category": "SUMMARY_BLOCK"
+},
+"BTIP#": {
+"summary": "Tracer In Place in phase # (1,2,3,...)",
+"category": "SUMMARY_BLOCK"
+},
+"BTIPF": {
+"summary": "Tracer In Place",
+"category": "SUMMARY_BLOCK"
+},
+"BTIPS": {
+"summary": "Tracer In Place",
+"category": "SUMMARY_BLOCK"
+},
+"BTIPT": {
+"summary": "Tracer In Place",
+"category": "SUMMARY_BLOCK"
+},
+"BTIPTFOA": {
+"summary": "In Solution",
+"category": "SUMMARY_BLOCK"
+},
+"BTIPTHEA": {
+"summary": "Difference in Energy in place between current and initial time",
+"category": "SUMMARY_BLOCK"
+},
+"BTIPTSUR": {
+"summary": "In Solution",
+"category": "SUMMARY_BLOCK"
+},
+"BTMOBFOA": {
+"summary": "Gas mobility factor",
+"category": "SUMMARY_BLOCK"
+},
+"BTPADALK": {
+"summary": "Polymer adsorption multiplier",
+"category": "SUMMARY_BLOCK"
+},
+"BTRADCAT": {
+"summary": "Cation Rock Associated Concentration",
+"category": "SUMMARY_BLOCK"
+},
+"BTSADALK": {
+"summary": "Surfactant adsorption multiplier",
+"category": "SUMMARY_BLOCK"
+},
+"BTSADCAT": {
+"summary": "Cation Surfactant Associated Concentration",
+"category": "SUMMARY_BLOCK"
+},
+"BTSTMALK": {
+"summary": "Surface tension multiplier",
+"category": "SUMMARY_BLOCK"
+},
+"BTSTSUR": {
+"summary": "Surface tension",
+"category": "SUMMARY_BLOCK"
+},
+"BVELW0I": {
+"summary": "Water velocity in the positive I direction multiplied by the corresponding shear multiplier",
+"category": "SUMMARY_BLOCK"
+},
+"BVELW0J": {
+"summary": "Water velocity in the positive J direction multiplied by the corresponding shear multiplier",
+"category": "SUMMARY_BLOCK"
+},
+"BVELW0K": {
+"summary": "Water velocity in the positive K direction multiplied by the corresponding shear multiplier",
+"category": "SUMMARY_BLOCK"
+},
+"BVMF": {
+"summary": "Vapor mole fraction",
+"category": "SUMMARY_BLOCK"
+},
+"BVPOLY": {
+"summary": "Effective polymer solution viscosity",
+"category": "SUMMARY_BLOCK"
+},
+"BWKR": {
+"summary": "Water relative permeability",
+"category": "SUMMARY_BLOCK"
+},
+"BWKRI": {
+"summary": "Water relative permeability in the I direction",
+"category": "SUMMARY_BLOCK"
+},
+"BWKRJ": {
+"summary": "Water relative permeability in the J direction",
+"category": "SUMMARY_BLOCK"
+},
+"BWKRK": {
+"summary": "Water relative permeability in the K direction",
+"category": "SUMMARY_BLOCK"
+},
+"BWKRR": {
+"summary": "Water relative permeability in the R",
+"category": "SUMMARY_BLOCK"
+},
+"BWKRT": {
+"summary": "Water relative permeability in the T",
+"category": "SUMMARY_BLOCK"
+},
+"BWKRX": {
+"summary": "Water relative permeability in the X direction",
+"category": "SUMMARY_BLOCK"
+},
+"BWKRY": {
+"summary": "Water relative permeability in the Y direction",
+"category": "SUMMARY_BLOCK"
+},
+"BWKRZ": {
+"summary": "Water relative permeability in the Z direction",
+"category": "SUMMARY_BLOCK"
+},
+"BWPC": {
+"summary": "Water-Oil capillary pressure",
+"category": "SUMMARY_BLOCK"
+},
+"BWPR": {
+"summary": "Water phase Pressure",
+"category": "SUMMARY_BLOCK"
+},
+"BWPV": {
+"summary": "Pore Volume containing Water",
+"category": "SUMMARY_BLOCK"
+},
+"BWSHY": {
+"summary": "Departure saturation from drainage to imbibition for water capillary pressure hysteresis",
+"category": "SUMMARY_BLOCK"
+},
+"BWSMA": {
+"summary": "Maximum wetting saturation for water capillary pressure hysteresis",
+"category": "SUMMARY_BLOCK"
+},
+"BXMF": {
+"summary": "Liquid hydrocarbon component mole fraction",
+"category": "SUMMARY_BLOCK"
+},
+"BYMF": {
+"summary": "Vapor hydrocarbon component mole fraction / vapor steam",
+"category": "SUMMARY_BLOCK"
+},
+"CAMF": {
+"summary": "Component aqueous mole fraction, from producing completions",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CAPI": {
+"summary": "Oil API",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CCFR": {
+"summary": "Polymer Flow Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CCIC": {
+"summary": "Polymer Injection Concentration",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CCIR": {
+"summary": "Polymer Injection Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CCIT": {
+"summary": "Polymer Injection Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CCPC": {
+"summary": "Polymer Production Concentration",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CCPR": {
+"summary": "Polymer Production Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CCPT": {
+"summary": "Polymer Production Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CDBF": {
+"summary": "Blocking factor for generalized pseudo-pressure method",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CDFAC": {
+"summary": "D-factor for flow dependent skin factor",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CDSF": {
+"summary": "PI multiplicative factor due to scale damage",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CDSM": {
+"summary": "Current mass of scale deposited",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CDSML": {
+"summary": "Current mass of scale deposited per unit perforation length",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CGFR": {
+"summary": "Gas Flow Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CGFRF": {
+"summary": "Free Gas Flow Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CGFRL": {
+"summary": "Gas Flow Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CGFRS": {
+"summary": "Solution Gas Flow Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CGFRU": {
+"summary": "Sum of connection gas flow rates upstream of, and including, this connection",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CGIR": {
+"summary": "Gas Injection Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CGIRL": {
+"summary": "Gas Injection Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CGIT": {
+"summary": "Gas Injection Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CGITL": {
+"summary": "Gas Injection Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CGLR": {
+"summary": "Gas-Liquid Ratio",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CGLRL": {
+"summary": "Gas-Liquid Ratio",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CGOR": {
+"summary": "Gas-Oil Ratio",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CGORL": {
+"summary": "Gas-Oil Ratio",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CGPI": {
+"summary": "Gas Potential Injection rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CGPP": {
+"summary": "Gas Potential Production rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CGPPTN": {
+"summary": "Generalized pseudo-pressure table update counter",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CGPPTS": {
+"summary": "Generalized pseudo-pressure table update status",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CGPR": {
+"summary": "Gas Production Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CGPRL": {
+"summary": "Gas Production Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CGPT": {
+"summary": "Gas Production Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CGPTF": {
+"summary": "Free Gas Production Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CGPTL": {
+"summary": "Gas Production Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CGPTS": {
+"summary": "Solution Gas Production Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CGQ": {
+"summary": "Gas Quality",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CKFR": {
+"summary": "Hydrocarbon Component",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CKFRL": {
+"summary": "Hydrocarbon Component Molar Flow Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CKFT": {
+"summary": "Hydrocarbon Component",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CKFTL": {
+"summary": "Hydrocarbon Component Molar Flow Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CLFR": {
+"summary": "Liquid Flow Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CLFRL": {
+"summary": "Liquid Flow Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CLPT": {
+"summary": "Liquid Production Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CLPTL": {
+"summary": "Liquid Production Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CNFR": {
+"summary": "Solvent Flow Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CNIT": {
+"summary": "Solvent Injection Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CNPT": {
+"summary": "Solvent Production Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"COFR": {
+"summary": "Oil Flow Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"COFRF": {
+"summary": "Free Oil Flow Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"COFRL": {
+"summary": "Oil Flow Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"COFRS": {
+"summary": "Solution oil flow rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"COFRU": {
+"summary": "Sum of connection oil flow rates upstream of, and including, this connection",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"COGR": {
+"summary": "Oil-Gas Ratio",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"COGRL": {
+"summary": "Oil-Gas Ratio",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"COIT": {
+"summary": "Oil Injection Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"COITL": {
+"summary": "Oil Injection Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"COPI": {
+"summary": "Oil Potential Injection rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"COPP": {
+"summary": "Oil Potential Production rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"COPR": {
+"summary": "Oil Production Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"COPRL": {
+"summary": "Oil Production Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"COPT": {
+"summary": "Oil Production Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"COPTF": {
+"summary": "Free Oil Production Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"COPTL": {
+"summary": "Oil Production Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"COPTS": {
+"summary": "Solution Oil Production Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CPI": {
+"summary": "Productivity Index of well's preferred phase",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CPR": {
+"summary": "Connection Pressure",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CPRL": {
+"summary": "Connection Pressure in completion",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CPU": {
+"summary": "CPU",
+"category": "SUMMARY_MISC"
+},
+"CRREXCH": {
+"summary": "Exchange flux at current time",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CRRINJT": {
+"summary": "Connection cumulative water injection",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CRRPROT": {
+"summary": "Connection cumulative water production",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CSFR": {
+"summary": "Salt Flow Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CSIC": {
+"summary": "Salt Injection Concentration",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CSIR": {
+"summary": "Salt Injection Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CSIT": {
+"summary": "Salt Injection Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CSPC": {
+"summary": "Salt Production Concentration",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CSPR": {
+"summary": "Salt Production Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CSPT": {
+"summary": "Salt Production Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CTFAC": {
+"summary": "Connection Transmissibility Factor",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CTFR": {
+"summary": "Tracer Flow Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CTFRALK": {
+"summary": "Flow Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CTFRANI": {
+"summary": "Anion Flow Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CTFRCAT": {
+"summary": "Cation Flow Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CTFRFOA": {
+"summary": "Flow Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CTFRSUR": {
+"summary": "Flow Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CTIC": {
+"summary": "Tracer Injection Concentration",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CTICF": {
+"summary": "Tracer Injection Concentration",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CTICS": {
+"summary": "Tracer Injection Concentration",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CTIR": {
+"summary": "Tracer Injection Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CTIRF": {
+"summary": "Tracer Injection Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CTIRS": {
+"summary": "Tracer Injection Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CTIT": {
+"summary": "Tracer Injection Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CTITALK": {
+"summary": "Injection Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CTITANI": {
+"summary": "Anion Injection Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CTITCAT": {
+"summary": "Cation Injection Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CTITF": {
+"summary": "Tracer Injection Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CTITFOA": {
+"summary": "Injection Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CTITS": {
+"summary": "Tracer Injection Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CTITSUR": {
+"summary": "Injection Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CTPC": {
+"summary": "Tracer Production Concentration",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CTPCF": {
+"summary": "Tracer Production",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CTPCS": {
+"summary": "Tracer Production",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CTPR": {
+"summary": "Tracer Production Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CTPRF": {
+"summary": "Tracer Production Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CTPRS": {
+"summary": "Tracer Production Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CTPT": {
+"summary": "Tracer Production Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CTPTALK": {
+"summary": "Production Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CTPTANI": {
+"summary": "Anion Production Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CTPTCAT": {
+"summary": "Cation Production Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CTPTF": {
+"summary": "Tracer Production Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CTPTFOA": {
+"summary": "Production Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CTPTS": {
+"summary": "Tracer Production Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CTPTSUR": {
+"summary": "Production Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CU": {
+"summary": "User-defined connection quantity",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CVFR": {
+"summary": "Reservoir",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CVFRL": {
+"summary": "Res Volume Flow Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CVIR": {
+"summary": "Res Volume Injection Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CVIRL": {
+"summary": "Res Volume Injection Flow Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CVIT": {
+"summary": "Res Volume Injection Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CVITL": {
+"summary": "Res Volume Injection Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CVPR": {
+"summary": "Res Volume Production Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CVPRL": {
+"summary": "Res Volume Production Flow Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CVPT": {
+"summary": "Res Volume Production Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CVPTL": {
+"summary": "Res Volume Production Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CWCT": {
+"summary": "Water Cut",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CWCTL": {
+"summary": "Water Cut",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CWFR": {
+"summary": "Water Flow Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CWFRL": {
+"summary": "Water Flow Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CWFRU": {
+"summary": "Sum of connection water flow rates upstream of, and including, this connection",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CWGR": {
+"summary": "Water-Gas Ratio",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CWGRL": {
+"summary": "Water-Gas Ratio",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CWIR": {
+"summary": "Water Injection Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CWIRL": {
+"summary": "Water Injection Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CWIT": {
+"summary": "Water Injection Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CWITL": {
+"summary": "Water Injection Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CWPI": {
+"summary": "Water Potential Injection rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CWPP": {
+"summary": "Water Potential Production rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CWPR": {
+"summary": "Water Production Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CWPRL": {
+"summary": "Water Production Rate",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CWPT": {
+"summary": "Water Production Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CWPTL": {
+"summary": "Water Production Total",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"CZMF": {
+"summary": "Total Mole Fraction",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"DATE": {
+"summary": "Date",
+"category": "SUMMARY_MISC"
+},
+"DAY": {
+"summary": "Day",
+"category": "SUMMARY_MISC"
+},
+"ELAPSED": {
+"summary": "Elapsed time in seconds",
+"category": "SUMMARY_MISC"
+},
+"FAMF": {
+"summary": "Component aqueous mole fraction, from producing completions",
+"category": "SUMMARY_FIELD"
+},
+"FAMR": {
+"summary": "Make-up gas rate",
+"category": "SUMMARY_FIELD"
+},
+"FAMT": {
+"summary": "Make-up gas total",
+"category": "SUMMARY_FIELD"
+},
+"FAPI": {
+"summary": "Oil API",
+"category": "SUMMARY_FIELD"
+},
+"FAQER": {
+"summary": "Aquifer thermal energy influx rate",
+"category": "SUMMARY_FIELD"
+},
+"FAQET": {
+"summary": "Cumulative aquifer thermal energy influx",
+"category": "SUMMARY_FIELD"
+},
+"FAQR": {
+"summary": "Aquifer influx rate",
+"category": "SUMMARY_FIELD"
+},
+"FAQRG": {
+"summary": "Aquifer influx rate",
+"category": "SUMMARY_FIELD"
+},
+"FAQT": {
+"summary": "Cumulative aquifer influx",
+"category": "SUMMARY_FIELD"
+},
+"FAQTG": {
+"summary": "Cumulative aquifer influx",
+"category": "SUMMARY_FIELD"
+},
+"FCAD": {
+"summary": "Polymer Adsorption total",
+"category": "SUMMARY_FIELD"
+},
+"FCGC": {
+"summary": "Bulk Coal Gas Concentration",
+"category": "SUMMARY_FIELD"
+},
+"FCGMR": {
+"summary": "Hydrocarbon component",
+"category": "SUMMARY_FIELD"
+},
+"FCGMRG": {
+"summary": "Hydrocarbon component molar rates in the gas phase",
+"category": "SUMMARY_FIELD"
+},
+"FCGMRn": {
+"summary": "Hydrocarbon component molar rates in the gas phase for nth separator stage",
+"category": "SUMMARY_FIELD"
+},
+"FCGMT": {
+"summary": "Hydrocarbon component",
+"category": "SUMMARY_FIELD"
+},
+"FCGRn": {
+"summary": "Hydrocarbon component molar rates in the gas phase for nth separator stage",
+"category": "SUMMARY_FIELD"
+},
+"FCHIP": {
+"summary": "Component Hydrocarbon as Wet Gas",
+"category": "SUMMARY_FIELD"
+},
+"FCHMR": {
+"summary": "Hydrocarbon Component",
+"category": "SUMMARY_FIELD"
+},
+"FCHMT": {
+"summary": "Hydrocarbon Component",
+"category": "SUMMARY_FIELD"
+},
+"FCIC": {
+"summary": "Polymer Injection Concentration",
+"category": "SUMMARY_FIELD"
+},
+"FCIP": {
+"summary": "Polymer In Solution",
+"category": "SUMMARY_FIELD"
+},
+"FCIR": {
+"summary": "Polymer Injection Rate",
+"category": "SUMMARY_FIELD"
+},
+"FCIT": {
+"summary": "Polymer Injection Total",
+"category": "SUMMARY_FIELD"
+},
+"FCMIP": {
+"summary": "Component Hydrocarbon as Moles",
+"category": "SUMMARY_FIELD"
+},
+"FCMIR": {
+"summary": "Hydrocarbon Component Molar Injection Rates",
+"category": "SUMMARY_FIELD"
+},
+"FCMIT": {
+"summary": "Hydrocarbon Component Molar Injection Totals",
+"category": "SUMMARY_FIELD"
+},
+"FCMPR": {
+"summary": "Hydrocarbon Component Molar Production Rates",
+"category": "SUMMARY_FIELD"
+},
+"FCMPT": {
+"summary": "Hydrocarbon Component",
+"category": "SUMMARY_FIELD"
+},
+"FCNMR": {
+"summary": "Hydrocarbon component molar rates in the NGL phase",
+"category": "SUMMARY_FIELD"
+},
+"FCNMRG": {
+"summary": "Hydrocarbon component molar rates in the NGL phase",
+"category": "SUMMARY_FIELD"
+},
+"FCNWR": {
+"summary": "Hydrocarbon component mass rates in the NGL phase",
+"category": "SUMMARY_FIELD"
+},
+"FCOMR": {
+"summary": "Hydrocarbon component",
+"category": "SUMMARY_FIELD"
+},
+"FCOMRG": {
+"summary": "Hydrocarbon component",
+"category": "SUMMARY_FIELD"
+},
+"FCOMRn": {
+"summary": "Hydrocarbon component",
+"category": "SUMMARY_FIELD"
+},
+"FCOMT": {
+"summary": "Hydrocarbon component",
+"category": "SUMMARY_FIELD"
+},
+"FCORn": {
+"summary": "Hydrocarbon component",
+"category": "SUMMARY_FIELD"
+},
+"FCPC": {
+"summary": "Polymer Production Concentration",
+"category": "SUMMARY_FIELD"
+},
+"FCPR": {
+"summary": "Polymer Production Rate",
+"category": "SUMMARY_FIELD"
+},
+"FCPT": {
+"summary": "Polymer Production Total",
+"category": "SUMMARY_FIELD"
+},
+"FCSC": {
+"summary": "Bulk Coal Solvent Concentration",
+"category": "SUMMARY_FIELD"
+},
+"FCWGIR": {
+"summary": "Hydrocarbon Component Wet Gas Injection Rate",
+"category": "SUMMARY_FIELD"
+},
+"FCWGIT": {
+"summary": "Hydrocarbon Component Wet Gas Injection Total",
+"category": "SUMMARY_FIELD"
+},
+"FCWGPR": {
+"summary": "Hydrocarbon Component Wet Gas Production Rate",
+"category": "SUMMARY_FIELD"
+},
+"FCWGPT": {
+"summary": "Hydrocarbon Component Wet Gas Production Total",
+"category": "SUMMARY_FIELD"
+},
+"FEDC": {
+"summary": "Energy Delivery Capacity",
+"category": "SUMMARY_FIELD"
+},
+"FEDCQ": {
+"summary": "Energy DCQ",
+"category": "SUMMARY_FIELD"
+},
+"FEGR": {
+"summary": "Export Gas Rate",
+"category": "SUMMARY_FIELD"
+},
+"FEGT": {
+"summary": "Export Gas Total",
+"category": "SUMMARY_FIELD"
+},
+"FEMF": {
+"summary": "Export Gas Mole Fraction",
+"category": "SUMMARY_FIELD"
+},
+"FEOMF": {
+"summary": "Export Oil Mole Fraction",
+"category": "SUMMARY_FIELD"
+},
+"FEOR": {
+"summary": "Export Oil Rate",
+"category": "SUMMARY_FIELD"
+},
+"FEOT": {
+"summary": "Export Oil Total",
+"category": "SUMMARY_FIELD"
+},
+"FEPR": {
+"summary": "Energy Production Rate",
+"category": "SUMMARY_FIELD"
+},
+"FEPT": {
+"summary": "Energy Production Total",
+"category": "SUMMARY_FIELD"
+},
+"FESR": {
+"summary": "Energy Sales Rate",
+"category": "SUMMARY_FIELD"
+},
+"FEST": {
+"summary": "Energy Sales Total",
+"category": "SUMMARY_FIELD"
+},
+"FEXGR": {
+"summary": "Excess Gas Rate",
+"category": "SUMMARY_FIELD"
+},
+"FEXGT": {
+"summary": "Excess Gas Total",
+"category": "SUMMARY_FIELD"
+},
+"FFGR": {
+"summary": "Fuel Gas Rate, at and below this group",
+"category": "SUMMARY_FIELD"
+},
+"FFGT": {
+"summary": "Fuel Gas cumulative Total, at and below this group",
+"category": "SUMMARY_FIELD"
+},
+"FFMF": {
+"summary": "Fuel Gas Mole Fraction",
+"category": "SUMMARY_FIELD"
+},
+"FGCR": {
+"summary": "Gas Consumption Rate, at and below this group",
+"category": "SUMMARY_FIELD"
+},
+"FGCT": {
+"summary": "Gas Consumption Total, at and below this group",
+"category": "SUMMARY_FIELD"
+},
+"FGCV": {
+"summary": "Gas Calorific Value",
+"category": "SUMMARY_FIELD"
+},
+"FGDC": {
+"summary": "Gas Delivery Capacity",
+"category": "SUMMARY_FIELD"
+},
+"FGDCQ": {
+"summary": "Field/Group Gas DCQ",
+"category": "SUMMARY_FIELD"
+},
+"FGDN": {
+"summary": "Gas Density at Surface Conditions",
+"category": "SUMMARY_FIELD"
+},
+"FGIMR": {
+"summary": "Gas Import Rate, at and below this group",
+"category": "SUMMARY_FIELD"
+},
+"FGIMT": {
+"summary": "Gas Import Total, at and below this group",
+"category": "SUMMARY_FIELD"
+},
+"FGIR": {
+"summary": "Gas Injection Rate",
+"category": "SUMMARY_FIELD"
+},
+"FGIRH": {
+"summary": "Gas Injection Rate History",
+"category": "SUMMARY_FIELD"
+},
+"FGIRT": {
+"summary": "Gas Injection Rate Target/Limit",
+"category": "SUMMARY_FIELD"
+},
+"FGIT": {
+"summary": "Gas Injection Total",
+"category": "SUMMARY_FIELD"
+},
+"FGITH": {
+"summary": "Gas Injection Total History",
+"category": "SUMMARY_FIELD"
+},
+"FGLIR": {
+"summary": "Gas Lift Injection Rate",
+"category": "SUMMARY_FIELD"
+},
+"FGLIT": {
+"summary": "Gas Lift Injection Total",
+"category": "SUMMARY_FIELD"
+},
+"FGLR": {
+"summary": "Gas-Liquid Ratio",
+"category": "SUMMARY_FIELD"
+},
+"FGLRH": {
+"summary": "Gas-Liquid Ratio History",
+"category": "SUMMARY_FIELD"
+},
+"FGMR": {
+"summary": "Gas Mass Rate",
+"category": "SUMMARY_FIELD"
+},
+"FGMT": {
+"summary": "Gas Mass Total",
+"category": "SUMMARY_FIELD"
+},
+"FGOR": {
+"summary": "Gas-Oil Ratio",
+"category": "SUMMARY_FIELD"
+},
+"FGORH": {
+"summary": "Gas-Oil Ratio History",
+"category": "SUMMARY_FIELD"
+},
+"FGPI": {
+"summary": "Gas Potential Injection rate",
+"category": "SUMMARY_FIELD"
+},
+"FGPI2": {
+"summary": "Gas Potential Injection rate",
+"category": "SUMMARY_FIELD"
+},
+"FGPP": {
+"summary": "Gas Potential Production rate",
+"category": "SUMMARY_FIELD"
+},
+"FGPP2": {
+"summary": "Gas Potential Production rate",
+"category": "SUMMARY_FIELD"
+},
+"FGPPF": {
+"summary": "Free Gas Potential Production rate",
+"category": "SUMMARY_FIELD"
+},
+"FGPPF2": {
+"summary": "Free Gas Potential Production rate",
+"category": "SUMMARY_FIELD"
+},
+"FGPPS": {
+"summary": "Solution",
+"category": "SUMMARY_FIELD"
+},
+"FGPPS2": {
+"summary": "Solution",
+"category": "SUMMARY_FIELD"
+},
+"FGPR": {
+"summary": "Gas Production Rate",
+"category": "SUMMARY_FIELD"
+},
+"FGPR1": {
+"summary": "Gas Production Rate above GOC",
+"category": "SUMMARY_FIELD"
+},
+"FGPR2": {
+"summary": "Gas Production Rate below GOC",
+"category": "SUMMARY_FIELD"
+},
+"FGPRA": {
+"summary": "Gas Production Rate above",
+"category": "SUMMARY_FIELD"
+},
+"FGPRB": {
+"summary": "Gas Production Rate below",
+"category": "SUMMARY_FIELD"
+},
+"FGPRF": {
+"summary": "Free Gas Production Rate",
+"category": "SUMMARY_FIELD"
+},
+"FGPRG": {
+"summary": "Gas production rate",
+"category": "SUMMARY_FIELD"
+},
+"FGPRH": {
+"summary": "Gas Production Rate History",
+"category": "SUMMARY_FIELD"
+},
+"FGPRS": {
+"summary": "Solution Gas Production Rate",
+"category": "SUMMARY_FIELD"
+},
+"FGPRT": {
+"summary": "Gas Production Rate Target/Limit",
+"category": "SUMMARY_FIELD"
+},
+"FGPT": {
+"summary": "Gas Production Total",
+"category": "SUMMARY_FIELD"
+},
+"FGPT1": {
+"summary": "Gas Production Total above GOC",
+"category": "SUMMARY_FIELD"
+},
+"FGPT2": {
+"summary": "Gas Production Total below GOC",
+"category": "SUMMARY_FIELD"
+},
+"FGPTA": {
+"summary": "Gas Production Total above",
+"category": "SUMMARY_FIELD"
+},
+"FGPTB": {
+"summary": "Gas Production Total below",
+"category": "SUMMARY_FIELD"
+},
+"FGPTF": {
+"summary": "Free Gas Production Total",
+"category": "SUMMARY_FIELD"
+},
+"FGPTH": {
+"summary": "Gas Production Total History",
+"category": "SUMMARY_FIELD"
+},
+"FGPTS": {
+"summary": "Solution Gas Production Total",
+"category": "SUMMARY_FIELD"
+},
+"FGPV": {
+"summary": "Pore Volume containing Gas",
+"category": "SUMMARY_FIELD"
+},
+"FGQ": {
+"summary": "Gas Quality",
+"category": "SUMMARY_FIELD"
+},
+"FGSPR": {
+"summary": "Target sustainable rate for most recent sustainable capacity test for gas",
+"category": "SUMMARY_FIELD"
+},
+"FGSR": {
+"summary": "Sales Gas Rate",
+"category": "SUMMARY_FIELD"
+},
+"FGSRL": {
+"summary": "Maximum tested rate sustained for the test period during the most recent sustainable capacity test for gas",
+"category": "SUMMARY_FIELD"
+},
+"FGSRU": {
+"summary": "Minimum tested rate not sustained for the test period during the most recent sustainable capacity test for gas",
+"category": "SUMMARY_FIELD"
+},
+"FGSSP": {
+"summary": "Period for which target sustainable rate could be maintained for the most recent sustainable capacity test for gas",
+"category": "SUMMARY_FIELD"
+},
+"FGST": {
+"summary": "Sales Gas Total",
+"category": "SUMMARY_FIELD"
+},
+"FGSTP": {
+"summary": "Test period for the most recent sustainable capacity test for gas",
+"category": "SUMMARY_FIELD"
+},
+"FGVIR": {
+"summary": "Gas Voidage Injection Rate",
+"category": "SUMMARY_FIELD"
+},
+"FGVIT": {
+"summary": "Gas Voidage Injection Total",
+"category": "SUMMARY_FIELD"
+},
+"FGVPR": {
+"summary": "Gas Voidage Production Rate",
+"category": "SUMMARY_FIELD"
+},
+"FGVPT": {
+"summary": "Gas Voidage Production Total",
+"category": "SUMMARY_FIELD"
+},
+"FGnPR": {
+"summary": "nth separator stage gas rate",
+"category": "SUMMARY_FIELD"
+},
+"FGnPT": {
+"summary": "nth separator stage gas total",
+"category": "SUMMARY_FIELD"
+},
+"FHMIR": {
+"summary": "Hydrocarbon Molar Injection Rate",
+"category": "SUMMARY_FIELD"
+},
+"FHMIT": {
+"summary": "Hydrocarbon Molar Injection Total",
+"category": "SUMMARY_FIELD"
+},
+"FHMPR": {
+"summary": "Hydrocarbon Molar Production Rate",
+"category": "SUMMARY_FIELD"
+},
+"FHMPT": {
+"summary": "Hydrocarbon Molar Production Total",
+"category": "SUMMARY_FIELD"
+},
+"FHPV": {
+"summary": "Pore Volume containing Hydrocarbon",
+"category": "SUMMARY_FIELD"
+},
+"FLPR": {
+"summary": "Liquid Production Rate",
+"category": "SUMMARY_FIELD"
+},
+"FLPRH": {
+"summary": "Liquid Production Rate History",
+"category": "SUMMARY_FIELD"
+},
+"FLPRT": {
+"summary": "Liquid Production Rate Target/Limit",
+"category": "SUMMARY_FIELD"
+},
+"FLPT": {
+"summary": "Liquid Production Total",
+"category": "SUMMARY_FIELD"
+},
+"FLPTH": {
+"summary": "Liquid Production Total History",
+"category": "SUMMARY_FIELD"
+},
+"FMCTG": {
+"summary": "Mode of Control for group Gas Injection",
+"category": "SUMMARY_FIELD"
+},
+"FMCTP": {
+"summary": "Mode of Control for group Production",
+"category": "SUMMARY_FIELD"
+},
+"FMCTW": {
+"summary": "Mode of Control for group Water Injection",
+"category": "SUMMARY_FIELD"
+},
+"FMIR": {
+"summary": "Methane Injection Rate",
+"category": "SUMMARY_FIELD"
+},
+"FMIT": {
+"summary": "Methane Injection Total",
+"category": "SUMMARY_FIELD"
+},
+"FMPR": {
+"summary": "Methane Production Rate",
+"category": "SUMMARY_FIELD"
+},
+"FMPT": {
+"summary": "Methane Production Total",
+"category": "SUMMARY_FIELD"
+},
+"FMUF": {
+"summary": "Make-up fraction",
+"category": "SUMMARY_FIELD"
+},
+"FMWDR": {
+"summary": "Number of drilling events this timestep",
+"category": "SUMMARY_FIELD"
+},
+"FMWDT": {
+"summary": "Number of drilling events in total",
+"category": "SUMMARY_FIELD"
+},
+"FMWIA": {
+"summary": "Number of abandoned injection wells",
+"category": "SUMMARY_FIELD"
+},
+"FMWIG": {
+"summary": "Number of injectors on group control",
+"category": "SUMMARY_FIELD"
+},
+"FMWIN": {
+"summary": "Number of injection wells currently flowing",
+"category": "SUMMARY_FIELD"
+},
+"FMWIP": {
+"summary": "Number of injectors on pressure control",
+"category": "SUMMARY_FIELD"
+},
+"FMWIS": {
+"summary": "Number of injectors on own surface rate limit control",
+"category": "SUMMARY_FIELD"
+},
+"FMWIT": {
+"summary": "Total number of injection wells",
+"category": "SUMMARY_FIELD"
+},
+"FMWIU": {
+"summary": "Number of unused injection wells",
+"category": "SUMMARY_FIELD"
+},
+"FMWIV": {
+"summary": "Number of injectors on own reservoir volume rate limit control",
+"category": "SUMMARY_FIELD"
+},
+"FMWPA": {
+"summary": "Number of abandoned production wells",
+"category": "SUMMARY_FIELD"
+},
+"FMWPG": {
+"summary": "Number of producers on group control",
+"category": "SUMMARY_FIELD"
+},
+"FMWPL": {
+"summary": "Number of producers using artificial lift",
+"category": "SUMMARY_FIELD"
+},
+"FMWPO": {
+"summary": "Number of producers controlled by own oil rate limit",
+"category": "SUMMARY_FIELD"
+},
+"FMWPP": {
+"summary": "Number of producers on pressure control",
+"category": "SUMMARY_FIELD"
+},
+"FMWPR": {
+"summary": "Number of production wells currently flowing",
+"category": "SUMMARY_FIELD"
+},
+"FMWPS": {
+"summary": "Number of producers on own surface rate limit control",
+"category": "SUMMARY_FIELD"
+},
+"FMWPT": {
+"summary": "Total number of production wells",
+"category": "SUMMARY_FIELD"
+},
+"FMWPU": {
+"summary": "Number of unused production wells",
+"category": "SUMMARY_FIELD"
+},
+"FMWPV": {
+"summary": "Number of producers on own reservoir volume rate limit control",
+"category": "SUMMARY_FIELD"
+},
+"FMWWO": {
+"summary": "Number of workover events this timestep",
+"category": "SUMMARY_FIELD"
+},
+"FMWWT": {
+"summary": "Number of workover events in total",
+"category": "SUMMARY_FIELD"
+},
+"FNIP": {
+"summary": "Solvent In Place",
+"category": "SUMMARY_FIELD"
+},
+"FNIR": {
+"summary": "Solvent Injection Rate",
+"category": "SUMMARY_FIELD"
+},
+"FNIT": {
+"summary": "Solvent Injection Total",
+"category": "SUMMARY_FIELD"
+},
+"FNLPR": {
+"summary": "NGL Production Rate",
+"category": "SUMMARY_FIELD"
+},
+"FNLPRG": {
+"summary": "NGL production rate",
+"category": "SUMMARY_FIELD"
+},
+"FNLPRH": {
+"summary": "NGL Production Rate History",
+"category": "SUMMARY_FIELD"
+},
+"FNLPT": {
+"summary": "NGL Production Total",
+"category": "SUMMARY_FIELD"
+},
+"FNLPTH": {
+"summary": "NGL Production Total History",
+"category": "SUMMARY_FIELD"
+},
+"FNPR": {
+"summary": "Solvent Production Rate",
+"category": "SUMMARY_FIELD"
+},
+"FNPT": {
+"summary": "Solvent Production Total",
+"category": "SUMMARY_FIELD"
+},
+"FNQR": {
+"summary": "Aquifer influx rate",
+"category": "SUMMARY_FIELD"
+},
+"FNQT": {
+"summary": "Cumulative aquifer influx",
+"category": "SUMMARY_FIELD"
+},
+"FODN": {
+"summary": "Oil Density at Surface Conditions",
+"category": "SUMMARY_FIELD"
+},
+"FOE": {
+"summary": "(OIP(initial) - OIP(now)) / OIP(initial)",
+"category": "SUMMARY_FIELD"
+},
+"FOEIG": {
+"summary": "(OIP(initial) - OIP(now)) / Initial Mobile Oil with respect to Gas",
+"category": "SUMMARY_FIELD"
+},
+"FOEIW": {
+"summary": "(OIP(initial) - OIP(now)) / Initial Mobile Oil with respect to Water",
+"category": "SUMMARY_FIELD"
+},
+"FOEW": {
+"summary": "Oil Production from Wells / OIP(initial)",
+"category": "SUMMARY_FIELD"
+},
+"FOEWG": {
+"summary": "Oil Production from Wells / Initial Mobile Oil with respect to Gas",
+"category": "SUMMARY_FIELD"
+},
+"FOEWW": {
+"summary": "Oil Production from Wells / Initial Mobile Oil with respect to Water",
+"category": "SUMMARY_FIELD"
+},
+"FOGR": {
+"summary": "Oil-Gas Ratio",
+"category": "SUMMARY_FIELD"
+},
+"FOGRH": {
+"summary": "Oil-Gas Ratio History",
+"category": "SUMMARY_FIELD"
+},
+"FOIR": {
+"summary": "Oil Injection Rate",
+"category": "SUMMARY_FIELD"
+},
+"FOIRH": {
+"summary": "Oil Injection Rate History",
+"category": "SUMMARY_FIELD"
+},
+"FOIRT": {
+"summary": "Oil Injection Rate Target/Limit",
+"category": "SUMMARY_FIELD"
+},
+"FOIT": {
+"summary": "Oil Injection Total",
+"category": "SUMMARY_FIELD"
+},
+"FOITH": {
+"summary": "Oil Injection Total History",
+"category": "SUMMARY_FIELD"
+},
+"FOMR": {
+"summary": "Oil Mass Rate",
+"category": "SUMMARY_FIELD"
+},
+"FOMT": {
+"summary": "Oil Mass Total",
+"category": "SUMMARY_FIELD"
+},
+"FOPI": {
+"summary": "Oil Potential Injection rate",
+"category": "SUMMARY_FIELD"
+},
+"FOPI2": {
+"summary": "Oil Potential Injection rate",
+"category": "SUMMARY_FIELD"
+},
+"FOPP": {
+"summary": "Oil Potential Production rate",
+"category": "SUMMARY_FIELD"
+},
+"FOPP2": {
+"summary": "Oil Potential Production rate",
+"category": "SUMMARY_FIELD"
+},
+"FOPR": {
+"summary": "Oil Production Rate",
+"category": "SUMMARY_FIELD"
+},
+"FOPR1": {
+"summary": "Oil Production Rate above GOC",
+"category": "SUMMARY_FIELD"
+},
+"FOPR2": {
+"summary": "Oil Production Rate below GOC",
+"category": "SUMMARY_FIELD"
+},
+"FOPRA": {
+"summary": "Oil Production Rate above GOC",
+"category": "SUMMARY_FIELD"
+},
+"FOPRB": {
+"summary": "Oil Production Rate below GOC",
+"category": "SUMMARY_FIELD"
+},
+"FOPRF": {
+"summary": "Free Oil Production Rate",
+"category": "SUMMARY_FIELD"
+},
+"FOPRG": {
+"summary": "Oil production rate",
+"category": "SUMMARY_FIELD"
+},
+"FOPRH": {
+"summary": "Oil Production Rate History",
+"category": "SUMMARY_FIELD"
+},
+"FOPRS": {
+"summary": "Solution Oil Production Rate",
+"category": "SUMMARY_FIELD"
+},
+"FOPRT": {
+"summary": "Oil Production Rate Target/Limit",
+"category": "SUMMARY_FIELD"
+},
+"FOPT": {
+"summary": "Oil Production Total",
+"category": "SUMMARY_FIELD"
+},
+"FOPT1": {
+"summary": "Oil Production Total above GOC",
+"category": "SUMMARY_FIELD"
+},
+"FOPT2": {
+"summary": "Oil Production Total below GOC",
+"category": "SUMMARY_FIELD"
+},
+"FOPTA": {
+"summary": "Oil Production Total above GOC",
+"category": "SUMMARY_FIELD"
+},
+"FOPTB": {
+"summary": "Oil Production Total below GOC",
+"category": "SUMMARY_FIELD"
+},
+"FOPTF": {
+"summary": "Free Oil Production Total",
+"category": "SUMMARY_FIELD"
+},
+"FOPTH": {
+"summary": "Oil Production Total History",
+"category": "SUMMARY_FIELD"
+},
+"FOPTS": {
+"summary": "Solution Oil Production Total",
+"category": "SUMMARY_FIELD"
+},
+"FOPV": {
+"summary": "Pore Volume containing Oil",
+"category": "SUMMARY_FIELD"
+},
+"FORFE": {
+"summary": "Fraction of total oil produced by oil expansion",
+"category": "SUMMARY_FIELD"
+},
+"FORFF": {
+"summary": "Fraction of total oil produced by free gas influx",
+"category": "SUMMARY_FIELD"
+},
+"FORFG": {
+"summary": "Fraction of total oil produced by gas influx",
+"category": "SUMMARY_FIELD"
+},
+"FORFR": {
+"summary": "Fraction of total oil produced by rock compaction",
+"category": "SUMMARY_FIELD"
+},
+"FORFS": {
+"summary": "Fraction of total oil produced by solution gas",
+"category": "SUMMARY_FIELD"
+},
+"FORFW": {
+"summary": "Fraction of total oil produced by water influx",
+"category": "SUMMARY_FIELD"
+},
+"FORFX": {
+"summary": "Fraction of total oil produced by 'traced' water influx",
+"category": "SUMMARY_FIELD"
+},
+"FORFY": {
+"summary": "Fraction of total oil produced by other water influx",
+"category": "SUMMARY_FIELD"
+},
+"FORME": {
+"summary": "Total stock tank oil produced by oil expansion",
+"category": "SUMMARY_FIELD"
+},
+"FORMF": {
+"summary": "Total stock tank oil produced by free gas influx",
+"category": "SUMMARY_FIELD"
+},
+"FORMG": {
+"summary": "Total stock tank oil produced by gas influx",
+"category": "SUMMARY_FIELD"
+},
+"FORMR": {
+"summary": "Total stock tank oil produced by rock compaction",
+"category": "SUMMARY_FIELD"
+},
+"FORMS": {
+"summary": "Total stock tank oil produced by solution gas",
+"category": "SUMMARY_FIELD"
+},
+"FORMW": {
+"summary": "Total stock tank oil produced by water influx",
+"category": "SUMMARY_FIELD"
+},
+"FORMX": {
+"summary": "Total stock tank oil produced by 'traced' water influx",
+"category": "SUMMARY_FIELD"
+},
+"FORMY": {
+"summary": "Total stock tank oil produced by other water influx",
+"category": "SUMMARY_FIELD"
+},
+"FOSPR": {
+"summary": "Target sustainable rate for most recent sustainable capacity test for oil",
+"category": "SUMMARY_FIELD"
+},
+"FOSRL": {
+"summary": "Maximum tested rate sustained for the test period during the most recent sustainable capacity test for oil",
+"category": "SUMMARY_FIELD"
+},
+"FOSRU": {
+"summary": "Minimum tested rate not sustained for the test period during the most recent sustainable capacity test for oil",
+"category": "SUMMARY_FIELD"
+},
+"FOSSP": {
+"summary": "Period for which target sustainable rate could be maintained for the most recent sustainable capacity test for oil",
+"category": "SUMMARY_FIELD"
+},
+"FOSTP": {
+"summary": "Test period for the most recent sustainable capacity test for oil",
+"category": "SUMMARY_FIELD"
+},
+"FOVIR": {
+"summary": "Oil Voidage Injection Rate",
+"category": "SUMMARY_FIELD"
+},
+"FOVIT": {
+"summary": "Oil Voidage Injection Total",
+"category": "SUMMARY_FIELD"
+},
+"FOVPR": {
+"summary": "Oil Voidage Production Rate",
+"category": "SUMMARY_FIELD"
+},
+"FOVPT": {
+"summary": "Oil Voidage Production Total",
+"category": "SUMMARY_FIELD"
+},
+"FOnPR": {
+"summary": "nth separator stage oil rate",
+"category": "SUMMARY_FIELD"
+},
+"FOnPT": {
+"summary": "nth separator stage oil total",
+"category": "SUMMARY_FIELD"
+},
+"FPPC": {
+"summary": "Initial Contact Corrected Potential",
+"category": "SUMMARY_FIELD"
+},
+"FPR": {
+"summary": "Pressure average value",
+"category": "SUMMARY_FIELD"
+},
+"FPRGZ": {
+"summary": "P/Z",
+"category": "SUMMARY_FIELD"
+},
+"FPRH": {
+"summary": "Pressure average value",
+"category": "SUMMARY_FIELD"
+},
+"FPRP": {
+"summary": "Pressure average value",
+"category": "SUMMARY_FIELD"
+},
+"FREAC": {
+"summary": "Reaction rate. The reaction number is given as a component index",
+"category": "SUMMARY_FIELD"
+},
+"FREAT": {
+"summary": "Reaction total. The reaction number is given as a component index",
+"category": "SUMMARY_FIELD"
+},
+"FRGR": {
+"summary": "Re-injection Gas Rate",
+"category": "SUMMARY_FIELD"
+},
+"FRGT": {
+"summary": "Re-injection Gas Total",
+"category": "SUMMARY_FIELD"
+},
+"FRPV": {
+"summary": "Pore Volume at Reservoir conditions",
+"category": "SUMMARY_FIELD"
+},
+"FRS": {
+"summary": "Gas-oil ratio",
+"category": "SUMMARY_FIELD"
+},
+"FRTM": {
+"summary": "Transmissibility Multiplier associated with rock compaction",
+"category": "SUMMARY_FIELD"
+},
+"FRV": {
+"summary": "Oil-gas ratio",
+"category": "SUMMARY_FIELD"
+},
+"FSGR": {
+"summary": "Sales Gas Rate",
+"category": "SUMMARY_FIELD"
+},
+"FSGT": {
+"summary": "Sales Gas Total",
+"category": "SUMMARY_FIELD"
+},
+"FSIC": {
+"summary": "Salt Injection Concentration",
+"category": "SUMMARY_FIELD"
+},
+"FSIP": {
+"summary": "Salt In Place",
+"category": "SUMMARY_FIELD"
+},
+"FSIR": {
+"summary": "Salt Injection Rate",
+"category": "SUMMARY_FIELD"
+},
+"FSIT": {
+"summary": "Salt Injection Total",
+"category": "SUMMARY_FIELD"
+},
+"FSMF": {
+"summary": "Sales Gas Mole Fraction",
+"category": "SUMMARY_FIELD"
+},
+"FSPC": {
+"summary": "Salt Production Concentration",
+"category": "SUMMARY_FIELD"
+},
+"FSPR": {
+"summary": "Salt Production Rate",
+"category": "SUMMARY_FIELD"
+},
+"FSPT": {
+"summary": "Salt Production Total",
+"category": "SUMMARY_FIELD"
+},
+"FTADS": {
+"summary": "Tracer Adsorption total",
+"category": "SUMMARY_FIELD"
+},
+"FTADSFOA": {
+"summary": "Adsorption total",
+"category": "SUMMARY_FIELD"
+},
+"FTADSUR": {
+"summary": "Adsorption total",
+"category": "SUMMARY_FIELD"
+},
+"FTCM": {
+"summary": "Tracer Carrier molar Rate",
+"category": "SUMMARY_FIELD"
+},
+"FTDCY": {
+"summary": "Decayed tracer",
+"category": "SUMMARY_FIELD"
+},
+"FTDCYFOA": {
+"summary": "Decayed tracer",
+"category": "SUMMARY_FIELD"
+},
+"FTIC": {
+"summary": "Tracer Injection Concentration",
+"category": "SUMMARY_FIELD"
+},
+"FTICF": {
+"summary": "Tracer Injection Concentration",
+"category": "SUMMARY_FIELD"
+},
+"FTICHEA": {
+"summary": "Injection Temperature",
+"category": "SUMMARY_FIELD"
+},
+"FTICS": {
+"summary": "Tracer Injection Concentration",
+"category": "SUMMARY_FIELD"
+},
+"FTIP#": {
+"summary": "Tracer In Place in phase # (1,2,3,...)",
+"category": "SUMMARY_FIELD"
+},
+"FTIPF": {
+"summary": "Tracer In Place",
+"category": "SUMMARY_FIELD"
+},
+"FTIPS": {
+"summary": "Tracer In Place",
+"category": "SUMMARY_FIELD"
+},
+"FTIPT": {
+"summary": "Tracer In Place",
+"category": "SUMMARY_FIELD"
+},
+"FTIPTFOA": {
+"summary": "In Solution",
+"category": "SUMMARY_FIELD"
+},
+"FTIPTHEA": {
+"summary": "Difference in Energy in place between current and initial time",
+"category": "SUMMARY_FIELD"
+},
+"FTIPTSUR": {
+"summary": "In Solution",
+"category": "SUMMARY_FIELD"
+},
+"FTIR": {
+"summary": "Tracer Injection Rate",
+"category": "SUMMARY_FIELD"
+},
+"FTIRALK": {
+"summary": "Injection Rate",
+"category": "SUMMARY_FIELD"
+},
+"FTIRF": {
+"summary": "Tracer Injection Rate",
+"category": "SUMMARY_FIELD"
+},
+"FTIRFOA": {
+"summary": "Injection Rate",
+"category": "SUMMARY_FIELD"
+},
+"FTIRHEA": {
+"summary": "Energy flows",
+"category": "SUMMARY_FIELD"
+},
+"FTIRS": {
+"summary": "Tracer Injection Rate",
+"category": "SUMMARY_FIELD"
+},
+"FTIRSUR": {
+"summary": "Injection Rate",
+"category": "SUMMARY_FIELD"
+},
+"FTIT": {
+"summary": "Tracer Injection Total",
+"category": "SUMMARY_FIELD"
+},
+"FTITALK": {
+"summary": "Injection Total",
+"category": "SUMMARY_FIELD"
+},
+"FTITF": {
+"summary": "Tracer Injection Total",
+"category": "SUMMARY_FIELD"
+},
+"FTITFOA": {
+"summary": "Injection Total",
+"category": "SUMMARY_FIELD"
+},
+"FTITHEA": {
+"summary": "Energy Injection Total",
+"category": "SUMMARY_FIELD"
+},
+"FTITS": {
+"summary": "Tracer Injection Total",
+"category": "SUMMARY_FIELD"
+},
+"FTITSUR": {
+"summary": "Injection Total",
+"category": "SUMMARY_FIELD"
+},
+"FTLM": {
+"summary": "Traced mass liquid total",
+"category": "SUMMARY_FIELD"
+},
+"FTMF": {
+"summary": "Traced molar fraction",
+"category": "SUMMARY_FIELD"
+},
+"FTML": {
+"summary": "Traced mass liquid rate",
+"category": "SUMMARY_FIELD"
+},
+"FTMOBFOA": {
+"summary": "Gas mobility factor",
+"category": "SUMMARY_FIELD"
+},
+"FTMR": {
+"summary": "Traced mass Rate",
+"category": "SUMMARY_FIELD"
+},
+"FTMT": {
+"summary": "Traced mass Total",
+"category": "SUMMARY_FIELD"
+},
+"FTMV": {
+"summary": "Traced mass vapor rate",
+"category": "SUMMARY_FIELD"
+},
+"FTPC": {
+"summary": "Tracer Production Concentration",
+"category": "SUMMARY_FIELD"
+},
+"FTPCF": {
+"summary": "Tracer Production",
+"category": "SUMMARY_FIELD"
+},
+"FTPCHEA": {
+"summary": "Production Temperature",
+"category": "SUMMARY_FIELD"
+},
+"FTPCS": {
+"summary": "Tracer Production",
+"category": "SUMMARY_FIELD"
+},
+"FTPR": {
+"summary": "Tracer Production Rate",
+"category": "SUMMARY_FIELD"
+},
+"FTPRALK": {
+"summary": "Production Rate",
+"category": "SUMMARY_FIELD"
+},
+"FTPRF": {
+"summary": "Tracer Production Rate",
+"category": "SUMMARY_FIELD"
+},
+"FTPRFOA": {
+"summary": "Production Rate",
+"category": "SUMMARY_FIELD"
+},
+"FTPRHEA": {
+"summary": "Energy flows",
+"category": "SUMMARY_FIELD"
+},
+"FTPRS": {
+"summary": "Tracer Production Rate",
+"category": "SUMMARY_FIELD"
+},
+"FTPRSUR": {
+"summary": "Production Rate",
+"category": "SUMMARY_FIELD"
+},
+"FTPT": {
+"summary": "Tracer Production Total",
+"category": "SUMMARY_FIELD"
+},
+"FTPTALK": {
+"summary": "Production Total",
+"category": "SUMMARY_FIELD"
+},
+"FTPTF": {
+"summary": "Tracer Production Total",
+"category": "SUMMARY_FIELD"
+},
+"FTPTFOA": {
+"summary": "Production Total",
+"category": "SUMMARY_FIELD"
+},
+"FTPTHEA": {
+"summary": "Energy Production Total",
+"category": "SUMMARY_FIELD"
+},
+"FTPTS": {
+"summary": "Tracer Production Total",
+"category": "SUMMARY_FIELD"
+},
+"FTPTSUR": {
+"summary": "Production Total",
+"category": "SUMMARY_FIELD"
+},
+"FTQR": {
+"summary": "Traced molar Rate",
+"category": "SUMMARY_FIELD"
+},
+"FTTL": {
+"summary": "Traced liquid volume total",
+"category": "SUMMARY_FIELD"
+},
+"FTTV": {
+"summary": "Traced vapor volume total",
+"category": "SUMMARY_FIELD"
+},
+"FTVL": {
+"summary": "Traced liquid volume rate",
+"category": "SUMMARY_FIELD"
+},
+"FTVM": {
+"summary": "Traced mass vapor total",
+"category": "SUMMARY_FIELD"
+},
+"FTVV": {
+"summary": "Traced vapor volume rate",
+"category": "SUMMARY_FIELD"
+},
+"FU": {
+"summary": "User-defined field quantity",
+"category": "SUMMARY_FIELD"
+},
+"FVIR": {
+"summary": "Res Volume Injection Rate",
+"category": "SUMMARY_FIELD"
+},
+"FVIRT": {
+"summary": "Res Volume Injection Rate Target/Limit",
+"category": "SUMMARY_FIELD"
+},
+"FVIT": {
+"summary": "Res Volume Injection Total",
+"category": "SUMMARY_FIELD"
+},
+"FVPR": {
+"summary": "Res Volume Production Rate",
+"category": "SUMMARY_FIELD"
+},
+"FVPRT": {
+"summary": "Res Volume Production Rate Target/Limit",
+"category": "SUMMARY_FIELD"
+},
+"FVPT": {
+"summary": "Res Volume Production Total",
+"category": "SUMMARY_FIELD"
+},
+"FWCT": {
+"summary": "Water Cut",
+"category": "SUMMARY_FIELD"
+},
+"FWCTH": {
+"summary": "Water Cut History",
+"category": "SUMMARY_FIELD"
+},
+"FWGIR": {
+"summary": "Wet Gas Injection Rate",
+"category": "SUMMARY_FIELD"
+},
+"FWGIT": {
+"summary": "Wet Gas Injection Total",
+"category": "SUMMARY_FIELD"
+},
+"FWGPR": {
+"summary": "Wet Gas Production Rate",
+"category": "SUMMARY_FIELD"
+},
+"FWGPRH": {
+"summary": "Wet Gas Production Rate History",
+"category": "SUMMARY_FIELD"
+},
+"FWGPT": {
+"summary": "Wet Gas Production Total",
+"category": "SUMMARY_FIELD"
+},
+"FWGR": {
+"summary": "Water-Gas Ratio",
+"category": "SUMMARY_FIELD"
+},
+"FWGRH": {
+"summary": "Water-Gas Ratio History",
+"category": "SUMMARY_FIELD"
+},
+"FWIR": {
+"summary": "Water Injection Rate",
+"category": "SUMMARY_FIELD"
+},
+"FWIRH": {
+"summary": "Water Injection Rate History",
+"category": "SUMMARY_FIELD"
+},
+"FWIRT": {
+"summary": "Water Injection Rate Target/Limit",
+"category": "SUMMARY_FIELD"
+},
+"FWIT": {
+"summary": "Water Injection Total",
+"category": "SUMMARY_FIELD"
+},
+"FWITH": {
+"summary": "Water Injection Total History",
+"category": "SUMMARY_FIELD"
+},
+"FWMIR": {
+"summary": "Water component molar injection rate",
+"category": "SUMMARY_FIELD"
+},
+"FWMIT": {
+"summary": "Water component molar injection total",
+"category": "SUMMARY_FIELD"
+},
+"FWMPR": {
+"summary": "Water component molar production rate",
+"category": "SUMMARY_FIELD"
+},
+"FWMPT": {
+"summary": "Water component molar production total",
+"category": "SUMMARY_FIELD"
+},
+"FWMR": {
+"summary": "Water Mass Rate",
+"category": "SUMMARY_FIELD"
+},
+"FWMT": {
+"summary": "Water Mass Total",
+"category": "SUMMARY_FIELD"
+},
+"FWPI": {
+"summary": "Water Potential Injection rate",
+"category": "SUMMARY_FIELD"
+},
+"FWPI2": {
+"summary": "Water Potential Injection rate",
+"category": "SUMMARY_FIELD"
+},
+"FWPIR": {
+"summary": "Ratio of produced water to injected water (percentage)",
+"category": "SUMMARY_FIELD"
+},
+"FWPP": {
+"summary": "Water Potential Production rate",
+"category": "SUMMARY_FIELD"
+},
+"FWPP2": {
+"summary": "Water Potential Production rate",
+"category": "SUMMARY_FIELD"
+},
+"FWPR": {
+"summary": "Water Production Rate",
+"category": "SUMMARY_FIELD"
+},
+"FWPRH": {
+"summary": "Water Production Rate History",
+"category": "SUMMARY_FIELD"
+},
+"FWPRT": {
+"summary": "Water Production Rate Target/Limit",
+"category": "SUMMARY_FIELD"
+},
+"FWPT": {
+"summary": "Water Production Total",
+"category": "SUMMARY_FIELD"
+},
+"FWPTH": {
+"summary": "Water Production Total History",
+"category": "SUMMARY_FIELD"
+},
+"FWPV": {
+"summary": "Pore Volume containing Water",
+"category": "SUMMARY_FIELD"
+},
+"FWSPR": {
+"summary": "Target sustainable rate for most recent sustainable capacity test for water",
+"category": "SUMMARY_FIELD"
+},
+"FWSRL": {
+"summary": "Maximum tested rate sustained for the test period during the most recent sustainable capacity test for water",
+"category": "SUMMARY_FIELD"
+},
+"FWSRU": {
+"summary": "Minimum tested rate not sustained for the test period during the most recent sustainable capacity test for water",
+"category": "SUMMARY_FIELD"
+},
+"FWSSP": {
+"summary": "Period for which target sustainable rate could be maintained for the most recent sustainable capacity test for water",
+"category": "SUMMARY_FIELD"
+},
+"FWSTP": {
+"summary": "Test period for the most recent sustainable capacity test for water",
+"category": "SUMMARY_FIELD"
+},
+"FWVIR": {
+"summary": "Water Voidage Injection Rate",
+"category": "SUMMARY_FIELD"
+},
+"FWVIT": {
+"summary": "Water Voidage Injection Total",
+"category": "SUMMARY_FIELD"
+},
+"FWVPR": {
+"summary": "Water Voidage Production Rate",
+"category": "SUMMARY_FIELD"
+},
+"FWVPT": {
+"summary": "Water Voidage Production Total",
+"category": "SUMMARY_FIELD"
+},
+"FXMF": {
+"summary": "Liquid Mole Fraction",
+"category": "SUMMARY_FIELD"
+},
+"FXMFG": {
+"summary": "Liquid mole fraction",
+"category": "SUMMARY_FIELD"
+},
+"FXMFn": {
+"summary": "Liquid Mole Fraction for nth separator stage",
+"category": "SUMMARY_FIELD"
+},
+"FYMF": {
+"summary": "Vapor Mole Fraction",
+"category": "SUMMARY_FIELD"
+},
+"FYMFG": {
+"summary": "Vapor mole fraction",
+"category": "SUMMARY_FIELD"
+},
+"FYMFn": {
+"summary": "Vapor Mole Fraction for nth separator stage",
+"category": "SUMMARY_FIELD"
+},
+"FZMF": {
+"summary": "Total Mole Fraction",
+"category": "SUMMARY_FIELD"
+},
+"GALQ": {
+"summary": "ALQ in the group's or node's outlet branch in the production network",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GAMF": {
+"summary": "Component aqueous mole fraction, from producing completions",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GAMR": {
+"summary": "Make-up gas rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GAMT": {
+"summary": "Make-up gas total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GAPI": {
+"summary": "Oil API",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GCGMR": {
+"summary": "Hydrocarbon component",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GCGMRG": {
+"summary": "Hydrocarbon component molar rates in the gas phase",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GCGMRn": {
+"summary": "Hydrocarbon component molar rates in the gas phase for nth separator stage",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GCGMT": {
+"summary": "Hydrocarbon component",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GCGRn": {
+"summary": "Hydrocarbon component molar rates in the gas phase for nth separator stage",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GCHMR": {
+"summary": "Hydrocarbon Component",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GCHMT": {
+"summary": "Hydrocarbon Component",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GCIC": {
+"summary": "Polymer Injection Concentration",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GCIR": {
+"summary": "Polymer Injection Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GCIT": {
+"summary": "Polymer Injection Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GCMIR": {
+"summary": "Hydrocarbon Component Molar Injection Rates",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GCMIT": {
+"summary": "Hydrocarbon Component Molar Injection Totals",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GCMPR": {
+"summary": "Hydrocarbon Component Molar Production Rates",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GCMPT": {
+"summary": "Hydrocarbon Component",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GCNMR": {
+"summary": "Hydrocarbon component molar rates in the NGL phase",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GCNMRG": {
+"summary": "Hydrocarbon component molar rates in the NGL phase",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GCNWR": {
+"summary": "Hydrocarbon component mass rates in the NGL phase",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GCOMR": {
+"summary": "Hydrocarbon component",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GCOMRG": {
+"summary": "Hydrocarbon component",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GCOMRn": {
+"summary": "Hydrocarbon component",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GCOMT": {
+"summary": "Hydrocarbon component",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GCORn": {
+"summary": "Hydrocarbon component",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GCPC": {
+"summary": "Polymer Production Concentration",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GCPR": {
+"summary": "Polymer Production Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GCPT": {
+"summary": "Polymer Production Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GCWGIR": {
+"summary": "Hydrocarbon Component Wet Gas Injection Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GCWGIT": {
+"summary": "Hydrocarbon Component Wet Gas Injection Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GCWGPR": {
+"summary": "Hydrocarbon Component Wet Gas Production Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GCWGPT": {
+"summary": "Hydrocarbon Component Wet Gas Production Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GEDC": {
+"summary": "Energy Delivery Capacity",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GEDCQ": {
+"summary": "Energy DCQ",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GEFF": {
+"summary": "Efficiency Factor",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GEGR": {
+"summary": "Export Gas Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GEGT": {
+"summary": "Export Gas Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GEMF": {
+"summary": "Export Gas Mole Fraction",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GEOMF": {
+"summary": "Export Oil Mole Fraction",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GEOR": {
+"summary": "Export Oil Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GEOT": {
+"summary": "Export Oil Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GEPR": {
+"summary": "Energy Production Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GEPT": {
+"summary": "Energy Production Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GESR": {
+"summary": "Energy Sales Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GEST": {
+"summary": "Energy Sales Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GEXGR": {
+"summary": "Excess Gas Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GEXGT": {
+"summary": "Excess Gas Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GFGR": {
+"summary": "Fuel Gas Rate, at and below this group",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GFGT": {
+"summary": "Fuel Gas cumulative Total, at and below this group",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GFMF": {
+"summary": "Fuel Gas Mole Fraction",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGCR": {
+"summary": "Gas Consumption Rate, at and below this group",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGCT": {
+"summary": "Gas Consumption Total, at and below this group",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGCV": {
+"summary": "Gas Calorific Value",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGDC": {
+"summary": "Gas Delivery Capacity",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGDCQ": {
+"summary": "Field/Group Gas DCQ",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGDN": {
+"summary": "Gas Density at Surface Conditions",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGIGR": {
+"summary": "Gas Injection Guide Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGIMR": {
+"summary": "Gas Import Rate, at and below this group",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGIMT": {
+"summary": "Gas Import Total, at and below this group",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGIR": {
+"summary": "Gas Injection Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGIRH": {
+"summary": "Gas Injection Rate History",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGIRL": {
+"summary": "Gas Injection Rate Target/Limit",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGIRNB": {
+"summary": "Gas flow rate along the group's or node's inlet branch in the gas injection network",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGIRT": {
+"summary": "Gas Injection Rate Target/Limit",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGIT": {
+"summary": "Gas Injection Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGITH": {
+"summary": "Gas Injection Total History",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGLIR": {
+"summary": "Gas Lift Injection Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGLIT": {
+"summary": "Gas Lift Injection Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGLR": {
+"summary": "Gas-Liquid Ratio",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGLRH": {
+"summary": "Gas-Liquid Ratio History",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGMNR": {
+"summary": "Group or node minimum gas rate as specified with GNETDP in the production network",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGMR": {
+"summary": "Gas Mass Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGMT": {
+"summary": "Gas Mass Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGMXR": {
+"summary": "Group or node maximum gas rate as specified with GNETDP in the production network",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGOR": {
+"summary": "Gas-Oil Ratio",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGORH": {
+"summary": "Gas-Oil Ratio History",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGPGR": {
+"summary": "Gas Production Guide Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGPI": {
+"summary": "Gas Potential Injection rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGPI2": {
+"summary": "Gas Potential Injection rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGPP": {
+"summary": "Gas Potential Production rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGPP2": {
+"summary": "Gas Potential Production rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGPPF": {
+"summary": "Free Gas Potential Production rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGPPF2": {
+"summary": "Free Gas Potential Production rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGPPS": {
+"summary": "Solution",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGPPS2": {
+"summary": "Solution",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGPR": {
+"summary": "Gas Production Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGPR1": {
+"summary": "Gas Production Rate above GOC",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGPR2": {
+"summary": "Gas Production Rate below GOC",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGPRA": {
+"summary": "Gas Production Rate above",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGPRB": {
+"summary": "Gas Production Rate below",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGPRF": {
+"summary": "Free Gas Production Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGPRG": {
+"summary": "Gas production rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGPRH": {
+"summary": "Gas Production Rate History",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGPRL": {
+"summary": "Gas Production Rate Target/Limit",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGPRNB": {
+"summary": "Gas flow rate along the group's or node's outlet branch in the production network",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGPRNBFP": {
+"summary": "Gas flow rate along Group's or node's outlet branch in network, from end of First Pass",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGPRS": {
+"summary": "Solution Gas Production Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGPRT": {
+"summary": "Gas Production Rate Target/Limit",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGPT": {
+"summary": "Gas Production Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGPT1": {
+"summary": "Gas Production Total above GOC",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGPT2": {
+"summary": "Gas Production Total below GOC",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGPTA": {
+"summary": "Gas Production Total above",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGPTB": {
+"summary": "Gas Production Total below",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGPTF": {
+"summary": "Free Gas Production Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGPTH": {
+"summary": "Gas Production Total History",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGPTS": {
+"summary": "Solution Gas Production Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGQ": {
+"summary": "Gas Quality",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGSPR": {
+"summary": "Target sustainable rate for most recent sustainable capacity test for gas",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGSR": {
+"summary": "Sales Gas Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGSRL": {
+"summary": "Maximum tested rate sustained for the test period during the most recent sustainable capacity test for gas",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGSRU": {
+"summary": "Minimum tested rate not sustained for the test period during the most recent sustainable capacity test for gas",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGSSP": {
+"summary": "Period for which target sustainable rate could be maintained for the most recent sustainable capacity test for gas",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGST": {
+"summary": "Sales Gas Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGSTP": {
+"summary": "Test period for the most recent sustainable capacity test for gas",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGVIR": {
+"summary": "Gas Voidage Injection Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGVIT": {
+"summary": "Gas Voidage Injection Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGVPR": {
+"summary": "Gas Voidage Production Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGVPT": {
+"summary": "Gas Voidage Production Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGnPR": {
+"summary": "nth separator stage gas rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GGnPT": {
+"summary": "nth separator stage gas total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GHMIR": {
+"summary": "Hydrocarbon Molar Injection Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GHMIT": {
+"summary": "Hydrocarbon Molar Injection Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GHMPR": {
+"summary": "Hydrocarbon Molar Production Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GHMPT": {
+"summary": "Hydrocarbon Molar Production Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GLMNR": {
+"summary": "Group or node minimum liquid rate as specified with GNETDP in the production network",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GLMXR": {
+"summary": "Group or node maximum liquid rate as specified with GNETDP in the production network",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GLPR": {
+"summary": "Liquid Production Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GLPRH": {
+"summary": "Liquid Production Rate History",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GLPRL": {
+"summary": "Liquid Production Rate Target/Limit",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GLPRNB": {
+"summary": "Liquid flow rate along the group's or node's outlet branch in the production network",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GLPRT": {
+"summary": "Liquid Production Rate Target/Limit",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GLPT": {
+"summary": "Liquid Production Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GLPTH": {
+"summary": "Liquid Production Total History",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GMCPL": {
+"summary": "Group Multi-level Compressor Level",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GMCTG": {
+"summary": "Mode of Control for group Gas Injection",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GMCTP": {
+"summary": "Mode of Control for group Production",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GMCTW": {
+"summary": "Mode of Control for group Water Injection",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GMIR": {
+"summary": "Methane Injection Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GMIT": {
+"summary": "Methane Injection Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GMNP": {
+"summary": "Group or node minimum pressure as specified with GNETDP in the production network",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GMPR": {
+"summary": "Methane Production Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GMPT": {
+"summary": "Methane Production Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GMUF": {
+"summary": "Make-up fraction",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GMWDR": {
+"summary": "Number of drilling events this timestep",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GMWDT": {
+"summary": "Number of drilling events in total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GMWIA": {
+"summary": "Number of abandoned injection wells",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GMWIG": {
+"summary": "Number of injectors on group control",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GMWIN": {
+"summary": "Number of injection wells currently flowing",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GMWIP": {
+"summary": "Number of injectors on pressure control",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GMWIS": {
+"summary": "Number of injectors on own surface rate limit control",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GMWIT": {
+"summary": "Total number of injection wells",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GMWIU": {
+"summary": "Number of unused injection wells",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GMWIV": {
+"summary": "Number of injectors on own reservoir volume rate limit control",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GMWPA": {
+"summary": "Number of abandoned production wells",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GMWPG": {
+"summary": "Number of producers on group control",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GMWPL": {
+"summary": "Number of producers using artificial lift",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GMWPO": {
+"summary": "Number of producers controlled by own oil rate limit",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GMWPP": {
+"summary": "Number of producers on pressure control",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GMWPR": {
+"summary": "Number of production wells currently flowing",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GMWPS": {
+"summary": "Number of producers on own surface rate limit control",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GMWPT": {
+"summary": "Total number of production wells",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GMWPU": {
+"summary": "Number of unused production wells",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GMWPV": {
+"summary": "Number of producers on own reservoir volume rate limit control",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GMWWO": {
+"summary": "Number of workover events this timestep",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GMWWT": {
+"summary": "Number of workover events in total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GMXP": {
+"summary": "Group or node maximum pressure as specified with GNETDP in the production network",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GNIR": {
+"summary": "Solvent Injection Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GNIT": {
+"summary": "Solvent Injection Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GNLPR": {
+"summary": "NGL Production Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GNLPRG": {
+"summary": "NGL production rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GNLPRH": {
+"summary": "NGL Production Rate History",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GNLPT": {
+"summary": "NGL Production Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GNLPTH": {
+"summary": "NGL Production Total History",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GNPR": {
+"summary": "Solvent Production Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GNPT": {
+"summary": "Solvent Production Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GODN": {
+"summary": "Oil Density at Surface Conditions",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOGR": {
+"summary": "Oil-Gas Ratio",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOGRH": {
+"summary": "Oil-Gas Ratio History",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOIGR": {
+"summary": "Oil Injection Guide Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOIR": {
+"summary": "Oil Injection Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOIRH": {
+"summary": "Oil Injection Rate History",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOIRL": {
+"summary": "Oil Injection Rate Target/Limit",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOIRT": {
+"summary": "Oil Injection Rate Target/Limit",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOIT": {
+"summary": "Oil Injection Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOITH": {
+"summary": "Oil Injection Total History",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOMNR": {
+"summary": "Group or node minimum oil rate as specified with GNETDP in the production network",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOMR": {
+"summary": "Oil Mass Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOMT": {
+"summary": "Oil Mass Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOMXR": {
+"summary": "Group or node maximum oil rate as specified with GNETDP in the production network",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOPGR": {
+"summary": "Oil Production Guide Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOPI": {
+"summary": "Oil Potential Injection rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOPI2": {
+"summary": "Oil Potential Injection rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOPP": {
+"summary": "Oil Potential Production rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOPP2": {
+"summary": "Oil Potential Production rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOPR": {
+"summary": "Oil Production Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOPR1": {
+"summary": "Oil Production Rate above GOC",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOPR2": {
+"summary": "Oil Production Rate below GOC",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOPRA": {
+"summary": "Oil Production Rate above GOC",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOPRB": {
+"summary": "Oil Production Rate below GOC",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOPRF": {
+"summary": "Free Oil Production Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOPRG": {
+"summary": "Oil production rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOPRH": {
+"summary": "Oil Production Rate History",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOPRL": {
+"summary": "Oil Production Rate Target/Limit",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOPRNB": {
+"summary": "Oil flow rate along the group's or node's outlet branch in the production network",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOPRS": {
+"summary": "Solution Oil Production Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOPRT": {
+"summary": "Oil Production Rate Target/Limit",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOPT": {
+"summary": "Oil Production Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOPT1": {
+"summary": "Oil Production Total above GOC",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOPT2": {
+"summary": "Oil Production Total below GOC",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOPTA": {
+"summary": "Oil Production Total above GOC",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOPTB": {
+"summary": "Oil Production Total below GOC",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOPTF": {
+"summary": "Free Oil Production Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOPTH": {
+"summary": "Oil Production Total History",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOPTS": {
+"summary": "Solution Oil Production Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOSPR": {
+"summary": "Target sustainable rate for most recent sustainable capacity test for oil",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOSRL": {
+"summary": "Maximum tested rate sustained for the test period during the most recent sustainable capacity test for oil",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOSRU": {
+"summary": "Minimum tested rate not sustained for the test period during the most recent sustainable capacity test for oil",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOSSP": {
+"summary": "Period for which target sustainable rate could be maintained for the most recent sustainable capacity test for oil",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOSTP": {
+"summary": "Test period for the most recent sustainable capacity test for oil",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOVIR": {
+"summary": "Oil Voidage Injection Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOVIT": {
+"summary": "Oil Voidage Injection Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOVPR": {
+"summary": "Oil Voidage Production Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOVPT": {
+"summary": "Oil Voidage Production Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOnPR": {
+"summary": "nth separator stage oil rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GOnPT": {
+"summary": "nth separator stage oil total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GPR": {
+"summary": "Group nodal Pressure in network",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GPRB": {
+"summary": "Pressure drop along the group's or node's outlet branch in the production network",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GPRBG": {
+"summary": "Pressure drop along the group's or node's inlet branch in the gas injection network",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GPRBW": {
+"summary": "Pressure drop along the group's or node's inlet branch in the water injection network",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GPRDC": {
+"summary": "Group Pressure at Delivery Capacity",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GPRDEC": {
+"summary": "Group or node pressure decrement as specified with GNETDP in the production network",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GPRFP": {
+"summary": "Group or node Pressure in network from end of First Pass",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GPRG": {
+"summary": "Group or node Pressure in the gas injection network",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GPRINC": {
+"summary": "Group or node pressure increment as specified with GNETDP in the production network",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GPRW": {
+"summary": "Group or node Pressure in the water injection network",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GRGR": {
+"summary": "Re-injection Gas Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GRGT": {
+"summary": "Re-injection Gas Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GSGR": {
+"summary": "Sales Gas Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GSGT": {
+"summary": "Sales Gas Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GSIC": {
+"summary": "Salt Injection Concentration",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GSIR": {
+"summary": "Salt Injection Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GSIT": {
+"summary": "Salt Injection Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GSMF": {
+"summary": "Sales Gas Mole Fraction",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GSPC": {
+"summary": "Salt Production Concentration",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GSPR": {
+"summary": "Salt Production Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GSPT": {
+"summary": "Salt Production Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTCM": {
+"summary": "Tracer Carrier molar Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTIC": {
+"summary": "Tracer Injection Concentration",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTICF": {
+"summary": "Tracer Injection Concentration",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTICHEA": {
+"summary": "Injection Temperature",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTICS": {
+"summary": "Tracer Injection Concentration",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTIR": {
+"summary": "Tracer Injection Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTIRALK": {
+"summary": "Injection Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTIRANI": {
+"summary": "Anion Injection Rate",
+"category": "SUMMARY_FIELD"
+},
+"GTIRCAT": {
+"summary": "Cation Injection Rate",
+"category": "SUMMARY_FIELD"
+},
+"GTIRF": {
+"summary": "Tracer Injection Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTIRFOA": {
+"summary": "Injection Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTIRHEA": {
+"summary": "Energy flows",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTIRS": {
+"summary": "Tracer Injection Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTIRSUR": {
+"summary": "Injection Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTIT": {
+"summary": "Tracer Injection Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTITALK": {
+"summary": "Injection Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTITANI": {
+"summary": "Anion Injection Total",
+"category": "SUMMARY_FIELD"
+},
+"GTITCAT": {
+"summary": "Cation Injection Total",
+"category": "SUMMARY_FIELD"
+},
+"GTITF": {
+"summary": "Tracer Injection Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTITFOA": {
+"summary": "Injection Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTITHEA": {
+"summary": "Energy Injection Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTITS": {
+"summary": "Tracer Injection Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTITSUR": {
+"summary": "Injection Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTLM": {
+"summary": "Traced mass liquid total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTMF": {
+"summary": "Traced molar fraction",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTML": {
+"summary": "Traced mass liquid rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTMR": {
+"summary": "Traced mass Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTMT": {
+"summary": "Traced mass Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTMV": {
+"summary": "Traced mass vapor rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTPC": {
+"summary": "Tracer Production Concentration",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTPCF": {
+"summary": "Tracer Production",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTPCHEA": {
+"summary": "Production Temperature",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTPCS": {
+"summary": "Tracer Production",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTPR": {
+"summary": "Tracer Production Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTPRALK": {
+"summary": "Production Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTPRANI": {
+"summary": "Anion Production Rate",
+"category": "SUMMARY_FIELD"
+},
+"GTPRCAT": {
+"summary": "Cation Production Rate",
+"category": "SUMMARY_FIELD"
+},
+"GTPRF": {
+"summary": "Tracer Production Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTPRFOA": {
+"summary": "Production Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTPRHEA": {
+"summary": "Energy flows",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTPRS": {
+"summary": "Tracer Production Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTPRSUR": {
+"summary": "Production Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTPT": {
+"summary": "Tracer Production Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTPTALK": {
+"summary": "Production Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTPTANI": {
+"summary": "Anion Production Total",
+"category": "SUMMARY_FIELD"
+},
+"GTPTCAT": {
+"summary": "Cation Production Total",
+"category": "SUMMARY_FIELD"
+},
+"GTPTF": {
+"summary": "Tracer Production Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTPTFOA": {
+"summary": "Production Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTPTHEA": {
+"summary": "Energy Production Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTPTS": {
+"summary": "Tracer Production Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTPTSUR": {
+"summary": "Production Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTQR": {
+"summary": "Traced molar Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTTL": {
+"summary": "Traced liquid volume total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTTV": {
+"summary": "Traced vapor volume total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTVL": {
+"summary": "Traced liquid volume rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTVM": {
+"summary": "Traced mass vapor total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GTVV": {
+"summary": "Traced vapor volume rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GU": {
+"summary": "User-defined group quantity",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GVIR": {
+"summary": "Res Volume Injection Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GVIRL": {
+"summary": "Res Volume Injection Rate Target/Limit",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GVIRT": {
+"summary": "Res Volume Injection Rate Target/Limit",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GVIT": {
+"summary": "Res Volume Injection Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GVPGR": {
+"summary": "Res Volume Production Guide Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GVPR": {
+"summary": "Res Volume Production Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GVPRL": {
+"summary": "Res Volume Production Rate Target/Limit",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GVPRT": {
+"summary": "Res Volume Production Rate Target/Limit",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GVPT": {
+"summary": "Res Volume Production Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWCT": {
+"summary": "Water Cut",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWCTH": {
+"summary": "Water Cut History",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWGIR": {
+"summary": "Wet Gas Injection Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWGIT": {
+"summary": "Wet Gas Injection Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWGPR": {
+"summary": "Wet Gas Production Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWGPRH": {
+"summary": "Wet Gas Production Rate History",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWGPT": {
+"summary": "Wet Gas Production Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWGR": {
+"summary": "Water-Gas Ratio",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWGRH": {
+"summary": "Water-Gas Ratio History",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWIGR": {
+"summary": "Water Injection Guide Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWIR": {
+"summary": "Water Injection Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWIRH": {
+"summary": "Water Injection Rate History",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWIRL": {
+"summary": "Water Injection Rate Target/Limit",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWIRNB": {
+"summary": "Water flow rate along the group's or node's inlet branch in the water injection network",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWIRT": {
+"summary": "Water Injection Rate Target/Limit",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWIT": {
+"summary": "Water Injection Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWITH": {
+"summary": "Water Injection Total History",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWMIR": {
+"summary": "Water component molar injection rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWMIT": {
+"summary": "Water component molar injection total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWMNR": {
+"summary": "Group or node minimum water rate as specified with GNETDP in the production network",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWMPR": {
+"summary": "Water component molar production rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWMPT": {
+"summary": "Water component molar production total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWMR": {
+"summary": "Water Mass Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWMT": {
+"summary": "Water Mass Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWMXR": {
+"summary": "Group or node maximum water rate as specified with GNETDP in the production network",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWPGR": {
+"summary": "Water Production Guide Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWPI": {
+"summary": "Water Potential Injection rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWPI2": {
+"summary": "Water Potential Injection rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWPIR": {
+"summary": "Ratio of produced water to injected water (percentage)",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWPP": {
+"summary": "Water Potential Production rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWPP2": {
+"summary": "Water Potential Production rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWPR": {
+"summary": "Water Production Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWPRH": {
+"summary": "Water Production Rate History",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWPRL": {
+"summary": "Water Production Rate Target/Limit",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWPRNB": {
+"summary": "Water flow rate along the group's or node's outlet branch in the production network",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWPRT": {
+"summary": "Water Production Rate Target/Limit",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWPT": {
+"summary": "Water Production Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWPTH": {
+"summary": "Water Production Total History",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWSPR": {
+"summary": "Target sustainable rate for most recent sustainable capacity test for water",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWSRL": {
+"summary": "Maximum tested rate sustained for the test period during the most recent sustainable capacity test for water",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWSRU": {
+"summary": "Minimum tested rate not sustained for the test period during the most recent sustainable capacity test for water",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWSSP": {
+"summary": "Period for which target sustainable rate could be maintained for the most recent sustainable capacity test for water",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWSTP": {
+"summary": "Test period for the most recent sustainable capacity test for water",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWVIR": {
+"summary": "Water Voidage Injection Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWVIT": {
+"summary": "Water Voidage Injection Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWVPR": {
+"summary": "Water Voidage Production Rate",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GWVPT": {
+"summary": "Water Voidage Production Total",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GXMF": {
+"summary": "Liquid Mole Fraction",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GXMFG": {
+"summary": "Liquid mole fraction",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GXMFn": {
+"summary": "Liquid Mole Fraction for nth separator stage",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GYMF": {
+"summary": "Vapor Mole Fraction",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GYMFG": {
+"summary": "Vapor mole fraction",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GYMFn": {
+"summary": "Vapor Mole Fraction for nth separator stage",
+"category": "SUMMARY_WELL_GROUP"
+},
+"GZMF": {
+"summary": "Total Mole Fraction",
+"category": "SUMMARY_WELL_GROUP"
+},
+"LBCTRA_X": {
+"summary": "Tracer concentration interpolated at a defined coordinate within a local grid",
+"category": "SUMMARY_BLOCK"
+},
+"LBHDF_X": {
+"summary": "Hydraulic head at freshwater conditions interpolated at a defined coordinate within a local grid",
+"category": "SUMMARY_BLOCK"
+},
+"LBHD_X": {
+"summary": "Hydraulic head interpolated at a defined coordinate within a local grid",
+"category": "SUMMARY_BLOCK"
+},
+"LBPR_X": {
+"summary": "Pressure interpolated at a defined coordinate within a local grid",
+"category": "SUMMARY_BLOCK"
+},
+"LBSCN_X": {
+"summary": "Brine concentration interpolated at a defined coordinate within a local grid",
+"category": "SUMMARY_BLOCK"
+},
+"LCGFRU": {
+"summary": "As CGFRU but for local grids",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"LCOFRU": {
+"summary": "As COFRU but for local grids",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"LCWFRU": {
+"summary": "As CWFRU but for local grids",
+"category": "SUMMARY_WELL_CONNECTION"
+},
+"MLINEARS": {
+"summary": "Number linear iterations for each timestep",
+"category": "SUMMARY_MISC"
+},
+"MONTH": {
+"summary": "Month",
+"category": "SUMMARY_MISC"
+},
+"MSUMLINS": {
+"summary": "Total number of linear iterations since the start of the run",
+"category": "SUMMARY_MISC"
+},
+"MSUMNEWT": {
+"summary": "Total number of Newton iterations since the start of the run",
+"category": "SUMMARY_MISC"
+},
+"NBAKFL": {
+"summary": "Number of calls to scalar fallback routines",
+"category": "SUMMARY_MISC"
+},
+"NBYTOT": {
+"summary": "Peak usage of dynamically allocated memory",
+"category": "SUMMARY_MISC"
+},
+"NCPRLINS": {
+"summary": "Average number of pressure iterations",
+"category": "SUMMARY_MISC"
+},
+"NCPUNSL": {
+"summary": "CPU time per network solve",
+"category": "SUMMARY_NETWORK"
+},
+"NCPUNSLT": {
+"summary": "Total CPU time per network solve",
+"category": "SUMMARY_NETWORK"
+},
+"NELAPNSL": {
+"summary": "Elapsed time per network solve",
+"category": "SUMMARY_NETWORK"
+},
+"NELPNSLT": {
+"summary": "Total elapsed time per network solve",
+"category": "SUMMARY_NETWORK"
+},
+"NEWTFL": {
+"summary": "Cumulative average Newton iterations",
+"category": "SUMMARY_MISC"
+},
+"NEWTON": {
+"summary": "Number of Newton iterations used for each timestep",
+"category": "SUMMARY_MISC"
+},
+"NFAILS": {
+"summary": "Solve fails per network",
+"category": "SUMMARY_NETWORK"
+},
+"NGOPAS": {
+"summary": "Number of iterations to converge DCQ in first pass",
+"category": "SUMMARY_WELL"
+},
+"NJALL": {
+"summary": "Junction all properties",
+"category": "SUMMARY_NETWORK"
+},
+"NJCHMR": {
+"summary": "Junction component flow rate",
+"category": "SUMMARY_NETWORK"
+},
+"NJCHMR_1": {
+"summary": "Junction component 1 molar rate",
+"category": "SUMMARY_NETWORK"
+},
+"NJCHMR_2": {
+"summary": "Junction component 2 molar rate",
+"category": "SUMMARY_NETWORK"
+},
+"NJCMPR": {
+"summary": "Junction component production rate",
+"category": "SUMMARY_NETWORK"
+},
+"NJCMPR_1": {
+"summary": "Junction component 1 production rate",
+"category": "SUMMARY_NETWORK"
+},
+"NJCMPR_2": {
+"summary": "Junction component 2 production rate",
+"category": "SUMMARY_NETWORK"
+},
+"NJEVRAT": {
+"summary": "Junction erosional velocity ratio",
+"category": "SUMMARY_NETWORK"
+},
+"NJGDN": {
+"summary": "Junction gas density",
+"category": "SUMMARY_NETWORK"
+},
+"NJGDP": {
+"summary": "Junction gas production deliverable rate",
+"category": "SUMMARY_NETWORK"
+},
+"NJGFR": {
+"summary": "Junction gas flow rate",
+"category": "SUMMARY_NETWORK"
+},
+"NJGIR": {
+"summary": "Junction gas injection rate",
+"category": "SUMMARY_NETWORK"
+},
+"NJGLFR": {
+"summary": "Junction gas lift flow rate",
+"category": "SUMMARY_NETWORK"
+},
+"NJGLIR": {
+"summary": "Junction gas lift injection rate",
+"category": "SUMMARY_NETWORK"
+},
+"NJGLR": {
+"summary": "Junction gas-liquid ratio",
+"category": "SUMMARY_NETWORK"
+},
+"NJGMR": {
+"summary": "Junction gas molar rate",
+"category": "SUMMARY_NETWORK"
+},
+"NJGMR_1": {
+"summary": "Junction gas component 1 molar rate",
+"category": "SUMMARY_NETWORK"
+},
+"NJGMR_2": {
+"summary": "Junction gas component 2 molar rate",
+"category": "SUMMARY_NETWORK"
+},
+"NJGOR": {
+"summary": "Junction gas-oil ratio",
+"category": "SUMMARY_NETWORK"
+},
+"NJGPR": {
+"summary": "Junction gas production rate",
+"category": "SUMMARY_NETWORK"
+},
+"NJGRF": {
+"summary": "Junction gas removal fraction",
+"category": "SUMMARY_NETWORK"
+},
+"NJGRFR": {
+"summary": "Junction gas removal flow rate",
+"category": "SUMMARY_NETWORK"
+},
+"NJGTD": {
+"summary": "Junction gas tubing density",
+"category": "SUMMARY_NETWORK"
+},
+"NJGWR": {
+"summary": "Junction gas-water ratio",
+"category": "SUMMARY_NETWORK"
+},
+"NJHMPR": {
+"summary": "Junction hydrocarbon production rate",
+"category": "SUMMARY_NETWORK"
+},
+"NJLDP": {
+"summary": "Junction liquid production deliverable rate",
+"category": "SUMMARY_NETWORK"
+},
+"NJLGR": {
+"summary": "Junction liquid-gas ratio",
+"category": "SUMMARY_NETWORK"
+},
+"NJLMR": {
+"summary": "Junction liquid phase molar rate",
+"category": "SUMMARY_NETWORK"
+},
+"NJLPR": {
+"summary": "Junction liquid production rate",
+"category": "SUMMARY_NETWORK"
+},
+"NJMASFL": {
+"summary": "Junction mass flowrate",
+"category": "SUMMARY_NETWORK"
+},
+"NJMR": {
+"summary": "Junction molar rate",
+"category": "SUMMARY_NETWORK"
+},
+"NJODN": {
+"summary": "Junction oil density",
+"category": "SUMMARY_NETWORK"
+},
+"NJODP": {
+"summary": "Junction oil production deliverable rate",
+"category": "SUMMARY_NETWORK"
+},
+"NJOFR": {
+"summary": "Junction oil flow rate",
+"category": "SUMMARY_NETWORK"
+},
+"NJOGR": {
+"summary": "Junction oil-gas ratio",
+"category": "SUMMARY_NETWORK"
+},
+"NJOMR": {
+"summary": "Junction oil molar rate",
+"category": "SUMMARY_NETWORK"
+},
+"NJOPR": {
+"summary": "Junction oil production rate",
+"category": "SUMMARY_NETWORK"
+},
+"NJORF": {
+"summary": "Junction oil removal fraction",
+"category": "SUMMARY_NETWORK"
+},
+"NJORFR": {
+"summary": "Junction oil removal flow rate",
+"category": "SUMMARY_NETWORK"
+},
+"NJOTD": {
+"summary": "Junction oil tubing density",
+"category": "SUMMARY_NETWORK"
+},
+"NJPR": {
+"summary": "Junction pressure",
+"category": "SUMMARY_NETWORK"
+},
+"NJQW": {
+"summary": "Junction water molar rate",
+"category": "SUMMARY_NETWORK"
+},
+"NJTEMP": {
+"summary": "Junction temperature",
+"category": "SUMMARY_NETWORK"
+},
+"NJVMR": {
+"summary": "Junction vapor phase molar rate",
+"category": "SUMMARY_NETWORK"
+},
+"NJWCT": {
+"summary": "Junction water cut",
+"category": "SUMMARY_NETWORK"
+},
+"NJWDP": {
+"summary": "Junction water production deliverable rate",
+"category": "SUMMARY_NETWORK"
+},
+"NJWFR": {
+"summary": "Junction water flow rate",
+"category": "SUMMARY_NETWORK"
+},
+"NJWGR": {
+"summary": "Junction water-gas ratio",
+"category": "SUMMARY_NETWORK"
+},
+"NJWIR": {
+"summary": "Junction water injection rate",
+"category": "SUMMARY_NETWORK"
+},
+"NJWMR": {
+"summary": "Junction water molar rate",
+"category": "SUMMARY_NETWORK"
+},
+"NJWPR": {
+"summary": "Junction water production rate",
+"category": "SUMMARY_NETWORK"
+},
+"NJWRF": {
+"summary": "Junction water removal fraction",
+"category": "SUMMARY_NETWORK"
+},
+"NJWRFR": {
+"summary": "Junction water removal flow rate",
+"category": "SUMMARY_NETWORK"
+},
+"NJWTD": {
+"summary": "Junction water tubing density",
+"category": "SUMMARY_NETWORK"
+},
+"NJZMF": {
+"summary": "Junction total mole fraction",
+"category": "SUMMARY_NETWORK"
+},
+"NLINEARP": {
+"summary": "Average number of pressure iterations",
+"category": "SUMMARY_MISC"
+},
+"NLINEARS": {
+"summary": "Average number of linear iterations",
+"category": "SUMMARY_MISC"
+},
+"NLINSMAX": {
+"summary": "Actual maximum number of linear iterations",
+"category": "SUMMARY_MISC"
+},
+"NLINSMIN": {
+"summary": "Actual minimum number of linear iterations",
+"category": "SUMMARY_MISC"
+},
+"NLRESMAX": {
+"summary": "Maximum element of the non-linear residual",
+"category": "SUMMARY_MISC"
+},
+"NLRESSUM": {
+"summary": "Sum of the non-linear residual",
+"category": "SUMMARY_MISC"
+},
+"NMESSAGE": {
+"summary": "Requests a set of message data vectors for the run",
+"category": "SUMMARY_MISC"
+},
+"NNEWT": {
+"summary": "Newtons per network solve",
+"category": "SUMMARY_NETWORK"
+},
+"NNEWTTOT": {
+"summary": "Cumulated newtons per network solve",
+"category": "SUMMARY_NETWORK"
+},
+"NNUMFL": {
+"summary": "Total number of two phase flash calculations performed",
+"category": "SUMMARY_MISC"
+},
+"NNUMST": {
+"summary": "Total number of stability tests performed",
+"category": "SUMMARY_MISC"
+},
+"NPALL": {
+"summary": "Pipe all properties",
+"category": "SUMMARY_NETWORK"
+},
+"NPDIR": {
+"summary": "Pipe flow direction",
+"category": "SUMMARY_NETWORK"
+},
+"NPELEVDP": {
+"summary": "Pipe elevation pressure drop",
+"category": "SUMMARY_NETWORK"
+},
+"NPERSVEL": {
+"summary": "Pipe erosional velocity",
+"category": "SUMMARY_NETWORK"
+},
+"NPEVRAT": {
+"summary": "Pipe erosional velocity ratio",
+"category": "SUMMARY_NETWORK"
+},
+"NPFRICDP": {
+"summary": "Pipe friction pressure drop",
+"category": "SUMMARY_NETWORK"
+},
+"NPGFR": {
+"summary": "Pipe gas flow rate",
+"category": "SUMMARY_NETWORK"
+},
+"NPGLFR": {
+"summary": "Pipe gas lift flow rate",
+"category": "SUMMARY_NETWORK"
+},
+"NPLHLDUP": {
+"summary": "Pipe liquid holdup pressure drop",
+"category": "SUMMARY_NETWORK"
+},
+"NPMASFL": {
+"summary": "Pipe mass flowrate",
+"category": "SUMMARY_NETWORK"
+},
+"NPMASFLO": {
+"summary": "Pipe mass flowrate outlet",
+"category": "SUMMARY_NETWORK"
+},
+"NPMR": {
+"summary": "Pipe molar rate",
+"category": "SUMMARY_NETWORK"
+},
+"NPMXVMIX": {
+"summary": "Pipe mixture velocity",
+"category": "SUMMARY_NETWORK"
+},
+"NPOFR": {
+"summary": "Pipe oil flow rate",
+"category": "SUMMARY_NETWORK"
+},
+"NPPRD": {
+"summary": "Pipe pressure drop",
+"category": "SUMMARY_NETWORK"
+},
+"NPSLUGFR": {
+"summary": "Pipe slug flow frequency",
+"category": "SUMMARY_NETWORK"
+},
+"NPSLUGLN": {
+"summary": "Pipe slug length",
+"category": "SUMMARY_NETWORK"
+},
+"NPSLUGVL": {
+"summary": "Pipe slug velocity",
+"category": "SUMMARY_NETWORK"
+},
+"NPSPHLQV": {
+"summary": "Pipe specific holdup liquid volume",
+"category": "SUMMARY_NETWORK"
+},
+"NPSSG": {
+"summary": "Pipe superficial gas velocity",
+"category": "SUMMARY_NETWORK"
+},
+"NPVELMXI": {
+"summary": "Pipe mixture velocity inlet",
+"category": "SUMMARY_NETWORK"
+},
+"NPVELMXO": {
+"summary": "Pipe mixture velocity outlet",
+"category": "SUMMARY_NETWORK"
+},
+"NPWFR": {
+"summary": "Pipe water flow rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSCEVRAT": {
+"summary": "Source erosional velocity ratio",
+"category": "SUMMARY_NETWORK"
+},
+"NSCGDP": {
+"summary": "Source gas production deliverable rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSCGFR": {
+"summary": "Source gas flow rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSCGIR": {
+"summary": "Source gas injection rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSCGLIR": {
+"summary": "Source gas lift injection rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSCGPR": {
+"summary": "Source gas production rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSCGTD": {
+"summary": "Source gas tubing density",
+"category": "SUMMARY_NETWORK"
+},
+"NSCLDP": {
+"summary": "Source liquid production deliverable rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSCLMR": {
+"summary": "Source liquid phase molar rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSCLPR": {
+"summary": "Source liquid production rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSCMASFL": {
+"summary": "Source mass flowrate",
+"category": "SUMMARY_NETWORK"
+},
+"NSCODP": {
+"summary": "Source oil production deliverable rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSCOFR": {
+"summary": "Source oil flow rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSCOPR": {
+"summary": "Source oil production rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSCOTD": {
+"summary": "Source oil tubing density",
+"category": "SUMMARY_NETWORK"
+},
+"NSCPR": {
+"summary": "Source pressure",
+"category": "SUMMARY_NETWORK"
+},
+"NSCQW": {
+"summary": "Source water molar rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSCTEMP": {
+"summary": "Source temperature",
+"category": "SUMMARY_NETWORK"
+},
+"NSCVMR": {
+"summary": "Source vapor phase molar rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSCWDP": {
+"summary": "Source water production deliverable rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSCWFR": {
+"summary": "Source water flow rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSCWIR": {
+"summary": "Source water injection rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSCWPR": {
+"summary": "Source water production rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSCWTD": {
+"summary": "Source water tubing density",
+"category": "SUMMARY_NETWORK"
+},
+"NSKEVRAT": {
+"summary": "Sink erosional velocity ratio",
+"category": "SUMMARY_NETWORK"
+},
+"NSKGDP": {
+"summary": "Sink gas production deliverable rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSKGFR": {
+"summary": "Sink gas flow rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSKGIR": {
+"summary": "Sink gas injection rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSKGLFR": {
+"summary": "Sink gas lift flow rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSKGLIR": {
+"summary": "Sink gas lift injection rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSKGMR": {
+"summary": "Sink gas molar rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSKGMR_1": {
+"summary": "Sink gas component 1 molar rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSKGMR_2": {
+"summary": "Sink gas component 2 molar rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSKGPR": {
+"summary": "Sink gas production rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSKGTD": {
+"summary": "Sink gas tubing density",
+"category": "SUMMARY_NETWORK"
+},
+"NSKLDP": {
+"summary": "Sink liquid production deliverable rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSKLMR": {
+"summary": "Sink liquid phase molar rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSKLPR": {
+"summary": "Sink liquid production rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSKMASFL": {
+"summary": "Sink mass flowrate",
+"category": "SUMMARY_NETWORK"
+},
+"NSKMR": {
+"summary": "Sink molar rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSKODP": {
+"summary": "Sink oil production deliverable rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSKOFR": {
+"summary": "Sink oil flow rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSKOMR": {
+"summary": "Sink oil molar rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSKOPR": {
+"summary": "Sink oil production rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSKOTD": {
+"summary": "Sink oil tubing density",
+"category": "SUMMARY_NETWORK"
+},
+"NSKPR": {
+"summary": "Sink pressure",
+"category": "SUMMARY_NETWORK"
+},
+"NSKQW": {
+"summary": "Sink water molar rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSKTEMP": {
+"summary": "Sink temperature",
+"category": "SUMMARY_NETWORK"
+},
+"NSKVMR": {
+"summary": "Sink vapor phase molar rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSKWDP": {
+"summary": "Sink water production deliverable rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSKWFR": {
+"summary": "Sink water flow rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSKWIR": {
+"summary": "Sink water injection rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSKWMR": {
+"summary": "Sink water molar rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSKWPR": {
+"summary": "Sink water production rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSKWTD": {
+"summary": "Sink water tubing density",
+"category": "SUMMARY_NETWORK"
+},
+"NSOLVES": {
+"summary": "Solve attempts per network",
+"category": "SUMMARY_NETWORK"
+},
+"NSPGFR": {
+"summary": "Separator gas flow rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSPGIR": {
+"summary": "Separator gas injection rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSPGPR": {
+"summary": "Separator gas production rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSPLPR": {
+"summary": "Separator liquid production rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSPOFR": {
+"summary": "Separator oil flow rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSPOPR": {
+"summary": "Separator oil production rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSPPR": {
+"summary": "Separator pressure",
+"category": "SUMMARY_NETWORK"
+},
+"NSPTEMP": {
+"summary": "Separator temperature",
+"category": "SUMMARY_NETWORK"
+},
+"NSPWFR": {
+"summary": "Separator water flow rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSPWIR": {
+"summary": "Separator water injection rate",
+"category": "SUMMARY_NETWORK"
+},
+"NSPWPR": {
+"summary": "Separator water production rate",
+"category": "SUMMARY_NETWORK"
+},
+"NTS": {
+"summary": "Number of timesteps taken",
+"category": "SUMMARY_MISC"
+},
+"NTSECL": {
+"summary": "Number of energy density solution converged last",
+"category": "SUMMARY_MISC"
+},
+"NTSMCL": {
+"summary": "Number of molar density solution converged last",
+"category": "SUMMARY_MISC"
+},
+"NTSPCL": {
+"summary": "Number of pressure solution converged last",
+"category": "SUMMARY_MISC"
+},
+"NWALL": {
+"summary": "Well all properties",
+"category": "SUMMARY_NETWORK"
+},
+"NWCHMR": {
+"summary": "Well component flow rate",
+"category": "SUMMARY_NETWORK"
+},
+"NWCHMR_1": {
+"summary": "Well component 1 molar rate",
+"category": "SUMMARY_NETWORK"
+},
+"NWCHMR_2": {
+"summary": "Well component 2 molar rate",
+"category": "SUMMARY_NETWORK"
+},
+"NWCHMR_3": {
+"summary": "Well component 3 molar rate",
+"category": "SUMMARY_NETWORK"
+},
+"NWCMPR": {
+"summary": "Well component production rate",
+"category": "SUMMARY_NETWORK"
+},
+"NWCMPR_1": {
+"summary": "Well component 1 production rate",
+"category": "SUMMARY_NETWORK"
+},
+"NWCMPR_2": {
+"summary": "Well component 2 production rate",
+"category": "SUMMARY_NETWORK"
+},
+"NWERRG": {
+"summary": "Well gas flow rate coupling error",
+"category": "SUMMARY_NETWORK"
+},
+"NWERRL": {
+"summary": "Well liquid flow rate coupling error",
+"category": "SUMMARY_NETWORK"
+},
+"NWERRM": {
+"summary": "Well molar rate coupling error",
+"category": "SUMMARY_NETWORK"
+},
+"NWERRO": {
+"summary": "Well oil flow rate coupling error",
+"category": "SUMMARY_NETWORK"
+},
+"NWERRP": {
+"summary": "Well pressure coupling error",
+"category": "SUMMARY_NETWORK"
+},
+"NWERRW": {
+"summary": "Well water flow rate coupling error",
+"category": "SUMMARY_NETWORK"
+},
+"NWGDN": {
+"summary": "Well gas density",
+"category": "SUMMARY_NETWORK"
+},
+"NWGFR": {
+"summary": "Well gas flow rate",
+"category": "SUMMARY_NETWORK"
+},
+"NWGIR": {
+"summary": "Well gas injection rate",
+"category": "SUMMARY_NETWORK"
+},
+"NWGIRCW": {
+"summary": "Well gas injection rate of coupled well",
+"category": "SUMMARY_NETWORK"
+},
+"NWGLFR": {
+"summary": "Well gas lift flow rate",
+"category": "SUMMARY_NETWORK"
+},
+"NWGLR": {
+"summary": "Well gas-liquid ratio",
+"category": "SUMMARY_NETWORK"
+},
+"NWGOR": {
+"summary": "Well gas-oil ratio",
+"category": "SUMMARY_NETWORK"
+},
+"NWGPR": {
+"summary": "Well gas production rate",
+"category": "SUMMARY_NETWORK"
+},
+"NWGPRCW": {
+"summary": "Well gas production rate of coupled well",
+"category": "SUMMARY_NETWORK"
+},
+"NWGWR": {
+"summary": "Well gas-water ratio",
+"category": "SUMMARY_NETWORK"
+},
+"NWHMPR": {
+"summary": "Well hydrocarbon production rate",
+"category": "SUMMARY_NETWORK"
+},
+"NWLFR": {
+"summary": "Well liquid flow rate",
+"category": "SUMMARY_NETWORK"
+},
+"NWLGR": {
+"summary": "Well liquid-gas ratio",
+"category": "SUMMARY_NETWORK"
+},
+"NWLPR": {
+"summary": "Well liquid production rate",
+"category": "SUMMARY_NETWORK"
+},
+"NWLPRCW": {
+"summary": "Well liquid production rate of coupled well",
+"category": "SUMMARY_NETWORK"
+},
+"NWMASFL": {
+"summary": "Well mass flowrate",
+"category": "SUMMARY_NETWORK"
+},
+"NWMR": {
+"summary": "Well molar rate",
+"category": "SUMMARY_NETWORK"
+},
+"NWMRCW": {
+"summary": "Well molar rate of coupled well",
+"category": "SUMMARY_NETWORK"
+},
+"NWODN": {
+"summary": "Well oil density",
+"category": "SUMMARY_NETWORK"
+},
+"NWOFR": {
+"summary": "Well oil flow rate",
+"category": "SUMMARY_NETWORK"
+},
+"NWOGR": {
+"summary": "Well oil-gas ratio",
+"category": "SUMMARY_NETWORK"
+},
+"NWOIR": {
+"summary": "Well oil injection rate",
+"category": "SUMMARY_NETWORK"
+},
+"NWOPR": {
+"summary": "Well oil production rate",
+"category": "SUMMARY_NETWORK"
+},
+"NWOPRCW": {
+"summary": "Well oil production rate of coupled well",
+"category": "SUMMARY_NETWORK"
+},
+"NWPR": {
+"summary": "Well pressure",
+"category": "SUMMARY_NETWORK"
+},
+"NWPRCW": {
+"summary": "Well pressure of coupled well",
+"category": "SUMMARY_NETWORK"
+},
+"NWTEMP": {
+"summary": "Well temperature",
+"category": "SUMMARY_NETWORK"
+},
+"NWWCT": {
+"summary": "Well water cut",
+"category": "SUMMARY_NETWORK"
+},
+"NWWFR": {
+"summary": "Well water flow rate",
+"category": "SUMMARY_NETWORK"
+},
+"NWWGR": {
+"summary": "Well water-gas ratio",
+"category": "SUMMARY_NETWORK"
+},
+"NWWIR": {
+"summary": "Well water injection rate",
+"category": "SUMMARY_NETWORK"
+},
+"NWWIRCW": {
+"summary": "Well water injection rate of coupled well",
+"category": "SUMMARY_NETWORK"
+},
+"NWWPR": {
+"summary": "Well water production rate",
+"category": "SUMMARY_NETWORK"
+},
+"NWWPRCW": {
+"summary": "Well water production rate of coupled well",
+"category": "SUMMARY_NETWORK"
+},
+"NWZMF": {
+"summary": "Well total mole fraction",
+"category": "SUMMARY_NETWORK"
+},
+"PSSPR": {
+"summary": "Log of the pressure change per unit time",
+"category": "SUMMARY_FIELD"
+},
+"PSSSC": {
+"summary": "Log of the salt concentration change per unit time",
+"category": "SUMMARY_FIELD"
+},
+"PSSSG": {
+"summary": "Log of the gas saturation change per unit time",
+"category": "SUMMARY_FIELD"
+},
+"PSSSO": {
+"summary": "Log of the oil saturation change per unit time",
+"category": "SUMMARY_FIELD"
+},
+"PSSSW": {
+"summary": "Log of the water saturation change per unit time",
+"category": "SUMMARY_FIELD"
+},
+"RAPI": {
+"summary": "Oil API",
+"category": "SUMMARY_REGION"
+},
+"RCAD": {
+"summary": "Polymer Adsorption total",
+"category": "SUMMARY_REGION"
+},
+"RCFT": {
+"summary": "Polymer inter-region Flow Total",
+"category": "SUMMARY_REGION_2_REGION"
+},
+"RCGC": {
+"summary": "Bulk Coal Gas Concentration",
+"category": "SUMMARY_REGION"
+},
+"RCIP": {
+"summary": "Polymer In Solution",
+"category": "SUMMARY_REGION"
+},
+"RCSC": {
+"summary": "Bulk Coal Solvent Concentration",
+"category": "SUMMARY_REGION"
+},
+"RGFR": {
+"summary": "Inter-region gas flow rate",
+"category": "SUMMARY_REGION_2_REGION"
+},
+"RGFR+": {
+"summary": "Inter-region gas flow rate",
+"category": "SUMMARY_REGION_2_REGION"
+},
+"RGFR-": {
+"summary": "Inter-region gas flow rate",
+"category": "SUMMARY_REGION_2_REGION"
+},
+"RGFT": {
+"summary": "Inter-region gas flow total)",
+"category": "SUMMARY_REGION_2_REGION"
+},
+"RGFT+": {
+"summary": "Inter-region gas flow total",
+"category": "SUMMARY_REGION_2_REGION"
+},
+"RGFT-": {
+"summary": "Inter-region gas flow total",
+"category": "SUMMARY_REGION_2_REGION"
+},
+"RGFTG": {
+"summary": "Inter-region gas flow total",
+"category": "SUMMARY_REGION_2_REGION"
+},
+"RGFTL": {
+"summary": "Inter-region gas flow total",
+"category": "SUMMARY_REGION_2_REGION"
+},
+"RGPV": {
+"summary": "Pore Volume containing Gas",
+"category": "SUMMARY_REGION"
+},
+"RHPV": {
+"summary": "Pore Volume containing Hydrocarbon",
+"category": "SUMMARY_REGION"
+},
+"RNFT": {
+"summary": "Solvent inter-region Flow",
+"category": "SUMMARY_REGION_2_REGION"
+},
+"RNIP": {
+"summary": "Solvent In Place",
+"category": "SUMMARY_REGION"
+},
+"ROE": {
+"summary": "(OIP(initial) - OIP(now)) / OIP(initial)",
+"category": "SUMMARY_REGION"
+},
+"ROEIG": {
+"summary": "(OIP(initial) - OIP(now)) / Initial Mobile Oil with respect to Gas",
+"category": "SUMMARY_REGION"
+},
+"ROEIW": {
+"summary": "(OIP(initial) - OIP(now)) / Initial Mobile Oil with respect to Water",
+"category": "SUMMARY_REGION"
+},
+"ROEW": {
+"summary": "Oil Production from Wells / OIP(initial)",
+"category": "SUMMARY_REGION"
+},
+"ROEWG": {
+"summary": "Oil Production from Wells / Initial Mobile Oil with respect to Gas",
+"category": "SUMMARY_REGION"
+},
+"ROEWW": {
+"summary": "Oil Production from Wells / Initial Mobile Oil with respect to Water",
+"category": "SUMMARY_REGION"
+},
+"ROFR": {
+"summary": "Inter-region oil flow rate",
+"category": "SUMMARY_REGION_2_REGION"
+},
+"ROFR+": {
+"summary": "Inter-region oil flow rate",
+"category": "SUMMARY_REGION_2_REGION"
+},
+"ROFR-": {
+"summary": "Inter-region oil flow rate",
+"category": "SUMMARY_REGION_2_REGION"
+},
+"ROFT": {
+"summary": "Inter-region oil flow total",
+"category": "SUMMARY_REGION_2_REGION"
+},
+"ROFT+": {
+"summary": "Inter-region oil flow total",
+"category": "SUMMARY_REGION_2_REGION"
+},
+"ROFT-": {
+"summary": "Inter-region oil flow total",
+"category": "SUMMARY_REGION_2_REGION"
+},
+"ROFTG": {
+"summary": "Inter-region oil flow total",
+"category": "SUMMARY_REGION_2_REGION"
+},
+"ROFTL": {
+"summary": "Inter-region oil flow total",
+"category": "SUMMARY_REGION_2_REGION"
+},
+"ROPV": {
+"summary": "Pore Volume containing Oil",
+"category": "SUMMARY_REGION"
+},
+"RORFE": {
+"summary": "Fraction of total oil produced by oil expansion",
+"category": "SUMMARY_REGION"
+},
+"RORFF": {
+"summary": "Fraction of total oil produced by free gas influx",
+"category": "SUMMARY_REGION"
+},
+"RORFG": {
+"summary": "Fraction of total oil produced by gas influx",
+"category": "SUMMARY_REGION"
+},
+"RORFR": {
+"summary": "Fraction of total oil produced by rock compaction",
+"category": "SUMMARY_REGION"
+},
+"RORFS": {
+"summary": "Fraction of total oil produced by solution gas",
+"category": "SUMMARY_REGION"
+},
+"RORFW": {
+"summary": "Fraction of total oil produced by water influx",
+"category": "SUMMARY_REGION"
+},
+"RORFX": {
+"summary": "Fraction of total oil produced by 'traced' water influx",
+"category": "SUMMARY_REGION"
+},
+"RORFY": {
+"summary": "Fraction of total oil produced by other water influx",
+"category": "SUMMARY_REGION"
+},
+"RORME": {
+"summary": "Total stock tank oil produced by oil expansion",
+"category": "SUMMARY_REGION"
+},
+"RORMF": {
+"summary": "Total stock tank oil produced by free gas influx",
+"category": "SUMMARY_REGION"
+},
+"RORMG": {
+"summary": "Total stock tank oil produced by gas influx",
+"category": "SUMMARY_REGION"
+},
+"RORMR": {
+"summary": "Total stock tank oil produced by rock compaction",
+"category": "SUMMARY_REGION"
+},
+"RORMS": {
+"summary": "Total stock tank oil produced by solution gas",
+"category": "SUMMARY_REGION"
+},
+"RORMW": {
+"summary": "Total stock tank oil produced by water influx",
+"category": "SUMMARY_REGION"
+},
+"RORMX": {
+"summary": "Total stock tank oil produced by 'traced' water influx",
+"category": "SUMMARY_REGION"
+},
+"RORMY": {
+"summary": "Total stock tank oil produced by other water influx",
+"category": "SUMMARY_REGION"
+},
+"RPPC": {
+"summary": "Initial Contact Corrected Potential",
+"category": "SUMMARY_REGION"
+},
+"RPR": {
+"summary": "Pressure average value",
+"category": "SUMMARY_REGION"
+},
+"RPRGZ": {
+"summary": "P/Z",
+"category": "SUMMARY_REGION"
+},
+"RPRH": {
+"summary": "Pressure average value",
+"category": "SUMMARY_REGION"
+},
+"RPRP": {
+"summary": "Pressure average value",
+"category": "SUMMARY_REGION"
+},
+"RRPV": {
+"summary": "Pore Volume at Reservoir conditions",
+"category": "SUMMARY_REGION"
+},
+"RRS": {
+"summary": "Gas-oil ratio",
+"category": "SUMMARY_REGION"
+},
+"RRTM": {
+"summary": "Transmissibility Multiplier associated with rock compaction",
+"category": "SUMMARY_REGION"
+},
+"RRV": {
+"summary": "Oil-gas ratio",
+"category": "SUMMARY_REGION"
+},
+"RSFT": {
+"summary": "Salt inter-region Flow Total",
+"category": "SUMMARY_REGION_2_REGION"
+},
+"RSIP": {
+"summary": "Salt In Place",
+"category": "SUMMARY_REGION"
+},
+"RTADS": {
+"summary": "Tracer Adsorption total",
+"category": "SUMMARY_REGION"
+},
+"RTADSFOA": {
+"summary": "Adsorption total",
+"category": "SUMMARY_REGION"
+},
+"RTADSUR": {
+"summary": "Adsorption total",
+"category": "SUMMARY_REGION"
+},
+"RTDCY": {
+"summary": "Decayed tracer",
+"category": "SUMMARY_REGION"
+},
+"RTDCYFOA": {
+"summary": "Decayed tracer",
+"category": "SUMMARY_REGION"
+},
+"RTFT#": {
+"summary": "Tracer inter-region Flow in phase # (1,2,3,...)",
+"category": "SUMMARY_REGION_2_REGION"
+},
+"RTFTF": {
+"summary": "Tracer inter-region Flow Total",
+"category": "SUMMARY_REGION_2_REGION"
+},
+"RTFTS": {
+"summary": "Tracer inter-region Flow Total",
+"category": "SUMMARY_REGION_2_REGION"
+},
+"RTFTT": {
+"summary": "Tracer inter-region Flow Total",
+"category": "SUMMARY_REGION_2_REGION"
+},
+"RTFTTFOA": {
+"summary": "Inter-region Flow Total",
+"category": "SUMMARY_REGION_2_REGION"
+},
+"RTFTTSUR": {
+"summary": "Inter-region Flow Total",
+"category": "SUMMARY_REGION_2_REGION"
+},
+"RTIP#": {
+"summary": "Tracer In Place in phase # (1,2,3,...)",
+"category": "SUMMARY_REGION"
+},
+"RTIPF": {
+"summary": "Tracer In Place",
+"category": "SUMMARY_REGION"
+},
+"RTIPS": {
+"summary": "Tracer In Place",
+"category": "SUMMARY_REGION"
+},
+"RTIPT": {
+"summary": "Tracer In Place",
+"category": "SUMMARY_REGION"
+},
+"RTIPTFOA": {
+"summary": "In Solution",
+"category": "SUMMARY_REGION"
+},
+"RTIPTHEA": {
+"summary": "Difference in Energy in place between current and initial time",
+"category": "SUMMARY_REGION"
+},
+"RTIPTSUR": {
+"summary": "In Solution",
+"category": "SUMMARY_REGION"
+},
+"RTMOBFOA": {
+"summary": "Gas mobility factor",
+"category": "SUMMARY_REGION"
+},
+"RU": {
+"summary": "User-defined region quantity",
+"category": "SUMMARY_REGION"
+},
+"RWFR": {
+"summary": "Inter-region water flow rate",
+"category": "SUMMARY_REGION_2_REGION"
+},
+"RWFR+": {
+"summary": "Inter-region water flow rate",
+"category": "SUMMARY_REGION_2_REGION"
+},
+"RWFR-": {
+"summary": "Inter-region water flow rate",
+"category": "SUMMARY_REGION_2_REGION"
+},
+"RWFT": {
+"summary": "Inter-region water flow total",
+"category": "SUMMARY_REGION_2_REGION"
+},
+"RWPV": {
+"summary": "Pore Volume containing Water",
+"category": "SUMMARY_REGION"
+},
+"SALQ": {
+"summary": "Artificial lift quantity for segment",
+"category": "SUMMARY_SEGMENT"
+},
+"SAPI": {
+"summary": "Segment API value",
+"category": "SUMMARY_SEGMENT"
+},
+"SCCN": {
+"summary": "Segment polymer concentration",
+"category": "SUMMARY_SEGMENT"
+},
+"SCFR": {
+"summary": "Segment polymer flow rate",
+"category": "SUMMARY_SEGMENT"
+},
+"SCSA": {
+"summary": "Segment Cross Sectional Area",
+"category": "SUMMARY_SEGMENT"
+},
+"SCVPR": {
+"summary": "Segment Calorific Value Production Rate",
+"category": "SUMMARY_SEGMENT"
+},
+"SCWGFR": {
+"summary": "Segment Component Flow Rate as Wet Gas",
+"category": "SUMMARY_SEGMENT"
+},
+"SDENM": {
+"summary": "Segment fluid mixture density",
+"category": "SUMMARY_SEGMENT"
+},
+"SEMVIS": {
+"summary": "Segment effective mixture viscosity",
+"category": "SUMMARY_SEGMENT"
+},
+"SENE": {
+"summary": "Segment Energy Density",
+"category": "SUMMARY_SEGMENT"
+},
+"SFD": {
+"summary": "Segment diameter for Karst Conduit Calcite Dissolution",
+"category": "SUMMARY_SEGMENT"
+},
+"SFOPN": {
+"summary": "Setting of segment",
+"category": "SUMMARY_SEGMENT"
+},
+"SGFR": {
+"summary": "Segment Gas Flow Rate",
+"category": "SUMMARY_SEGMENT"
+},
+"SGFRF": {
+"summary": "Segment Free Gas Flow Rate",
+"category": "SUMMARY_SEGMENT"
+},
+"SGFRS": {
+"summary": "Segment Solution Gas Flow Rate",
+"category": "SUMMARY_SEGMENT"
+},
+"SGFV": {
+"summary": "Segment Gas Flow Velocity",
+"category": "SUMMARY_SEGMENT"
+},
+"SGHF": {
+"summary": "Segment Gas Holdup Fraction",
+"category": "SUMMARY_SEGMENT"
+},
+"SGIMR": {
+"summary": "Segment Gas Import Rate",
+"category": "SUMMARY_SEGMENT"
+},
+"SGIMT": {
+"summary": "Segment Gas Import Total",
+"category": "SUMMARY_SEGMENT"
+},
+"SGLPP": {
+"summary": "Segment Gas-Liquid Profile Parameter, C0",
+"category": "SUMMARY_SEGMENT"
+},
+"SGLVD": {
+"summary": "Segment Gas-Liquid Drift Velocity, Vd",
+"category": "SUMMARY_SEGMENT"
+},
+"SGOR": {
+"summary": "Segment Gas Oil Ratio",
+"category": "SUMMARY_SEGMENT"
+},
+"SGQ": {
+"summary": "Segment Gas Quality",
+"category": "SUMMARY_SEGMENT"
+},
+"SGRMR": {
+"summary": "Segment Gas Removal Rate",
+"category": "SUMMARY_SEGMENT"
+},
+"SGRMT": {
+"summary": "Segment Gas Removal Total",
+"category": "SUMMARY_SEGMENT"
+},
+"SGVIS": {
+"summary": "Segment gas viscosity",
+"category": "SUMMARY_SEGMENT"
+},
+"SHFR": {
+"summary": "Segment Enthalpy Flow Rate",
+"category": "SUMMARY_SEGMENT"
+},
+"SHIMR": {
+"summary": "Segment Enthalpy Import Rate",
+"category": "SUMMARY_SEGMENT"
+},
+"SHIMT": {
+"summary": "Segment Enthalpy Import Total",
+"category": "SUMMARY_SEGMENT"
+},
+"SHRMR": {
+"summary": "Segment Enthalpy Removal Rate",
+"category": "SUMMARY_SEGMENT"
+},
+"SHRMT": {
+"summary": "Segment Enthalpy Removal Total",
+"category": "SUMMARY_SEGMENT"
+},
+"SKFR": {
+"summary": "Segment Component Flow Rate",
+"category": "SUMMARY_SEGMENT"
+},
+"SOFR": {
+"summary": "Segment Oil Flow Rate",
+"category": "SUMMARY_SEGMENT"
+},
+"SOFRF": {
+"summary": "Segment Free Oil Flow Rate",
+"category": "SUMMARY_SEGMENT"
+},
+"SOFRS": {
+"summary": "Segment Solution Oil Flow Rate",
+"category": "SUMMARY_SEGMENT"
+},
+"SOFV": {
+"summary": "Segment Oil Flow Velocity",
+"category": "SUMMARY_SEGMENT"
+},
+"SOGR": {
+"summary": "Segment Oil Gas Ratio",
+"category": "SUMMARY_SEGMENT"
+},
+"SOHF": {
+"summary": "Segment Oil Holdup Fraction",
+"category": "SUMMARY_SEGMENT"
+},
+"SOIMR": {
+"summary": "Segment Oil Import Rate",
+"category": "SUMMARY_SEGMENT"
+},
+"SOIMT": {
+"summary": "Segment Oil Import Total",
+"category": "SUMMARY_SEGMENT"
+},
+"SORMR": {
+"summary": "Segment Oil Removal Rate",
+"category": "SUMMARY_SEGMENT"
+},
+"SORMT": {
+"summary": "Segment Oil Removal Total",
+"category": "SUMMARY_SEGMENT"
+},
+"SOVIS": {
+"summary": "Segment oil viscosity",
+"category": "SUMMARY_SEGMENT"
+},
+"SOWPP": {
+"summary": "Segment Oil-Water Profile Parameter, C0",
+"category": "SUMMARY_SEGMENT"
+},
+"SOWVD": {
+"summary": "Segment Oil-Water Drift Velocity, Vd",
+"category": "SUMMARY_SEGMENT"
+},
+"SPPOW": {
+"summary": "Working power of a pull through pump",
+"category": "SUMMARY_SEGMENT"
+},
+"SPR": {
+"summary": "Segment Pressure",
+"category": "SUMMARY_SEGMENT"
+},
+"SPRD": {
+"summary": "Segment Pressure Drop",
+"category": "SUMMARY_SEGMENT"
+},
+"SPRDA": {
+"summary": "Segment Pressure drop due to Acceleration head",
+"category": "SUMMARY_SEGMENT"
+},
+"SPRDF": {
+"summary": "Segment Pressure Drop component due to Friction",
+"category": "SUMMARY_SEGMENT"
+},
+"SPRDH": {
+"summary": "Segment Pressure Drop component due to Hydrostatic head",
+"category": "SUMMARY_SEGMENT"
+},
+"SPRDM": {
+"summary": "Segment frictional Pressure Drop Multiplier",
+"category": "SUMMARY_SEGMENT"
+},
+"SPSAT": {
+"summary": "Segment Psat",
+"category": "SUMMARY_SEGMENT"
+},
+"SRBQR": {
+"summary": "Branch flow at current time",
+"category": "SUMMARY_SEGMENT"
+},
+"SRBQT": {
+"summary": "Branch cumulative flow",
+"category": "SUMMARY_SEGMENT"
+},
+"SRRAREA": {
+"summary": "Reach area at current time",
+"category": "SUMMARY_SEGMENT"
+},
+"SRRDEPTH": {
+"summary": "Reach depth at current time",
+"category": "SUMMARY_SEGMENT"
+},
+"SRREXCH": {
+"summary": "Exchange flux at current time",
+"category": "SUMMARY_SEGMENT"
+},
+"SRRFLOW": {
+"summary": "Reach flux through cross-sectional area at current time",
+"category": "SUMMARY_SEGMENT"
+},
+"SRRFRODE": {
+"summary": "Reach Froude number at current time",
+"category": "SUMMARY_SEGMENT"
+},
+"SRRHEAD": {
+"summary": "Reach hydraulic head at current time",
+"category": "SUMMARY_SEGMENT"
+},
+"SRRQR": {
+"summary": "Reach flow at current time",
+"category": "SUMMARY_SEGMENT"
+},
+"SRRQT": {
+"summary": "Reach cumulative flow",
+"category": "SUMMARY_SEGMENT"
+},
+"SRSFC": {
+"summary": "Reach brine concentration",
+"category": "SUMMARY_SEGMENT"
+},
+"SRSFR": {
+"summary": "Reach brine flow rate through connections",
+"category": "SUMMARY_SEGMENT"
+},
+"SRTFC": {
+"summary": "Reach tracer concentration",
+"category": "SUMMARY_SEGMENT"
+},
+"SRTFR": {
+"summary": "Reach tracer flow rate",
+"category": "SUMMARY_SEGMENT"
+},
+"SRTQR": {
+"summary": "River total flow at current time",
+"category": "SUMMARY_SEGMENT"
+},
+"SRTQT": {
+"summary": "River total cumulative flow",
+"category": "SUMMARY_SEGMENT"
+},
+"SSCN": {
+"summary": "Segment brine concentration",
+"category": "SUMMARY_SEGMENT"
+},
+"SSFR": {
+"summary": "Segment brine flow rate",
+"category": "SUMMARY_SEGMENT"
+},
+"SSQU": {
+"summary": "Segment Steam Quality",
+"category": "SUMMARY_SEGMENT"
+},
+"SSTR": {
+"summary": "Strength of ICD on segment",
+"category": "SUMMARY_SEGMENT"
+},
+"STEM": {
+"summary": "Segment Temperature",
+"category": "SUMMARY_SEGMENT"
+},
+"STEPTYPE": {
+"summary": "Step type",
+"category": "SUMMARY_MISC"
+},
+"STFC": {
+"summary": "Segment tracer concentration",
+"category": "SUMMARY_SEGMENT"
+},
+"STFR": {
+"summary": "Segment tracer flow rate",
+"category": "SUMMARY_SEGMENT"
+},
+"SU": {
+"summary": "User-defined segment quantity",
+"category": "SUMMARY_SEGMENT"
+},
+"SWCT": {
+"summary": "Segment Water Cut",
+"category": "SUMMARY_SEGMENT"
+},
+"SWFR": {
+"summary": "Segment Water Flow Rate",
+"category": "SUMMARY_SEGMENT"
+},
+"SWFV": {
+"summary": "Segment Water Flow Velocity",
+"category": "SUMMARY_SEGMENT"
+},
+"SWGR": {
+"summary": "Segment Water Gas Ratio",
+"category": "SUMMARY_SEGMENT"
+},
+"SWHF": {
+"summary": "Segment Water Holdup Fraction",
+"category": "SUMMARY_SEGMENT"
+},
+"SWIMR": {
+"summary": "Segment Water Import Rate",
+"category": "SUMMARY_SEGMENT"
+},
+"SWIMT": {
+"summary": "Segment Water Import Total",
+"category": "SUMMARY_SEGMENT"
+},
+"SWRMR": {
+"summary": "Segment Water Removal Rate",
+"category": "SUMMARY_SEGMENT"
+},
+"SWRMT": {
+"summary": "Segment Water Removal Total",
+"category": "SUMMARY_SEGMENT"
+},
+"SWVIS": {
+"summary": "Segment water viscosity",
+"category": "SUMMARY_SEGMENT"
+},
+"TCPU": {
+"summary": "TCPU",
+"category": "SUMMARY_MISC"
+},
+"TCPUDAY": {
+"summary": "TCPUDAY",
+"category": "SUMMARY_MISC"
+},
+"TCPUTS": {
+"summary": "TCPUTS",
+"category": "SUMMARY_MISC"
+},
+"TELAPLIN": {
+"summary": "TELAPLIN",
+"category": "SUMMARY_MISC"
+},
+"TIME": {
+"summary": "Time",
+"category": "SUMMARY_MISC"
+},
+"TIMESTEP": {
+"summary": "Time step",
+"category": "SUMMARY_MISC"
+},
+"TIMESTRY": {
+"summary": "TIMESTRY",
+"category": "SUMMARY_MISC"
+},
+"WALQ": {
+"summary": "Well Artificial Lift Quantity",
+"category": "SUMMARY_WELL"
+},
+"WAMF": {
+"summary": "Component aqueous mole fraction, from producing completions",
+"category": "SUMMARY_WELL"
+},
+"WAPI": {
+"summary": "Oil API",
+"category": "SUMMARY_WELL"
+},
+"WBGLR": {
+"summary": "Bottom hole Gas-Liquid Ratio",
+"category": "SUMMARY_WELL"
+},
+"WBHP": {
+"summary": "Bottom Hole Pressure",
+"category": "SUMMARY_WELL"
+},
+"WBHPFP": {
+"summary": "Well Bottom Hole Pressure from end of First Pass",
+"category": "SUMMARY_WELL"
+},
+"WBHPH": {
+"summary": "Bottom Hole Pressure History",
+"category": "SUMMARY_WELL"
+},
+"WBHPT": {
+"summary": "Bottom Hole Pressure Target/Limit",
+"category": "SUMMARY_WELL"
+},
+"WBHWCn": {
+"summary": "Derivative of well BHP with respect to parameter n",
+"category": "SUMMARY_WELL"
+},
+"WBP": {
+"summary": "One-point Pressure Average",
+"category": "SUMMARY_WELL"
+},
+"WBP4": {
+"summary": "Four-point Pressure Average",
+"category": "SUMMARY_WELL"
+},
+"WBP5": {
+"summary": "Five-point Pressure Average",
+"category": "SUMMARY_WELL"
+},
+"WBP9": {
+"summary": "Nine-point Pressure Average",
+"category": "SUMMARY_WELL"
+},
+"WCGIR": {
+"summary": "Hydrocarbon Component Gas Injection Rate",
+"category": "SUMMARY_WELL"
+},
+"WCGMR": {
+"summary": "Hydrocarbon component",
+"category": "SUMMARY_WELL"
+},
+"WCGMRn": {
+"summary": "Hydrocarbon component molar rates in the gas phase for nth separator stage",
+"category": "SUMMARY_WELL"
+},
+"WCGMT": {
+"summary": "Hydrocarbon component",
+"category": "SUMMARY_WELL"
+},
+"WCGPR": {
+"summary": "Hydrocarbon Component Gas Production Rate",
+"category": "SUMMARY_WELL"
+},
+"WCGRn": {
+"summary": "Hydrocarbon component molar rates in the gas phase for nth separator stage",
+"category": "SUMMARY_WELL"
+},
+"WCHMR": {
+"summary": "Hydrocarbon Component",
+"category": "SUMMARY_WELL"
+},
+"WCHMT": {
+"summary": "Hydrocarbon Component",
+"category": "SUMMARY_WELL"
+},
+"WCIC": {
+"summary": "Polymer Injection Concentration",
+"category": "SUMMARY_WELL"
+},
+"WCIR": {
+"summary": "Polymer Injection Rate",
+"category": "SUMMARY_WELL"
+},
+"WCIT": {
+"summary": "Polymer Injection Total",
+"category": "SUMMARY_WELL"
+},
+"WCMIR": {
+"summary": "Hydrocarbon Component Molar Injection Rates",
+"category": "SUMMARY_WELL"
+},
+"WCMIT": {
+"summary": "Hydrocarbon Component Molar Injection Totals",
+"category": "SUMMARY_WELL"
+},
+"WCMPR": {
+"summary": "Hydrocarbon Component Molar Production Rates",
+"category": "SUMMARY_WELL"
+},
+"WCMPT": {
+"summary": "Hydrocarbon Component",
+"category": "SUMMARY_WELL"
+},
+"WCNMR": {
+"summary": "Hydrocarbon component molar rates in the NGL phase",
+"category": "SUMMARY_WELL"
+},
+"WCNWR": {
+"summary": "Hydrocarbon component mass rates in the NGL phase",
+"category": "SUMMARY_WELL"
+},
+"WCOMR": {
+"summary": "Hydrocarbon component",
+"category": "SUMMARY_WELL"
+},
+"WCOMRn": {
+"summary": "Hydrocarbon component",
+"category": "SUMMARY_WELL"
+},
+"WCOMT": {
+"summary": "Hydrocarbon component",
+"category": "SUMMARY_WELL"
+},
+"WCOPR": {
+"summary": "Hydrocarbon Component Oil Production Rate",
+"category": "SUMMARY_WELL"
+},
+"WCORn": {
+"summary": "Hydrocarbon component",
+"category": "SUMMARY_WELL"
+},
+"WCPC": {
+"summary": "Polymer Production Concentration",
+"category": "SUMMARY_WELL"
+},
+"WCPR": {
+"summary": "Polymer Production Rate",
+"category": "SUMMARY_WELL"
+},
+"WCPT": {
+"summary": "Polymer Production Total",
+"category": "SUMMARY_WELL"
+},
+"WCWGIR": {
+"summary": "Hydrocarbon Component Wet Gas Injection Rate",
+"category": "SUMMARY_WELL"
+},
+"WCWGIT": {
+"summary": "Hydrocarbon Component Wet Gas Injection Total",
+"category": "SUMMARY_WELL"
+},
+"WCWGPR": {
+"summary": "Hydrocarbon Component Wet Gas Production Rate",
+"category": "SUMMARY_WELL"
+},
+"WCWGPT": {
+"summary": "Hydrocarbon Component Wet Gas Production Total",
+"category": "SUMMARY_WELL"
+},
+"WDRPR": {
+"summary": "Well drilling priority",
+"category": "SUMMARY_WELL"
+},
+"WEDC": {
+"summary": "Energy Delivery Capacity",
+"category": "SUMMARY_WELL"
+},
+"WEFF": {
+"summary": "Efficiency Factor",
+"category": "SUMMARY_WELL"
+},
+"WEFFG": {
+"summary": "Product of efficiency factors of the well and all its superior groups",
+"category": "SUMMARY_WELL"
+},
+"WEPR": {
+"summary": "Energy Production Rate",
+"category": "SUMMARY_WELL"
+},
+"WEPT": {
+"summary": "Energy Production Total",
+"category": "SUMMARY_WELL"
+},
+"WGCV": {
+"summary": "Gas Calorific Value",
+"category": "SUMMARY_WELL"
+},
+"WGDC": {
+"summary": "Gas Delivery Capacity",
+"category": "SUMMARY_WELL"
+},
+"WGDN": {
+"summary": "Gas Density at Surface Conditions",
+"category": "SUMMARY_WELL"
+},
+"WGFRL": {
+"summary": "Gas Flow Rate",
+"category": "SUMMARY_WELL_COMPLETION"
+},
+"WGFWCn": {
+"summary": "Derivative of well gas flow rate with respect to parameter n",
+"category": "SUMMARY_WELL"
+},
+"WGIGR": {
+"summary": "Gas Injection Guide Rate",
+"category": "SUMMARY_WELL"
+},
+"WGIP": {
+"summary": "Gas Potential Injection rate",
+"category": "SUMMARY_WELL"
+},
+"WGIP2": {
+"summary": "Gas Potential Injection rate",
+"category": "SUMMARY_WELL"
+},
+"WGIR": {
+"summary": "Gas Injection Rate",
+"category": "SUMMARY_WELL"
+},
+"WGIRH": {
+"summary": "Gas Injection Rate History",
+"category": "SUMMARY_WELL"
+},
+"WGIRL": {
+"summary": "Gas Injection Rate",
+"category": "SUMMARY_WELL_COMPLETION"
+},
+"WGIRT": {
+"summary": "Gas Injection Rate Target/Limit",
+"category": "SUMMARY_WELL"
+},
+"WGIT": {
+"summary": "Gas Injection Total",
+"category": "SUMMARY_WELL"
+},
+"WGITH": {
+"summary": "Gas Injection Total History",
+"category": "SUMMARY_WELL"
+},
+"WGITL": {
+"summary": "Gas Injection Total",
+"category": "SUMMARY_WELL_COMPLETION"
+},
+"WGLIR": {
+"summary": "Gas Lift Injection Rate",
+"category": "SUMMARY_WELL"
+},
+"WGLIT": {
+"summary": "Gas Lift Injection Total",
+"category": "SUMMARY_WELL"
+},
+"WGLR": {
+"summary": "Gas-Liquid Ratio",
+"category": "SUMMARY_WELL"
+},
+"WGLRH": {
+"summary": "Gas-Liquid Ratio History",
+"category": "SUMMARY_WELL"
+},
+"WGLRL": {
+"summary": "Gas-Liquid Ratio",
+"category": "SUMMARY_WELL_COMPLETION"
+},
+"WGMR": {
+"summary": "Gas Mass Rate",
+"category": "SUMMARY_WELL"
+},
+"WGMT": {
+"summary": "Gas Mass Total",
+"category": "SUMMARY_WELL"
+},
+"WGOR": {
+"summary": "Gas-Oil Ratio",
+"category": "SUMMARY_WELL"
+},
+"WGORH": {
+"summary": "Gas-Oil Ratio History",
+"category": "SUMMARY_WELL"
+},
+"WGORL": {
+"summary": "Gas-Oil Ratio",
+"category": "SUMMARY_WELL_COMPLETION"
+},
+"WGPGR": {
+"summary": "Gas Production Guide Rate",
+"category": "SUMMARY_WELL"
+},
+"WGPI": {
+"summary": "Gas Potential Injection rate",
+"category": "SUMMARY_WELL"
+},
+"WGPI2": {
+"summary": "Gas Potential Injection rate",
+"category": "SUMMARY_WELL"
+},
+"WGPP": {
+"summary": "Gas Potential Production rate",
+"category": "SUMMARY_WELL"
+},
+"WGPP2": {
+"summary": "Gas Potential Production rate",
+"category": "SUMMARY_WELL"
+},
+"WGPPF": {
+"summary": "Free Gas Potential Production rate",
+"category": "SUMMARY_WELL"
+},
+"WGPPF2": {
+"summary": "Free Gas Potential Production rate",
+"category": "SUMMARY_WELL"
+},
+"WGPPS": {
+"summary": "Solution",
+"category": "SUMMARY_WELL"
+},
+"WGPPS2": {
+"summary": "Solution",
+"category": "SUMMARY_WELL"
+},
+"WGPR": {
+"summary": "Gas Production Rate",
+"category": "SUMMARY_WELL"
+},
+"WGPR1": {
+"summary": "Gas Production Rate above GOC",
+"category": "SUMMARY_WELL"
+},
+"WGPR2": {
+"summary": "Gas Production Rate below GOC",
+"category": "SUMMARY_WELL"
+},
+"WGPRA": {
+"summary": "Gas Production Rate above",
+"category": "SUMMARY_WELL"
+},
+"WGPRB": {
+"summary": "Gas Production Rate below",
+"category": "SUMMARY_WELL"
+},
+"WGPRF": {
+"summary": "Free Gas Production Rate",
+"category": "SUMMARY_WELL"
+},
+"WGPRFP": {
+"summary": "Well Gas Production Rate from end of First Pass",
+"category": "SUMMARY_WELL"
+},
+"WGPRH": {
+"summary": "Gas Production Rate History",
+"category": "SUMMARY_WELL"
+},
+"WGPRL": {
+"summary": "Gas Production Rate",
+"category": "SUMMARY_WELL_COMPLETION"
+},
+"WGPRS": {
+"summary": "Solution Gas Production Rate",
+"category": "SUMMARY_WELL"
+},
+"WGPRT": {
+"summary": "Gas Production Rate Target/Limit",
+"category": "SUMMARY_WELL"
+},
+"WGPT": {
+"summary": "Gas Production Total",
+"category": "SUMMARY_WELL"
+},
+"WGPT1": {
+"summary": "Gas Production Total above GOC",
+"category": "SUMMARY_WELL"
+},
+"WGPT2": {
+"summary": "Gas Production Total below GOC",
+"category": "SUMMARY_WELL"
+},
+"WGPTA": {
+"summary": "Gas Production Total above",
+"category": "SUMMARY_WELL"
+},
+"WGPTB": {
+"summary": "Gas Production Total below",
+"category": "SUMMARY_WELL"
+},
+"WGPTF": {
+"summary": "Free Gas Production Total",
+"category": "SUMMARY_WELL"
+},
+"WGPTH": {
+"summary": "Gas Production Total History",
+"category": "SUMMARY_WELL"
+},
+"WGPTL": {
+"summary": "Gas Production Total",
+"category": "SUMMARY_WELL_COMPLETION"
+},
+"WGPTS": {
+"summary": "Solution Gas Production Total",
+"category": "SUMMARY_WELL"
+},
+"WGQ": {
+"summary": "Gas Quality",
+"category": "SUMMARY_WELL"
+},
+"WGVIR": {
+"summary": "Gas Voidage Injection Rate",
+"category": "SUMMARY_WELL"
+},
+"WGVIT": {
+"summary": "Gas Voidage Injection Total",
+"category": "SUMMARY_WELL"
+},
+"WGVPR": {
+"summary": "Gas Voidage Production Rate",
+"category": "SUMMARY_WELL"
+},
+"WGVPT": {
+"summary": "Gas Voidage Production Total",
+"category": "SUMMARY_WELL"
+},
+"WGnPR": {
+"summary": "nth separator stage gas rate",
+"category": "SUMMARY_WELL"
+},
+"WGnPT": {
+"summary": "nth separator stage gas total",
+"category": "SUMMARY_WELL"
+},
+"WHD": {
+"summary": "Hydraulic head in well based on the reference depth given in HYDRHEAD and the well's reference depth",
+"category": "SUMMARY_WELL"
+},
+"WHDF": {
+"summary": "Hydraulic head in well based on the reference depth given in HYDRHEAD and the well's reference depth calculated at freshwater conditions",
+"category": "SUMMARY_WELL"
+},
+"WHMIR": {
+"summary": "Hydrocarbon Molar Injection Rate",
+"category": "SUMMARY_WELL"
+},
+"WHMIT": {
+"summary": "Hydrocarbon Molar Injection Total",
+"category": "SUMMARY_WELL"
+},
+"WHMPR": {
+"summary": "Hydrocarbon Molar Production Rate",
+"category": "SUMMARY_WELL"
+},
+"WHMPT": {
+"summary": "Hydrocarbon Molar Production Total",
+"category": "SUMMARY_WELL"
+},
+"WLFRL": {
+"summary": "Liquid Flow Rate",
+"category": "SUMMARY_WELL_COMPLETION"
+},
+"WLPR": {
+"summary": "Liquid Production Rate",
+"category": "SUMMARY_WELL"
+},
+"WLPRH": {
+"summary": "Liquid Production Rate History",
+"category": "SUMMARY_WELL"
+},
+"WLPRT": {
+"summary": "Liquid Production Rate Target/Limit",
+"category": "SUMMARY_WELL"
+},
+"WLPT": {
+"summary": "Liquid Production Total",
+"category": "SUMMARY_WELL"
+},
+"WLPTH": {
+"summary": "Liquid Production Total History",
+"category": "SUMMARY_WELL"
+},
+"WLPTL": {
+"summary": "Liquid Production Total",
+"category": "SUMMARY_WELL_COMPLETION"
+},
+"WMCON": {
+"summary": "The number of connections capable of flowing in the well",
+"category": "SUMMARY_WELL"
+},
+"WMCTL": {
+"summary": "Mode of Control",
+"category": "SUMMARY_WELL"
+},
+"WMIR": {
+"summary": "Methane Injection Rate",
+"category": "SUMMARY_WELL"
+},
+"WMIT": {
+"summary": "Methane Injection Total",
+"category": "SUMMARY_WELL"
+},
+"WMMW": {
+"summary": "Mean molecular weight of wellstream",
+"category": "SUMMARY_WELL"
+},
+"WMPR": {
+"summary": "Methane Production Rate",
+"category": "SUMMARY_WELL"
+},
+"WMPT": {
+"summary": "Methane Production Total",
+"category": "SUMMARY_WELL"
+},
+"WMUF": {
+"summary": "Make-up fraction",
+"category": "SUMMARY_WELL"
+},
+"WMVFP": {
+"summary": "VFP table number used by the well",
+"category": "SUMMARY_WELL"
+},
+"WNIR": {
+"summary": "Solvent Injection Rate",
+"category": "SUMMARY_WELL"
+},
+"WNIT": {
+"summary": "Solvent Injection Total",
+"category": "SUMMARY_WELL"
+},
+"WNLPR": {
+"summary": "NGL Production Rate",
+"category": "SUMMARY_WELL"
+},
+"WNLPRH": {
+"summary": "NGL Production Rate History",
+"category": "SUMMARY_WELL"
+},
+"WNLPRT": {
+"summary": "NGL Production Rate Target",
+"category": "SUMMARY_WELL"
+},
+"WNLPT": {
+"summary": "NGL Production Total",
+"category": "SUMMARY_WELL"
+},
+"WNLPTH": {
+"summary": "NGL Production Total History",
+"category": "SUMMARY_WELL"
+},
+"WNPR": {
+"summary": "Solvent Production Rate",
+"category": "SUMMARY_WELL"
+},
+"WNPT": {
+"summary": "Solvent Production Total",
+"category": "SUMMARY_WELL"
+},
+"WODN": {
+"summary": "Oil Density at Surface Conditions",
+"category": "SUMMARY_WELL"
+},
+"WOFRL": {
+"summary": "Oil Flow Rate",
+"category": "SUMMARY_WELL_COMPLETION"
+},
+"WOFWCn": {
+"summary": "Derivative of well oil flow rate with respect to parameter n",
+"category": "SUMMARY_WELL"
+},
+"WOGLR": {
+"summary": "Well Oil Gas Lift Ratio",
+"category": "SUMMARY_WELL"
+},
+"WOGR": {
+"summary": "Oil-Gas Ratio",
+"category": "SUMMARY_WELL"
+},
+"WOGRH": {
+"summary": "Oil-Gas Ratio History",
+"category": "SUMMARY_WELL"
+},
+"WOGRL": {
+"summary": "Oil-Gas Ratio",
+"category": "SUMMARY_WELL_COMPLETION"
+},
+"WOIGR": {
+"summary": "Oil Injection Guide Rate",
+"category": "SUMMARY_WELL"
+},
+"WOIR": {
+"summary": "Oil Injection Rate",
+"category": "SUMMARY_WELL"
+},
+"WOIRH": {
+"summary": "Oil Injection Rate History",
+"category": "SUMMARY_WELL"
+},
+"WOIRT": {
+"summary": "Oil Injection Rate Target/Limit",
+"category": "SUMMARY_WELL"
+},
+"WOIT": {
+"summary": "Oil Injection Total",
+"category": "SUMMARY_WELL"
+},
+"WOITH": {
+"summary": "Oil Injection Total History",
+"category": "SUMMARY_WELL"
+},
+"WOITL": {
+"summary": "Oil Injection Total",
+"category": "SUMMARY_WELL_COMPLETION"
+},
+"WOMR": {
+"summary": "Oil Mass Rate",
+"category": "SUMMARY_WELL"
+},
+"WOMT": {
+"summary": "Oil Mass Total",
+"category": "SUMMARY_WELL"
+},
+"WOPGR": {
+"summary": "Oil Production Guide Rate",
+"category": "SUMMARY_WELL"
+},
+"WOPI": {
+"summary": "Oil Potential Injection rate",
+"category": "SUMMARY_WELL"
+},
+"WOPI2": {
+"summary": "Oil Potential Injection rate",
+"category": "SUMMARY_WELL"
+},
+"WOPP": {
+"summary": "Oil Potential Production rate",
+"category": "SUMMARY_WELL"
+},
+"WOPP2": {
+"summary": "Oil Potential Production rate",
+"category": "SUMMARY_WELL"
+},
+"WOPR": {
+"summary": "Oil Production Rate",
+"category": "SUMMARY_WELL"
+},
+"WOPR1": {
+"summary": "Oil Production Rate above GOC",
+"category": "SUMMARY_WELL"
+},
+"WOPR2": {
+"summary": "Oil Production Rate below GOC",
+"category": "SUMMARY_WELL"
+},
+"WOPRA": {
+"summary": "Oil Production Rate above GOC",
+"category": "SUMMARY_WELL"
+},
+"WOPRB": {
+"summary": "Oil Production Rate below GOC",
+"category": "SUMMARY_WELL"
+},
+"WOPRF": {
+"summary": "Free Oil Production Rate",
+"category": "SUMMARY_WELL"
+},
+"WOPRH": {
+"summary": "Oil Production Rate History",
+"category": "SUMMARY_WELL"
+},
+"WOPRL": {
+"summary": "Oil Production Rate",
+"category": "SUMMARY_WELL_COMPLETION"
+},
+"WOPRS": {
+"summary": "Solution Oil Production Rate",
+"category": "SUMMARY_WELL"
+},
+"WOPRT": {
+"summary": "Oil Production Rate Target/Limit",
+"category": "SUMMARY_WELL"
+},
+"WOPT": {
+"summary": "Oil Production Total",
+"category": "SUMMARY_WELL"
+},
+"WOPT1": {
+"summary": "Oil Production Total above GOC",
+"category": "SUMMARY_WELL"
+},
+"WOPT2": {
+"summary": "Oil Production Total below GOC",
+"category": "SUMMARY_WELL"
+},
+"WOPTA": {
+"summary": "Oil Production Total above GOC",
+"category": "SUMMARY_WELL"
+},
+"WOPTB": {
+"summary": "Oil Production Total below GOC",
+"category": "SUMMARY_WELL"
+},
+"WOPTF": {
+"summary": "Free Oil Production Total",
+"category": "SUMMARY_WELL"
+},
+"WOPTH": {
+"summary": "Oil Production Total History",
+"category": "SUMMARY_WELL"
+},
+"WOPTL": {
+"summary": "Oil Production Total",
+"category": "SUMMARY_WELL"
+},
+"WOPTS": {
+"summary": "Solution Oil Production Total",
+"category": "SUMMARY_WELL"
+},
+"WOVIR": {
+"summary": "Oil Voidage Injection Rate",
+"category": "SUMMARY_WELL"
+},
+"WOVIT": {
+"summary": "Oil Voidage Injection Total",
+"category": "SUMMARY_WELL"
+},
+"WOVPR": {
+"summary": "Oil Voidage Production Rate",
+"category": "SUMMARY_WELL"
+},
+"WOVPT": {
+"summary": "Oil Voidage Production Total",
+"category": "SUMMARY_WELL"
+},
+"WOnPR": {
+"summary": "nth separator stage oil rate",
+"category": "SUMMARY_WELL"
+},
+"WOnPT": {
+"summary": "nth separator stage oil total",
+"category": "SUMMARY_WELL"
+},
+"WPI": {
+"summary": "Productivity Index of well's preferred phase",
+"category": "SUMMARY_WELL"
+},
+"WPI1": {
+"summary": "Productivity Index based on the value of WBP",
+"category": "SUMMARY_WELL"
+},
+"WPI4": {
+"summary": "Productivity Index based on the value of WBP4",
+"category": "SUMMARY_WELL"
+},
+"WPI5": {
+"summary": "Productivity Index based on the value of WBP5",
+"category": "SUMMARY_WELL"
+},
+"WPI9": {
+"summary": "Productivity Index based on the value of WBP9",
+"category": "SUMMARY_WELL"
+},
+"WPIG": {
+"summary": "Gas phase PI",
+"category": "SUMMARY_WELL"
+},
+"WPIL": {
+"summary": "Liquid phase PI",
+"category": "SUMMARY_WELL"
+},
+"WPIO": {
+"summary": "Oil phase PI",
+"category": "SUMMARY_WELL"
+},
+"WPIW": {
+"summary": "Water phase PI",
+"category": "SUMMARY_WELL"
+},
+"WPWE0": {
+"summary": "Well drilled indicator",
+"category": "SUMMARY_WELL"
+},
+"WPWE1": {
+"summary": "Connections opened indicator",
+"category": "SUMMARY_WELL"
+},
+"WPWE2": {
+"summary": "Connections closed indicator",
+"category": "SUMMARY_WELL"
+},
+"WPWE3": {
+"summary": "Connections closed to bottom indicator",
+"category": "SUMMARY_WELL"
+},
+"WPWE4": {
+"summary": "Well stopped indicator",
+"category": "SUMMARY_WELL"
+},
+"WPWE5": {
+"summary": "Injector to producer indicator",
+"category": "SUMMARY_WELL"
+},
+"WPWE6": {
+"summary": "Producer to injector indicator",
+"category": "SUMMARY_WELL"
+},
+"WPWE7": {
+"summary": "Well shut indicator",
+"category": "SUMMARY_WELL"
+},
+"WPWEM": {
+"summary": "WELEVNT output mnemonic",
+"category": "SUMMARY_WELL"
+},
+"WSIC": {
+"summary": "Salt Injection Concentration",
+"category": "SUMMARY_WELL"
+},
+"WSIR": {
+"summary": "Salt Injection Rate",
+"category": "SUMMARY_WELL"
+},
+"WSIT": {
+"summary": "Salt Injection Total",
+"category": "SUMMARY_WELL"
+},
+"WSPC": {
+"summary": "Salt Production Concentration",
+"category": "SUMMARY_WELL"
+},
+"WSPR": {
+"summary": "Salt Production Rate",
+"category": "SUMMARY_WELL"
+},
+"WSPT": {
+"summary": "Salt Production Total",
+"category": "SUMMARY_WELL"
+},
+"WSTAT": {
+"summary": "Well State Indicator",
+"category": "SUMMARY_WELL"
+},
+"WTCM": {
+"summary": "Tracer Carrier molar Rate",
+"category": "SUMMARY_WELL"
+},
+"WTHP": {
+"summary": "Tubing Head Pressure",
+"category": "SUMMARY_WELL"
+},
+"WTHPFP": {
+"summary": "Well Tubing Head Pressure from end of First Pass",
+"category": "SUMMARY_WELL"
+},
+"WTHPH": {
+"summary": "Tubing Head Pressure History",
+"category": "SUMMARY_WELL"
+},
+"WTHT": {
+"summary": "Tubing Head Temperature",
+"category": "SUMMARY_WELL"
+},
+"WTIC": {
+"summary": "Tracer Injection Concentration",
+"category": "SUMMARY_WELL"
+},
+"WTICF": {
+"summary": "Tracer Injection Concentration",
+"category": "SUMMARY_WELL"
+},
+"WTICHEA": {
+"summary": "Injection Temperature",
+"category": "SUMMARY_WELL"
+},
+"WTICS": {
+"summary": "Tracer Injection Concentration",
+"category": "SUMMARY_WELL"
+},
+"WTIR": {
+"summary": "Tracer Injection Rate",
+"category": "SUMMARY_WELL"
+},
+"WTIRALK": {
+"summary": "Injection Rate",
+"category": "SUMMARY_WELL"
+},
+"WTIRANI": {
+"summary": "Anion Injection Rate",
+"category": "SUMMARY_WELL"
+},
+"WTIRCAT": {
+"summary": "Cation Injection Rate",
+"category": "SUMMARY_WELL"
+},
+"WTIRF": {
+"summary": "Tracer Injection Rate",
+"category": "SUMMARY_WELL"
+},
+"WTIRFOA": {
+"summary": "Injection Rate",
+"category": "SUMMARY_WELL"
+},
+"WTIRHEA": {
+"summary": "Energy flows",
+"category": "SUMMARY_WELL"
+},
+"WTIRS": {
+"summary": "Tracer Injection Rate",
+"category": "SUMMARY_WELL"
+},
+"WTIRSUR": {
+"summary": "Injection Rate",
+"category": "SUMMARY_WELL"
+},
+"WTIT": {
+"summary": "Tracer Injection Total",
+"category": "SUMMARY_WELL"
+},
+"WTITALK": {
+"summary": "Injection Total",
+"category": "SUMMARY_WELL"
+},
+"WTITANI": {
+"summary": "Anion Injection Total",
+"category": "SUMMARY_WELL"
+},
+"WTITCAT": {
+"summary": "Cation Injection Total",
+"category": "SUMMARY_WELL"
+},
+"WTITF": {
+"summary": "Tracer Injection Total",
+"category": "SUMMARY_WELL"
+},
+"WTITFOA": {
+"summary": "Injection Total",
+"category": "SUMMARY_WELL"
+},
+"WTITHEA": {
+"summary": "Energy Injection Total",
+"category": "SUMMARY_WELL"
+},
+"WTITS": {
+"summary": "Tracer Injection Total",
+"category": "SUMMARY_WELL"
+},
+"WTITSUR": {
+"summary": "Injection Total",
+"category": "SUMMARY_WELL"
+},
+"WTLM": {
+"summary": "Traced mass liquid total",
+"category": "SUMMARY_WELL"
+},
+"WTMF": {
+"summary": "Traced molar fraction",
+"category": "SUMMARY_WELL"
+},
+"WTML": {
+"summary": "Traced mass liquid rate",
+"category": "SUMMARY_WELL"
+},
+"WTMR": {
+"summary": "Traced mass Rate",
+"category": "SUMMARY_WELL"
+},
+"WTMT": {
+"summary": "Traced mass Total",
+"category": "SUMMARY_WELL"
+},
+"WTMV": {
+"summary": "Traced mass vapor rate",
+"category": "SUMMARY_WELL"
+},
+"WTPC": {
+"summary": "Tracer Production Concentration",
+"category": "SUMMARY_WELL"
+},
+"WTPCF": {
+"summary": "Tracer Production",
+"category": "SUMMARY_WELL"
+},
+"WTPCHEA": {
+"summary": "Production Temperature",
+"category": "SUMMARY_WELL"
+},
+"WTPCS": {
+"summary": "Tracer Production",
+"category": "SUMMARY_WELL"
+},
+"WTPR": {
+"summary": "Tracer Production Rate",
+"category": "SUMMARY_WELL"
+},
+"WTPRALK": {
+"summary": "Production Rate",
+"category": "SUMMARY_WELL"
+},
+"WTPRANI": {
+"summary": "Anion Production Rate",
+"category": "SUMMARY_WELL"
+},
+"WTPRCAT": {
+"summary": "Cation Production Rate",
+"category": "SUMMARY_WELL"
+},
+"WTPRF": {
+"summary": "Tracer Production Rate",
+"category": "SUMMARY_WELL"
+},
+"WTPRFOA": {
+"summary": "Production Rate",
+"category": "SUMMARY_WELL"
+},
+"WTPRHEA": {
+"summary": "Energy flows",
+"category": "SUMMARY_WELL"
+},
+"WTPRS": {
+"summary": "Tracer Production Rate",
+"category": "SUMMARY_WELL"
+},
+"WTPRSUR": {
+"summary": "Production Rate",
+"category": "SUMMARY_WELL"
+},
+"WTPT": {
+"summary": "Tracer Production Total",
+"category": "SUMMARY_WELL"
+},
+"WTPTALK": {
+"summary": "Production Total",
+"category": "SUMMARY_WELL"
+},
+"WTPTANI": {
+"summary": "Anion Production Total",
+"category": "SUMMARY_WELL"
+},
+"WTPTCAT": {
+"summary": "Cation Production Total",
+"category": "SUMMARY_WELL"
+},
+"WTPTF": {
+"summary": "Tracer Production Total",
+"category": "SUMMARY_WELL"
+},
+"WTPTFOA": {
+"summary": "Production Total",
+"category": "SUMMARY_WELL"
+},
+"WTPTHEA": {
+"summary": "Energy Production Total",
+"category": "SUMMARY_WELL"
+},
+"WTPTS": {
+"summary": "Tracer Production Total",
+"category": "SUMMARY_WELL"
+},
+"WTPTSUR": {
+"summary": "Production Total",
+"category": "SUMMARY_WELL"
+},
+"WTQR": {
+"summary": "Traced molar Rate",
+"category": "SUMMARY_WELL"
+},
+"WTTL": {
+"summary": "Traced liquid volume total",
+"category": "SUMMARY_WELL"
+},
+"WTTV": {
+"summary": "Traced vapor volume total",
+"category": "SUMMARY_WELL"
+},
+"WTVL": {
+"summary": "Traced liquid volume rate",
+"category": "SUMMARY_WELL"
+},
+"WTVM": {
+"summary": "Traced mass vapor total",
+"category": "SUMMARY_WELL"
+},
+"WTVV": {
+"summary": "Traced vapor volume rate",
+"category": "SUMMARY_WELL"
+},
+"WU": {
+"summary": "User-defined well quantity",
+"category": "SUMMARY_WELL"
+},
+"WVFRL": {
+"summary": "Res Volume Flow Rate",
+"category": "SUMMARY_WELL_COMPLETION"
+},
+"WVIR": {
+"summary": "Res Volume Injection Rate",
+"category": "SUMMARY_WELL"
+},
+"WVIRL": {
+"summary": "Res Volume Injection Flow Rate",
+"category": "SUMMARY_WELL_COMPLETION"
+},
+"WVIRT": {
+"summary": "Res Volume Injection Rate Target/Limit",
+"category": "SUMMARY_WELL"
+},
+"WVIT": {
+"summary": "Res Volume Injection Total",
+"category": "SUMMARY_WELL"
+},
+"WVITL": {
+"summary": "Res Volume Injection Total",
+"category": "SUMMARY_WELL_COMPLETION"
+},
+"WVPGR": {
+"summary": "Res Volume Production Guide Rate",
+"category": "SUMMARY_WELL"
+},
+"WVPR": {
+"summary": "Res Volume Production Rate",
+"category": "SUMMARY_WELL"
+},
+"WVPRL": {
+"summary": "Res Volume Production Flow Rate",
+"category": "SUMMARY_WELL_COMPLETION"
+},
+"WVPRT": {
+"summary": "Res Volume Production Rate Target/Limit",
+"category": "SUMMARY_WELL"
+},
+"WVPT": {
+"summary": "Res Volume Production Total",
+"category": "SUMMARY_WELL"
+},
+"WVPTL": {
+"summary": "Res Volume Production Total",
+"category": "SUMMARY_WELL_COMPLETION"
+},
+"WWCT": {
+"summary": "Water Cut",
+"category": "SUMMARY_WELL"
+},
+"WWCTH": {
+"summary": "Water Cut History",
+"category": "SUMMARY_WELL"
+},
+"WWCTL": {
+"summary": "Water Cut",
+"category": "SUMMARY_WELL_COMPLETION"
+},
+"WWFRL": {
+"summary": "Water Flow Rate",
+"category": "SUMMARY_WELL_COMPLETION"
+},
+"WWFWCn": {
+"summary": "Derivative of water flow rate with respect to parameter n",
+"category": "SUMMARY_WELL"
+},
+"WWGIR": {
+"summary": "Wet Gas Injection Rate",
+"category": "SUMMARY_WELL"
+},
+"WWGIT": {
+"summary": "Wet Gas Injection Total",
+"category": "SUMMARY_WELL"
+},
+"WWGPR": {
+"summary": "Wet Gas Production Rate",
+"category": "SUMMARY_WELL"
+},
+"WWGPRH": {
+"summary": "Wet Gas Production Rate History",
+"category": "SUMMARY_WELL"
+},
+"WWGPT": {
+"summary": "Wet Gas Production Total",
+"category": "SUMMARY_WELL"
+},
+"WWGR": {
+"summary": "Water-Gas Ratio",
+"category": "SUMMARY_WELL"
+},
+"WWGRH": {
+"summary": "Water-Gas Ratio History",
+"category": "SUMMARY_WELL"
+},
+"WWGRL": {
+"summary": "Water-Gas Ratio",
+"category": "SUMMARY_WELL_COMPLETION"
+},
+"WWIGR": {
+"summary": "Water Injection Guide Rate",
+"category": "SUMMARY_WELL"
+},
+"WWIP": {
+"summary": "Water Potential Injection rate",
+"category": "SUMMARY_WELL"
+},
+"WWIP2": {
+"summary": "Water Potential Injection rate",
+"category": "SUMMARY_WELL"
+},
+"WWIR": {
+"summary": "Water Injection Rate",
+"category": "SUMMARY_WELL"
+},
+"WWIRH": {
+"summary": "Water Injection Rate History",
+"category": "SUMMARY_WELL"
+},
+"WWIRL": {
+"summary": "Water Injection Rate",
+"category": "SUMMARY_WELL_COMPLETION"
+},
+"WWIRT": {
+"summary": "Water Injection Rate Target/Limit",
+"category": "SUMMARY_WELL"
+},
+"WWIT": {
+"summary": "Water Injection Total",
+"category": "SUMMARY_WELL"
+},
+"WWITH": {
+"summary": "Water Injection Total History",
+"category": "SUMMARY_WELL"
+},
+"WWITL": {
+"summary": "Water Injection Total",
+"category": "SUMMARY_WELL_COMPLETION"
+},
+"WWMIR": {
+"summary": "Water component molar injection rate",
+"category": "SUMMARY_WELL"
+},
+"WWMIT": {
+"summary": "Water component molar injection total",
+"category": "SUMMARY_WELL"
+},
+"WWMPR": {
+"summary": "Water component molar production rate",
+"category": "SUMMARY_WELL"
+},
+"WWMPT": {
+"summary": "Water component molar production total",
+"category": "SUMMARY_WELL"
+},
+"WWMR": {
+"summary": "Water Mass Rate",
+"category": "SUMMARY_WELL"
+},
+"WWMT": {
+"summary": "Water Mass Total",
+"category": "SUMMARY_WELL"
+},
+"WWPGR": {
+"summary": "Water Production Guide Rate",
+"category": "SUMMARY_WELL"
+},
+"WWPI": {
+"summary": "Water Potential Injection rate",
+"category": "SUMMARY_WELL"
+},
+"WWPI2": {
+"summary": "Water Potential Injection rate",
+"category": "SUMMARY_WELL"
+},
+"WWPIR": {
+"summary": "Ratio of produced water to injected water (percentage)",
+"category": "SUMMARY_WELL"
+},
+"WWPP": {
+"summary": "Water Potential Production rate",
+"category": "SUMMARY_WELL"
+},
+"WWPP2": {
+"summary": "Water Potential Production rate",
+"category": "SUMMARY_WELL"
+},
+"WWPR": {
+"summary": "Water Production Rate",
+"category": "SUMMARY_WELL"
+},
+"WWPRH": {
+"summary": "Water Production Rate History",
+"category": "SUMMARY_WELL"
+},
+"WWPRL": {
+"summary": "Water Production Rate",
+"category": "SUMMARY_WELL_COMPLETION"
+},
+"WWPRT": {
+"summary": "Water Production Rate Target/Limit",
+"category": "SUMMARY_WELL"
+},
+"WWPT": {
+"summary": "Water Production Total",
+"category": "SUMMARY_WELL"
+},
+"WWPTH": {
+"summary": "Water Production Total History",
+"category": "SUMMARY_WELL"
+},
+"WWPTL": {
+"summary": "Water Production Total",
+"category": "SUMMARY_WELL_COMPLETION"
+},
+"WWVIR": {
+"summary": "Water Voidage Injection Rate",
+"category": "SUMMARY_WELL"
+},
+"WWVIT": {
+"summary": "Water Voidage Injection Total",
+"category": "SUMMARY_WELL"
+},
+"WWVPR": {
+"summary": "Water Voidage Production Rate",
+"category": "SUMMARY_WELL"
+},
+"WWVPT": {
+"summary": "Water Voidage Production Total",
+"category": "SUMMARY_WELL"
+},
+"WXMF": {
+"summary": "Liquid Mole Fraction",
+"category": "SUMMARY_WELL"
+},
+"WXMFn": {
+"summary": "Liquid Mole Fraction for nth separator stage",
+"category": "SUMMARY_WELL"
+},
+"WYMF": {
+"summary": "Vapor Mole Fraction",
+"category": "SUMMARY_WELL"
+},
+"WYMFn": {
+"summary": "Vapor Mole Fraction for nth separator stage",
+"category": "SUMMARY_WELL"
+},
+"WZMF": {
+"summary": "Total Mole Fraction",
+"category": "SUMMARY_WELL"
+},
+"YEAR": {
+"summary": "Year",
+"category": "SUMMARY_MISC"
+},
+"YEARS": {
+"summary": "Years",
+"category": "SUMMARY_MISC"
+}
+}

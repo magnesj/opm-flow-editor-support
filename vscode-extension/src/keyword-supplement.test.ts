@@ -2,7 +2,10 @@ import { computeDiagnostics, AnalysisIndex } from './analysis';
 import {
   SUPPLEMENTAL_KEYWORDS,
   applyKeywordSupplement,
+  applySummaryVectorSupplement,
   normalizeSummaryVectorShapes,
+  prepareKeywordIndex,
+  SummaryVectorTable,
 } from './keyword-supplement';
 
 describe('applyKeywordSupplement', () => {
@@ -36,6 +39,39 @@ describe('computeDiagnostics with the supplement applied', () => {
 
   it('recognises a thermal keyword with a numeric body', () => {
     const lines = ['PROPS', 'SPECHA', '0.83 4.81 0.009', '/'];
+    expect(computeDiagnostics(lines, index)).toEqual([]);
+  });
+});
+
+describe('applySummaryVectorSupplement', () => {
+  const vectors: SummaryVectorTable = {
+    AAQENTH: { summary: 'Aquifer molar enthalpy', category: 'SUMMARY_AQUIFER' },
+    WOPR: { summary: 'ResInsight description', category: 'SUMMARY_WELL' },
+  };
+
+  it('adds a SUMMARY-only entry for an unknown vector', () => {
+    const index: AnalysisIndex = {};
+    applySummaryVectorSupplement(index, vectors);
+    expect(index['AAQENTH']).toEqual({
+      name: 'AAQENTH',
+      sections: ['SUMMARY'],
+      summary: 'Aquifer molar enthalpy',
+      category: 'SUMMARY_AQUIFER',
+    });
+  });
+
+  it('never overwrites an authoritative index entry', () => {
+    const existing = { name: 'WOPR', sections: ['SUMMARY'], summary: 'opm-common wins' };
+    const index: AnalysisIndex = { WOPR: existing };
+    applySummaryVectorSupplement(index, vectors);
+    expect(index['WOPR']).toBe(existing);
+  });
+
+  it('through prepareKeywordIndex, recognises a supplemented vector by shape', () => {
+    const index = prepareKeywordIndex({}, vectors);
+    // Normalised to the array shape, so the optional well-name body parses.
+    expect(index['AAQENTH'].size_kind).toBe('array');
+    const lines = ['SUMMARY', 'AAQENTH', 'INJ1 /', '/'];
     expect(computeDiagnostics(lines, index)).toEqual([]);
   });
 });

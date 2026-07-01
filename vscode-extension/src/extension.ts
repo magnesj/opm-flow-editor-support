@@ -21,7 +21,7 @@ import {
   toggleLineComments,
 } from './formatting';
 import { computeDiagnostics, DiagnosticCode, AnalysisIndex } from './analysis';
-import { prepareKeywordIndex } from './keyword-supplement';
+import { prepareKeywordIndex, SummaryVectorTable } from './keyword-supplement';
 import {
   UDQ_CONTROL_WORDS,
   UDQ_FUNCTIONS,
@@ -99,14 +99,28 @@ type KeywordIndex = Record<string, KeywordEntry>;
 // Data loading
 // ---------------------------------------------------------------------------
 
+/** Load the ResInsight-sourced SUMMARY-vector description table shipped in
+ *  `data/summary_vectors.json`. Returns undefined (skip the supplement) when it
+ *  can't be read, so a packaging slip degrades gracefully. */
+function loadSummaryVectors(context: vscode.ExtensionContext): SummaryVectorTable | undefined {
+  const p = path.join(context.extensionPath, 'data', 'summary_vectors.json');
+  try {
+    return JSON.parse(fs.readFileSync(p, 'utf-8')) as SummaryVectorTable;
+  } catch (e) {
+    console.error('OPM Flow: failed to load summary-vector descriptions', e);
+    return undefined;
+  }
+}
+
 function loadKeywordIndex(context: vscode.ExtensionContext): KeywordIndex {
   const indexPath = path.join(context.extensionPath, 'data', 'keyword_index_compact.json');
   try {
     const raw = fs.readFileSync(indexPath, 'utf-8');
     const index = JSON.parse(raw) as KeywordIndex;
     // Add curated keywords that OPM Flow accepts but that are absent from the
-    // manual / opm-common, and normalise shapeless SUMMARY vectors.
-    prepareKeywordIndex(index as unknown as AnalysisIndex);
+    // manual / opm-common, fold in the ResInsight SUMMARY-vector descriptions,
+    // and normalise shapeless SUMMARY vectors.
+    prepareKeywordIndex(index as unknown as AnalysisIndex, loadSummaryVectors(context));
     return index;
   } catch (e) {
     console.error('OPM Flow: failed to load keyword index', e);
