@@ -249,6 +249,34 @@ export function hoverAt(
   return undefined;
 }
 
+// The simulator keyword of the event on a line, and the keyword item under the
+// cursor, for the keyword reference panel.
+export function simulatorKeywordAt(
+  doc: SimEventsDocument,
+  line: number,
+  character: number,
+  keywords: Map<string, KeywordInfo>,
+): { keyword: string; item?: string } | undefined {
+  for (const block of doc.blocks) {
+    for (const event of block.events) {
+      if (event.line !== line) {
+        continue;
+      }
+      const keyword = event.type.toUpperCase();
+      if (!keywords.has(keyword)) {
+        return undefined;
+      }
+      for (const attr of event.attributes.values()) {
+        if (contains(attr.keySpan, line, character) || contains(attr.valueSpan, line, character)) {
+          return { keyword, item: KEYWORD_ITEM_ALIASES[keyword]?.[attr.key] ?? attr.key };
+        }
+      }
+      return { keyword };
+    }
+  }
+  return undefined;
+}
+
 // Declarations visible from a line: those declared before it, the latest one
 // per name.
 export function declarationsBefore(doc: SimEventsDocument, line: number, kind?: VarKind): Declaration[] {

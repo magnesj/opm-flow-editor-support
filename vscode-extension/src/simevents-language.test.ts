@@ -10,6 +10,7 @@ import {
   hoverAt,
   isValidVariableName,
   keywordAttributes,
+  simulatorKeywordAt,
   variableAt,
 } from './simevents-language';
 
@@ -144,6 +145,16 @@ describe('hoverAt', () => {
     expect(hover(6, 20)).toContain('The well name is passed as the WELL item.');
     expect(hover(6, 32)).toMatch(/^\*\*WCONHIST STATUS\*\*\n\n/);
     expect(hover(6, 44)).toMatch(/^\*\*WCONHIST VFP_TABLE\*\* \(written as VFP\)/);
+  });
+
+  it('finds the simulator keyword and item for the reference panel', () => {
+    const at = (line: number, character: number) => simulatorKeywordAt(hoverDoc, line, character, keywords);
+    expect(at(6, 20)).toEqual({ keyword: 'WCONHIST' });
+    expect(at(6, 32)).toEqual({ keyword: 'WCONHIST', item: 'STATUS' });
+    expect(at(6, 38)).toEqual({ keyword: 'WCONHIST', item: 'STATUS' });
+    expect(at(6, 44)).toEqual({ keyword: 'WCONHIST', item: 'VFP_TABLE' });
+    expect(at(5, 20)).toBeUndefined();
+    expect(at(1, 6)).toBeUndefined();
   });
 });
 

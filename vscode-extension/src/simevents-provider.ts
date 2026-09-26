@@ -23,6 +23,7 @@ import {
   isValidVariableName,
   keywordAttributes,
   OutlineItem,
+  simulatorKeywordAt,
   variableAt,
 } from './simevents-language';
 
@@ -298,7 +299,15 @@ function provideCompletions(
   }
 }
 
-export function registerSimEvents(context: vscode.ExtensionContext, keywords: Map<string, KeywordInfo>): void {
+export type SimulatorKeywordLookup = (
+  document: vscode.TextDocument,
+  position: vscode.Position,
+) => { keyword: string; item?: string } | undefined;
+
+export function registerSimEvents(
+  context: vscode.ExtensionContext,
+  keywords: Map<string, KeywordInfo>,
+): SimulatorKeywordLookup {
   const cache = new DocumentCache(keywords);
   registerDiagnostics(context, cache);
   registerNavigation(context, cache);
@@ -316,4 +325,5 @@ export function registerSimEvents(context: vscode.ExtensionContext, keywords: Ma
       },
     }),
   );
+  return (document, position) => simulatorKeywordAt(cache.get(document), position.line, position.character, keywords);
 }

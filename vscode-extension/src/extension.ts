@@ -50,7 +50,7 @@ import {
   SimulatorMode,
 } from './simulator';
 import { keywordInfoFromIndex } from './simevents';
-import { registerSimEvents } from './simevents-provider';
+import { registerSimEvents, SIMEVENTS_LANGUAGE } from './simevents-provider';
 
 interface Parameter {
   index: number | string;
@@ -1400,7 +1400,7 @@ async function runSimulatorOnDeck(
 export function activate(context: vscode.ExtensionContext): void {
   const index = loadKeywordIndex(context);
   const keywords = Object.keys(index);
-  registerSimEvents(context, keywordInfoFromIndex(index));
+  const simulatorKeywordAt = registerSimEvents(context, keywordInfoFromIndex(index));
 
   // --- Additional file extensions ---
   // Retag any open file whose extension is listed in
@@ -1463,10 +1463,20 @@ export function activate(context: vscode.ExtensionContext): void {
     }
   }, 150);
 
+  const onSimEventsCursorMove = debounce((editor: vscode.TextEditor) => {
+    const found = simulatorKeywordAt(editor.document, editor.selection.active);
+    const entry = found ? index[found.keyword] : undefined;
+    if (entry) {
+      docsProvider.update(entry, entry.parameters?.find(p => p.name === found?.item));
+    }
+  }, 150);
+
   context.subscriptions.push(
     vscode.window.onDidChangeTextEditorSelection(e => {
       if (e.textEditor.document.languageId === 'opm-flow') {
         onCursorMove(e.textEditor);
+      } else if (e.textEditor.document.languageId === SIMEVENTS_LANGUAGE) {
+        onSimEventsCursorMove(e.textEditor);
       }
     }),
     vscode.workspace.onDidChangeConfiguration(e => {
