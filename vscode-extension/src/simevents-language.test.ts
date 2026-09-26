@@ -1,7 +1,17 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { keywordInfoFromIndex, parseSimEvents } from './simevents';
-import { buildSimEventsOutline, foldingRanges, hoverAt, isValidVariableName, variableAt } from './simevents-language';
+import {
+  blockKeywords,
+  buildSimEventsOutline,
+  completionContext,
+  declarationsBefore,
+  foldingRanges,
+  hoverAt,
+  isValidVariableName,
+  keywordAttributes,
+  variableAt,
+} from './simevents-language';
 
 const TEXT = [
   'SIMEVENTS 1.2', //                                          0
@@ -134,5 +144,96 @@ describe('hoverAt', () => {
     expect(hover(6, 20)).toContain('The well name is passed as the WELL item.');
     expect(hover(6, 32)).toMatch(/^\*\*WCONHIST STATUS\*\*\n\n/);
     expect(hover(6, 44)).toMatch(/^\*\*WCONHIST VFP_TABLE\*\* \(written as VFP\)/);
+  });
+});
+
+describe('completionContext', () => {
+  const base = [
+    'SIMEVENTS 1.2', //                                   0
+    'DATE START = 2024-01-01', //                         1
+    'DURATION RAMP = 1d', //                              2
+    'FILTER F = "PORO > 0.1"', //                         3
+    'WELL A1 = "W-1"', //                                 4
+    'SCHEDULE', //                                        5
+    '  START RAW_TEXT PLACEMENT=AFTER_DATE', //           6
+    'TUNING', //                                          7
+    'END_RAW_TEXT', //                                    8
+    'WELL A1', //                                         9
+    '', //                                               10
+  ];
+  const contextAt = (text: string) => {
+    const lines = [...base.slice(0, 10), text];
+    const parsed = parseSimEvents(lines.join('\n'));
+    return completionContext(parsed, lines, 10, text.length);
+  };
+
+  it('offers statements at the start of a line', () => {
+    expect(contextAt('  ')).toEqual({ kind: 'lineStart', blockKind: 'WELL' });
+    expect(contextAt('DA')).toEqual({ kind: 'lineStart', blockKind: 'WELL' });
+  });
+
+  it('offers variables where the grammar takes them', () => {
+    expect(contextAt('WELL ')).toEqual({ kind: 'variable', varKind: 'WELL' });
+    expect(contextAt('DATE X = ')).toEqual({ kind: 'variable', varKind: 'DATE' });
+    expect(contextAt('DATE X = START + ')).toEqual({ kind: 'variable', varKind: 'DURATION' });
+    expect(contextAt('DURATION X = ')).toEqual({ kind: 'variable', varKind: 'DURATION' });
+    expect(contextAt('  START + R')).toEqual({ kind: 'variable', varKind: 'DURATION' });
+    expect(contextAt('UNIT ')).toEqual({ kind: 'unit' });
+  });
+
+  it('offers event types after the date expression', () => {
+    expect(contextAt('  START + RAMP ')).toEqual({ kind: 'eventType', blockKind: 'WELL' });
+    expect(contextAt('  2024-01-01 PER')).toEqual({ kind: 'eventType', blockKind: 'WELL' });
+  });
+
+  it('offers attribute keys and values', () => {
+    expect(contextAt('  START PERFORATION MDSTART=1 ')).toEqual({
+      kind: 'attributeKey', eventType: 'PERFORATION', blockKind: 'WELL', present: ['MDSTART'],
+    });
+    expect(contextAt('  START wconhist STATUS=')).toEqual({ kind: 'attributeValue', eventType: 'WCONHIST', key: 'STATUS' });
+    expect(contextAt('  START PERFORATION FILTER=P')).toEqual({ kind: 'attributeValue', eventType: 'PERFORATION', key: 'FILTER' });
+  });
+
+  it('offers nothing in comments, strings, declaration names and RAW_TEXT bodies', () => {
+    expect(contextAt('  START STATE # ')).toEqual({ kind: 'none' });
+    expect(contextAt('  START STATE COMMENT="a ')).toEqual({ kind: 'none' });
+    expect(contextAt('DATE ')).toEqual({ kind: 'none' });
+    expect(contextAt('FILTER X = "PORO')).toEqual({ kind: 'none' });
+    const lines = base.slice(0, 10);
+    expect(completionContext(parseSimEvents(lines.join('\n')), lines, 7, 3)).toEqual({ kind: 'none' });
+  });
+
+  it('offers nothing for events outside a block', () => {
+    const lines = ['SIMEVENTS 1.2', '  2024-01-01 '];
+    expect(completionContext(parseSimEvents(lines.join('\n')), lines, 1, 13)).toEqual({ kind: 'none' });
+  });
+});
+
+describe('completion helpers', () => {
+  const keywords = keywordInfoFromIndex(
+    JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'keyword_index_compact.json'), 'utf8')),
+  );
+
+  it('lists declarations visible from a line', () => {
+    const parsed = parseSimEvents('SIMEVENTS 1.2\nDATE A = 2024-01-01\nDURATION B = 1d\nDATE A = 2024-02-01\nDATE C = A\n');
+    expect(declarationsBefore(parsed, 4).map(d => [d.name, d.nameSpan.line])).toEqual([['A', 3], ['B', 2]]);
+    expect(declarationsBefore(parsed, 3, 'DATE').map(d => d.name)).toEqual(['A']);
+  });
+
+  it('picks keywords that fit a block', () => {
+    const well = blockKeywords(keywords, 'WELL');
+    expect(well).toEqual(expect.arrayContaining(['WCONHIST', 'WCONPROD', 'WELTARG']));
+    expect(well).not.toContain('GCONPROD');
+    expect(blockKeywords(keywords, 'GROUP')).toEqual(expect.arrayContaining(['GCONPROD', 'GCONINJE']));
+    expect(blockKeywords(keywords, 'SCHEDULE')).toEqual(expect.arrayContaining(['TUNING', 'WCONHIST']));
+    expect(blockKeywords(keywords, 'SCHEDULE')).not.toContain('PERMX');
+  });
+
+  it('lists keyword attributes with rips spellings', () => {
+    const attrs = keywordAttributes(keywords.get('WCONHIST')!, 'WCONHIST', 'WELL');
+    expect(attrs.slice(0, 3)).toEqual(['STATUS', 'CMODE', 'ORAT']);
+    expect(attrs).toContain('VFP');
+    expect(attrs).not.toContain('WELL');
+    expect(keywordAttributes(keywords.get('WELTARG')!, 'WELTARG', 'WELL')).toEqual(['CMODE', 'VALUE']);
   });
 });

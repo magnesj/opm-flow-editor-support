@@ -1,10 +1,27 @@
 import * as vscode from 'vscode';
-import { KeywordInfo, parseSimEvents, SimEventsDocument, Span, VarKind } from './simevents';
 import {
+  ATTRIBUTE_VALUES,
+  BUILTIN_EVENT_ATTRIBUTES,
+  KEYWORD_ITEM_ALIASES,
+  KeywordInfo,
+  parseSimEvents,
+  SimEventsDocument,
+  Span,
+  SUPPORTED_VERSION,
+  UNIT_SYSTEMS,
+  VarKind,
+} from './simevents';
+import {
+  BLOCK_EVENT_TYPES,
+  blockKeywords,
+  BUILTIN_EVENT_DOCS,
   buildSimEventsOutline,
+  completionContext,
+  declarationsBefore,
   foldingRanges,
   hoverAt,
   isValidVariableName,
+  keywordAttributes,
   OutlineItem,
   variableAt,
 } from './simevents-language';
@@ -148,11 +165,150 @@ function registerNavigation(context: vscode.ExtensionContext, cache: DocumentCac
   );
 }
 
+const STATEMENT_SNIPPETS: Array<[string, string, string]> = [
+  ['DATE', 'Declare a date', 'DATE ${1:NAME} = ${2:2024-01-01}'],
+  ['DURATION', 'Declare a duration', 'DURATION ${1:NAME} = ${2:1d}'],
+  ['WELL', 'Declare a well-name alias', 'WELL ${1:ALIAS} = "${2:well-name}"'],
+  ['FILTER', 'Declare a cell filter', 'FILTER ${1:NAME} = "${2:PORO > 0.1}"'],
+  ['WELL block', 'Events for a well', 'WELL "${1:well-name}"'],
+  ['GROUP block', 'Keyword events for a group', 'GROUP "${1:group-name}"'],
+  ['SCHEDULE', 'Keyword events not tied to a well', 'SCHEDULE'],
+  ['UNIT', 'Unit system', 'UNIT ${1|METRIC,FIELD,LAB|}'],
+];
+
+const EVENT_SNIPPETS: Record<string, string> = {
+  PERFORATION: 'PERFORATION  MDSTART=$1  MDEND=$2',
+  SEGMENT: 'SEGMENT  MDSTART=$1  MDEND=$2',
+  VALVE: 'VALVE  MD=$1  TYPE=$2',
+  STATE: 'STATE  STATE=${1:SHUT}',
+  MEMBER: 'MEMBER  MEMBERS="$1"',
+  RAW_TEXT: 'RAW_TEXT  PLACEMENT=${1|AFTER_DATE,BEFORE_KEYWORD,AFTER_KEYWORD,END_OF_DATE|}\n$0\nEND_RAW_TEXT',
+};
+
+function variableItems(doc: SimEventsDocument, line: number, kind: VarKind): vscode.CompletionItem[] {
+  return declarationsBefore(doc, line, kind).map(decl => {
+    const item = new vscode.CompletionItem(decl.name, vscode.CompletionItemKind.Variable);
+    item.detail = kind;
+    return item;
+  });
+}
+
+// Accepting a key inserts "KEY=" and asks for its value.
+function attributeItem(key: string, detail: string, sortPrefix: string): vscode.CompletionItem {
+  const item = new vscode.CompletionItem(key, vscode.CompletionItemKind.Property);
+  item.detail = detail;
+  item.insertText = `${key}=`;
+  item.sortText = sortPrefix + key;
+  item.command = { command: 'editor.action.triggerSuggest', title: 'Suggest values' };
+  return item;
+}
+
+function valueItems(values: string[]): vscode.CompletionItem[] {
+  return values.map(value => new vscode.CompletionItem(value, vscode.CompletionItemKind.EnumMember));
+}
+
+function provideCompletions(
+  cache: DocumentCache,
+  document: vscode.TextDocument,
+  position: vscode.Position,
+): vscode.CompletionItem[] {
+  const doc = cache.get(document);
+  const keywords = cache.keywords;
+  const context = completionContext(doc, documentLines(document), position.line, position.character);
+  switch (context.kind) {
+    case 'lineStart': {
+      const items = STATEMENT_SNIPPETS.map(([label, detail, snippet]) => {
+        const item = new vscode.CompletionItem(label, vscode.CompletionItemKind.Keyword);
+        item.detail = detail;
+        item.insertText = new vscode.SnippetString(snippet);
+        return item;
+      });
+      if (doc.version === undefined) {
+        const header = new vscode.CompletionItem('SIMEVENTS', vscode.CompletionItemKind.Keyword);
+        header.insertText = `SIMEVENTS ${SUPPORTED_VERSION}`;
+        items.push(header);
+      }
+      if (context.blockKind) {
+        items.push(...variableItems(doc, position.line, 'DATE'));
+      }
+      return items;
+    }
+    case 'unit':
+      return valueItems(UNIT_SYSTEMS);
+    case 'variable':
+      return variableItems(doc, position.line, context.varKind);
+    case 'eventType': {
+      const builtins = BLOCK_EVENT_TYPES[context.blockKind].map(type => {
+        const item = new vscode.CompletionItem(type, vscode.CompletionItemKind.Function);
+        item.detail = 'SIMEVENTS event';
+        item.documentation = BUILTIN_EVENT_DOCS[type];
+        item.insertText = new vscode.SnippetString(EVENT_SNIPPETS[type] ?? type);
+        item.sortText = `0${type}`;
+        return item;
+      });
+      const passThrough = blockKeywords(keywords, context.blockKind).map(name => {
+        const item = new vscode.CompletionItem(name, vscode.CompletionItemKind.Keyword);
+        item.detail = 'Eclipse keyword';
+        item.documentation = keywords.get(name)!.summary;
+        item.sortText = `1${name}`;
+        return item;
+      });
+      return [...builtins, ...passThrough];
+    }
+    case 'attributeKey': {
+      const present = new Set(context.present);
+      const spec = BUILTIN_EVENT_ATTRIBUTES[context.eventType];
+      if (spec) {
+        return [
+          ...spec.required.filter(a => !present.has(a)).map(a => attributeItem(a, 'required', '0')),
+          ...spec.optional.filter(a => !present.has(a)).map(a => attributeItem(a, 'optional', '1')),
+        ];
+      }
+      const keyword = keywords.get(context.eventType);
+      if (!keyword) {
+        return [];
+      }
+      return [...keywordAttributes(keyword, context.eventType, context.blockKind), 'COMMENT']
+        .filter(a => !present.has(a))
+        .map((a, i) => attributeItem(a, context.eventType, String(i).padStart(3, '0')));
+    }
+    case 'attributeValue': {
+      const { eventType, key } = context;
+      if (key === 'FILTER') {
+        return variableItems(doc, position.line, 'FILTER');
+      }
+      if (eventType === 'INSERT_DATE' && key === 'EVERY') {
+        return variableItems(doc, position.line, 'DURATION');
+      }
+      if (eventType === 'INSERT_DATE' && key === 'UNTIL') {
+        return variableItems(doc, position.line, 'DATE');
+      }
+      if (eventType === 'RAW_TEXT' && key === 'ANCHOR') {
+        return blockKeywords(keywords, 'SCHEDULE').map(name => new vscode.CompletionItem(name, vscode.CompletionItemKind.Keyword));
+      }
+      const values = ATTRIBUTE_VALUES[`${eventType}.${key}`];
+      if (values) {
+        return valueItems(values);
+      }
+      const item = KEYWORD_ITEM_ALIASES[eventType]?.[key] ?? key;
+      return valueItems(keywords.get(eventType)?.itemOptions?.[item] ?? []);
+    }
+    case 'none':
+      return [];
+  }
+}
+
 export function registerSimEvents(context: vscode.ExtensionContext, keywords: Map<string, KeywordInfo>): void {
   const cache = new DocumentCache(keywords);
   registerDiagnostics(context, cache);
   registerNavigation(context, cache);
   context.subscriptions.push(
+    vscode.languages.registerCompletionItemProvider(
+      SIMEVENTS_LANGUAGE,
+      { provideCompletionItems: (document, position) => provideCompletions(cache, document, position) },
+      ' ',
+      '=',
+    ),
     vscode.languages.registerHoverProvider(SIMEVENTS_LANGUAGE, {
       provideHover: (document, position) => {
         const hover = hoverAt(cache.get(document), position.line, position.character, cache.keywords);

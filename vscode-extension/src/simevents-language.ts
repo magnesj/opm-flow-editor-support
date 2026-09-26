@@ -14,6 +14,8 @@ import {
   KeywordInfo,
   SimEventsDocument,
   Span,
+  stripComment,
+  TOP_LEVEL_KEYWORDS,
   VarKind,
 } from './simevents';
 
@@ -245,4 +247,128 @@ export function hoverAt(
     }
   }
   return undefined;
+}
+
+// Declarations visible from a line: those declared before it, the latest one
+// per name.
+export function declarationsBefore(doc: SimEventsDocument, line: number, kind?: VarKind): Declaration[] {
+  const visible = new Map<string, Declaration>();
+  for (const decl of doc.declarations) {
+    if (decl.nameSpan.line < line) {
+      visible.set(decl.name, decl);
+    }
+  }
+  return [...visible.values()].filter(decl => kind === undefined || decl.kind === kind);
+}
+
+export type CompletionContext =
+  | { kind: 'lineStart'; blockKind?: BlockKind }
+  | { kind: 'unit' }
+  | { kind: 'variable'; varKind: VarKind }
+  | { kind: 'eventType'; blockKind: BlockKind }
+  | { kind: 'attributeKey'; eventType: string; blockKind: BlockKind; present: string[] }
+  | { kind: 'attributeValue'; eventType: string; key: string }
+  | { kind: 'none' };
+
+const IDENT = String.raw`[A-Za-z_]\w*`;
+const DATE_BASE = String.raw`(?:\d{4}-\d{2}-\d{2}(?:T[\d:.]+)?|${IDENT})`;
+const TERMS = String.raw`(?:\s*[-+]\s*[-+]?[A-Za-z0-9_.]+)*`;
+const EVENT_PREFIX = String.raw`^\s*(?<base>${DATE_BASE})${TERMS}`;
+
+const DATE_OPERAND_RE = new RegExp(String.raw`${EVENT_PREFIX}\s*[-+]\s*[-+]?\w*$`);
+const EVENT_TYPE_RE = new RegExp(String.raw`${EVENT_PREFIX}\s+\w*$`);
+const ATTRIBUTE_RE = new RegExp(String.raw`${EVENT_PREFIX}\s+(?<type>${IDENT})\s+(?<attrs>.*)$`);
+
+export function blockKindAt(doc: SimEventsDocument, line: number): BlockKind | undefined {
+  let kind: BlockKind | undefined;
+  for (const block of doc.blocks) {
+    if (block.line < line) {
+      kind = block.kind;
+    }
+  }
+  return kind;
+}
+
+function inRawText(doc: SimEventsDocument, line: number): boolean {
+  return doc.blocks.some(b => b.events.some(e => e.rawBody && e.rawBody.startLine <= line && line <= e.rawBody.endLine + 1));
+}
+
+// What kind of completion fits at a position, from the text before it.
+export function completionContext(doc: SimEventsDocument, lines: string[], line: number, character: number): CompletionContext {
+  const prefix = (lines[line] ?? '').slice(0, character);
+  const inQuotes = (prefix.match(/"/g) ?? []).length % 2 === 1;
+  if (inRawText(doc, line) || inQuotes || stripComment(prefix) !== prefix) {
+    return { kind: 'none' };
+  }
+  const blockKind = blockKindAt(doc, line);
+
+  if (/^\s*\w*$/.test(prefix)) {
+    return { kind: 'lineStart', blockKind };
+  }
+  if (/^\s*UNIT\s+\w*$/.test(prefix)) {
+    return { kind: 'unit' };
+  }
+  if (/^\s*WELL\s+\w*$/.test(prefix)) {
+    return { kind: 'variable', varKind: 'WELL' };
+  }
+  const decl = new RegExp(String.raw`^\s*(?<kind>DATE|DURATION)\s+${IDENT}\s*=\s*(?<value>.*)$`).exec(prefix);
+  if (decl) {
+    const operand = /[-+]\s*\w*$/.test(decl.groups!.value);
+    if (decl.groups!.kind === 'DATE' && !operand) {
+      return /^\w*$/.test(decl.groups!.value) ? { kind: 'variable', varKind: 'DATE' } : { kind: 'none' };
+    }
+    return /^\w*$/.test(decl.groups!.value) || operand ? { kind: 'variable', varKind: 'DURATION' } : { kind: 'none' };
+  }
+  if (TOP_LEVEL_KEYWORDS.includes(prefix.trim().split(/\s+/)[0])) {
+    return { kind: 'none' };
+  }
+  if (!blockKind) {
+    return { kind: 'none' };
+  }
+  if (DATE_OPERAND_RE.test(prefix)) {
+    return { kind: 'variable', varKind: 'DURATION' };
+  }
+  if (EVENT_TYPE_RE.test(prefix)) {
+    return { kind: 'eventType', blockKind };
+  }
+  const event = ATTRIBUTE_RE.exec(prefix);
+  if (event) {
+    const eventType = event.groups!.type.toUpperCase();
+    const attrs = event.groups!.attrs;
+    const value = new RegExp(String.raw`(?:^|\s)(?<key>${IDENT})\s*=\s*[^\s"]*$`).exec(attrs);
+    if (value) {
+      return { kind: 'attributeValue', eventType, key: value.groups!.key.toUpperCase() };
+    }
+    if (/(?:^|\s)\w*$/.test(attrs)) {
+      const present = [...attrs.matchAll(new RegExp(String.raw`(${IDENT})\s*=`, 'g'))].map(m => m[1].toUpperCase());
+      return { kind: 'attributeKey', eventType, blockKind, present };
+    }
+  }
+  return { kind: 'none' };
+}
+
+export const BLOCK_EVENT_TYPES: Record<BlockKind, string[]> = {
+  WELL: ['PERFORATION', 'SEGMENT', 'VALVE', 'STATE', 'WELSPECS'],
+  GROUP: ['MEMBER'],
+  SCHEDULE: ['INSERT_DATE', 'RESTART', 'RAW_TEXT'],
+  NONE: [],
+};
+
+// Eclipse keywords that fit a block: SCHEDULE keywords whose first item the
+// block supplies (WELL or GROUP), or any SCHEDULE keyword in a SCHEDULE block.
+export function blockKeywords(keywords: Map<string, KeywordInfo>, blockKind: BlockKind): string[] {
+  const injected = BLOCK_INJECTED_ITEM[blockKind];
+  return [...keywords]
+    .filter(([, k]) => k.sections.includes('SCHEDULE') && (blockKind === 'SCHEDULE' || k.items[0] === injected))
+    .map(([name]) => name);
+}
+
+// Attribute names for a pass-through keyword, without the injected block
+// item and with rips' SIMEVENTS spellings.
+export function keywordAttributes(keyword: KeywordInfo, type: string, blockKind: BlockKind): string[] {
+  const injected = BLOCK_INJECTED_ITEM[blockKind];
+  const aliases = Object.entries(KEYWORD_ITEM_ALIASES[type] ?? {});
+  return keyword.items
+    .filter(item => item !== injected)
+    .map(item => aliases.find(([, target]) => target === item)?.[0] ?? item);
 }
