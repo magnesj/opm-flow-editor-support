@@ -121,14 +121,15 @@ export function keywordInfoFromIndex(
   index: Record<string, {
     sections: string[];
     summary?: string;
-    parameters: Array<{ name: string; description?: string; options?: string[] }>;
+    parameters?: Array<{ name: string; description?: string; options?: string[] }>;
   }>,
 ): Map<string, KeywordInfo> {
   const keywords = new Map<string, KeywordInfo>();
   for (const [name, entry] of Object.entries(index)) {
     const itemDescriptions: Record<string, string> = {};
     const itemOptions: Record<string, string[]> = {};
-    for (const p of entry.parameters) {
+    const params = entry.parameters ?? [];
+    for (const p of params) {
       if (p.description) {
         itemDescriptions[p.name] = p.description;
       }
@@ -138,7 +139,7 @@ export function keywordInfoFromIndex(
     }
     keywords.set(name, {
       sections: entry.sections,
-      items: entry.parameters.map(p => p.name),
+      items: params.map(p => p.name),
       summary: entry.summary,
       itemDescriptions,
       itemOptions,
