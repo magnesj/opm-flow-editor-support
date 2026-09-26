@@ -1,5 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import { AnalysisIndex, computeDiagnostics } from './analysis';
+import { prepareKeywordIndex } from './keyword-supplement';
 import { keywordInfoFromIndex, parseSimEvents } from './simevents';
 import {
   blockKeywords,
@@ -10,6 +12,8 @@ import {
   hoverAt,
   isValidVariableName,
   keywordAttributes,
+  maskLines,
+  rawTextBodies,
   simulatorKeywordAt,
   variableAt,
 } from './simevents-language';
@@ -155,6 +159,34 @@ describe('hoverAt', () => {
     expect(at(6, 44)).toEqual({ keyword: 'WCONHIST', item: 'VFP_TABLE' });
     expect(at(5, 20)).toBeUndefined();
     expect(at(1, 6)).toBeUndefined();
+  });
+});
+
+describe('RAW_TEXT bodies', () => {
+  it('lists the body lines', () => {
+    expect(rawTextBodies(doc)).toEqual([{ startLine: 8, endLine: 9 }]);
+  });
+
+  it('blanks the lines outside the bodies', () => {
+    expect(maskLines(lines, rawTextBodies(doc))).toEqual([
+      '', '', '', '', '', '', '', '', 'TUNING', '/', '', '', '', '', '',
+    ]);
+  });
+
+  it('reports Eclipse keyword diagnostics at their line in the file', () => {
+    const index = prepareKeywordIndex(
+      JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'keyword_index_compact.json'), 'utf8')) as AnalysisIndex,
+    );
+    const text = [
+      'SIMEVENTS 1.2',
+      'SCHEDULE',
+      '  2024-01-01 RAW_TEXT PLACEMENT=AFTER_DATE',
+      'NOSUCHKW',
+      'END_RAW_TEXT',
+    ];
+    const bodies = rawTextBodies(parseSimEvents(text.join('\n')));
+    const diags = computeDiagnostics(maskLines(text, bodies), index);
+    expect(diags.map(d => [d.line, d.startChar, d.endChar])).toEqual([[3, 0, 8]]);
   });
 });
 

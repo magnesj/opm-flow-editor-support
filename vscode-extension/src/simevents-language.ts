@@ -317,6 +317,22 @@ export function blockKindAt(doc: SimEventsDocument, line: number): BlockKind | u
   return kind;
 }
 
+export interface LineRange {
+  startLine: number;
+  endLine: number;
+}
+
+// The RAW_TEXT bodies, which hold Eclipse keyword text.
+export function rawTextBodies(doc: SimEventsDocument): LineRange[] {
+  return doc.blocks.flatMap(b => b.events.flatMap(e => (e.rawBody ? [e.rawBody] : [])));
+}
+
+// Keep the text of the lines inside `visible` and blank all others, so line
+// numbers stay those of the full document.
+export function maskLines(lines: readonly string[], visible: readonly LineRange[]): string[] {
+  return lines.map((text, i) => (visible.some(r => r.startLine <= i && i <= r.endLine) ? text : ''));
+}
+
 function inRawText(doc: SimEventsDocument, line: number): boolean {
   return doc.blocks.some(b => b.events.some(e => e.rawBody && e.rawBody.startLine <= line && line <= e.rawBody.endLine + 1));
 }

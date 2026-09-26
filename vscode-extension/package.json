@@ -198,12 +198,12 @@
       "editor/context": [
         {
           "command": "opm-flow.alignRecordColumnsRecord",
-          "when": "resourceLangId == opm-flow",
+          "when": "resourceLangId == opm-flow || resourceLangId == opm-simevents",
           "group": "opmflow_1_format@1"
         },
         {
           "command": "opm-flow.alignRecordColumns",
-          "when": "resourceLangId == opm-flow",
+          "when": "resourceLangId == opm-flow || resourceLangId == opm-simevents",
           "group": "opmflow_1_format@2"
         },
         {
@@ -213,7 +213,7 @@
         },
         {
           "command": "opm-flow.addColumnHeaders",
-          "when": "resourceLangId == opm-flow",
+          "when": "resourceLangId == opm-flow || resourceLangId == opm-simevents",
           "group": "opmflow_1_format@4"
         },
         {

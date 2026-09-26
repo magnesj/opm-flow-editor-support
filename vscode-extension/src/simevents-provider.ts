@@ -22,7 +22,9 @@ import {
   hoverAt,
   isValidVariableName,
   keywordAttributes,
+  LineRange,
   OutlineItem,
+  rawTextBodies,
   simulatorKeywordAt,
   variableAt,
 } from './simevents-language';
@@ -299,15 +301,15 @@ function provideCompletions(
   }
 }
 
-export type SimulatorKeywordLookup = (
-  document: vscode.TextDocument,
-  position: vscode.Position,
-) => { keyword: string; item?: string } | undefined;
+export interface SimEventsServices {
+  simulatorKeywordAt(document: vscode.TextDocument, position: vscode.Position): { keyword: string; item?: string } | undefined;
+  rawTextBodies(document: vscode.TextDocument): LineRange[];
+}
 
 export function registerSimEvents(
   context: vscode.ExtensionContext,
   keywords: Map<string, KeywordInfo>,
-): SimulatorKeywordLookup {
+): SimEventsServices {
   const cache = new DocumentCache(keywords);
   registerDiagnostics(context, cache);
   registerNavigation(context, cache);
@@ -325,5 +327,9 @@ export function registerSimEvents(
       },
     }),
   );
-  return (document, position) => simulatorKeywordAt(cache.get(document), position.line, position.character, keywords);
+  return {
+    simulatorKeywordAt: (document, position) =>
+      simulatorKeywordAt(cache.get(document), position.line, position.character, keywords),
+    rawTextBodies: document => rawTextBodies(cache.get(document)),
+  };
 }

@@ -51,6 +51,7 @@ import {
 } from './simulator';
 import { keywordInfoFromIndex } from './simevents';
 import { registerSimEvents, SIMEVENTS_LANGUAGE } from './simevents-provider';
+import { MaskedTextDocument } from './masked-document';
 
 interface Parameter {
   index: number | string;
@@ -1237,11 +1238,15 @@ function refreshDiagnostics(
   index: KeywordIndex,
   collection: vscode.DiagnosticCollection,
   summaryPatterns: readonly RegExp[],
+  // The OPM Flow text to check: the document itself, or its RAW_TEXT bodies.
+  views: readonly vscode.TextDocument[] = [document],
 ): void {
-  if (document.languageId !== 'opm-flow') return;
-  const lines = document.getText().split(/\r?\n/);
+  if (document.languageId !== 'opm-flow' && document.languageId !== SIMEVENTS_LANGUAGE) return;
   const excluded = getExcludedKeywords(document.uri);
-  const diags = computeDiagnostics(lines, index, excluded, summaryPatterns).map(d => {
+  const lineDiags = views.flatMap(view =>
+    computeDiagnostics(view.getText().split(/\r?\n/), index, excluded, summaryPatterns),
+  );
+  const diags = lineDiags.map(d => {
     const range = new vscode.Range(d.line, d.startChar, d.line, d.endChar);
     const out: OpmDiagnostic = new vscode.Diagnostic(range, d.message, vscode.DiagnosticSeverity.Warning);
     out.source = 'OPM Flow';
@@ -1400,7 +1405,21 @@ async function runSimulatorOnDeck(
 export function activate(context: vscode.ExtensionContext): void {
   const index = loadKeywordIndex(context);
   const keywords = Object.keys(index);
-  const simulatorKeywordAt = registerSimEvents(context, keywordInfoFromIndex(index));
+  const simEvents = registerSimEvents(context, keywordInfoFromIndex(index));
+
+  // SIMEVENTS files embed Eclipse keyword text in RAW_TEXT bodies. The OPM
+  // Flow features see each body as a document of its own, so keywords in one
+  // body never run on into the next.
+  const opmFlowSelector = ['opm-flow', SIMEVENTS_LANGUAGE];
+  const opmFlowViews = (document: vscode.TextDocument): vscode.TextDocument[] =>
+    document.languageId === SIMEVENTS_LANGUAGE
+      ? simEvents.rawTextBodies(document).map(body => new MaskedTextDocument(document, [body]))
+      : [document];
+  const opmFlowViewAt = (document: vscode.TextDocument, line: number): vscode.TextDocument | undefined => {
+    if (document.languageId !== SIMEVENTS_LANGUAGE) return document;
+    const body = simEvents.rawTextBodies(document).find(b => b.startLine <= line && line <= b.endLine);
+    return body ? new MaskedTextDocument(document, [body]) : undefined;
+  };
 
   // --- Additional file extensions ---
   // Retag any open file whose extension is listed in
@@ -1435,15 +1454,25 @@ export function activate(context: vscode.ExtensionContext): void {
   // --- Cursor-driven docs update ---
   const onCursorMove = debounce((editor: vscode.TextEditor) => {
     const pos = editor.selection.active;
-    const line = editor.document.lineAt(pos).text;
+    if (editor.document.languageId === SIMEVENTS_LANGUAGE) {
+      const found = simEvents.simulatorKeywordAt(editor.document, pos);
+      const entry = found ? index[found.keyword] : undefined;
+      if (entry) {
+        docsProvider.update(entry, entry.parameters?.find(p => p.name === found?.item));
+        return;
+      }
+    }
+    const document = opmFlowViewAt(editor.document, pos.line);
+    if (!document) return;
+    const line = document.lineAt(pos).text;
 
     // Only treat the word at the cursor as a keyword *declaration* when it
     // starts in column 1. OPM Flow only recognises keywords there, so an
     // indented uppercase token (e.g. `THPRES` on ` THPRES /` under EQLOPTS)
     // is a record value, not the THPRES keyword — fall through to the
     // active-keyword + column lookup below.
-    const wordRange = editor.document.getWordRangeAtPosition(pos, /[A-Z][A-Z0-9_-]*/);
-    const word = wordRange ? editor.document.getText(wordRange) : '';
+    const wordRange = document.getWordRangeAtPosition(pos, /[A-Z][A-Z0-9_-]*/);
+    const word = wordRange ? document.getText(wordRange) : '';
     const wordEntry = word ? resolveKeyword(index, word) : undefined;
     if (wordEntry && wordRange?.start.character === 0) {
       docsProvider.update(wordEntry);
@@ -1452,10 +1481,10 @@ export function activate(context: vscode.ExtensionContext): void {
 
     const col = columnAtCursor(line, pos.character);
     if (col >= 1) {
-      const kwName = findActiveKeyword(editor.document, pos);
+      const kwName = findActiveKeyword(document, pos);
       const entry = kwName ? resolveKeyword(index, kwName) : undefined;
       if (entry) {
-        const record = findActiveRecord(editor.document, entry, pos);
+        const record = findActiveRecord(document, entry, pos);
         const param = findParam(entry, record, p => p.index === col);
         docsProvider.update(entry, param);
         return;
@@ -1463,20 +1492,10 @@ export function activate(context: vscode.ExtensionContext): void {
     }
   }, 150);
 
-  const onSimEventsCursorMove = debounce((editor: vscode.TextEditor) => {
-    const found = simulatorKeywordAt(editor.document, editor.selection.active);
-    const entry = found ? index[found.keyword] : undefined;
-    if (entry) {
-      docsProvider.update(entry, entry.parameters?.find(p => p.name === found?.item));
-    }
-  }, 150);
-
   context.subscriptions.push(
     vscode.window.onDidChangeTextEditorSelection(e => {
-      if (e.textEditor.document.languageId === 'opm-flow') {
+      if (opmFlowSelector.includes(e.textEditor.document.languageId)) {
         onCursorMove(e.textEditor);
-      } else if (e.textEditor.document.languageId === SIMEVENTS_LANGUAGE) {
-        onSimEventsCursorMove(e.textEditor);
       }
     }),
     vscode.workspace.onDidChangeConfiguration(e => {
@@ -1492,12 +1511,14 @@ export function activate(context: vscode.ExtensionContext): void {
 
   // --- Completion provider: keyword names at the start of a line ---
   const completionProvider = vscode.languages.registerCompletionItemProvider(
-    'opm-flow',
+    opmFlowSelector,
     {
       provideCompletionItems(
-        document: vscode.TextDocument,
+        outer: vscode.TextDocument,
         position: vscode.Position
       ): vscode.CompletionItem[] {
+        const document = opmFlowViewAt(outer, position.line);
+        if (!document) return [];
         const linePrefix = document.lineAt(position).text.substring(0, position.character);
         if (!/^\s*[A-Z][A-Z0-9_-]*$/.test(linePrefix)) return [];
         const completionConfig = vscode.workspace.getConfiguration('opm-flow.completion', document.uri);
@@ -1523,10 +1544,11 @@ export function activate(context: vscode.ExtensionContext): void {
 
   // --- Code-action provider: quick fixes for fixable diagnostics ---
   const codeActionProvider = vscode.languages.registerCodeActionsProvider(
-    'opm-flow',
+    opmFlowSelector,
     {
-      provideCodeActions(document, _range, context): vscode.CodeAction[] {
-        return provideOpmCodeActions(document, context);
+      provideCodeActions(outer, range, context): vscode.CodeAction[] {
+        const document = opmFlowViewAt(outer, range.start.line);
+        return document ? provideOpmCodeActions(document, context) : [];
       },
     },
     { providedCodeActionKinds: [vscode.CodeActionKind.QuickFix] }
@@ -1534,12 +1556,14 @@ export function activate(context: vscode.ExtensionContext): void {
 
   // --- Completion provider: enum-style values inside record lines ---
   const valueCompletionProvider = vscode.languages.registerCompletionItemProvider(
-    'opm-flow',
+    opmFlowSelector,
     {
       provideCompletionItems(
-        document: vscode.TextDocument,
+        outer: vscode.TextDocument,
         position: vscode.Position
       ): vscode.CompletionItem[] {
+        const document = opmFlowViewAt(outer, position.line);
+        if (!document) return [];
         const line = document.lineAt(position).text;
         const prefix = line.substring(0, position.character);
         // Skip when the prefix still looks like a keyword declaration —
@@ -1667,12 +1691,14 @@ export function activate(context: vscode.ExtensionContext): void {
 
   // --- Completion provider: UDQ control words and functions ---
   const udqCompletionProvider = vscode.languages.registerCompletionItemProvider(
-    'opm-flow',
+    opmFlowSelector,
     {
       provideCompletionItems(
-        document: vscode.TextDocument,
+        outer: vscode.TextDocument,
         position: vscode.Position
       ): vscode.CompletionItem[] {
+        const document = opmFlowViewAt(outer, position.line);
+        if (!document) return [];
         const activeKw = findActiveKeyword(document, position);
         if (activeKw !== 'UDQ' && activeKw !== 'ACTIONX') return [];
         const prefix = document.lineAt(position).text.substring(0, position.character);
@@ -1709,8 +1735,10 @@ export function activate(context: vscode.ExtensionContext): void {
   );
 
   // --- Hover provider (tooltip) ---
-  const hoverProvider = vscode.languages.registerHoverProvider('opm-flow', {
-    provideHover(document: vscode.TextDocument, position: vscode.Position): vscode.Hover | undefined {
+  const hoverProvider = vscode.languages.registerHoverProvider(opmFlowSelector, {
+    provideHover(outer: vscode.TextDocument, position: vscode.Position): vscode.Hover | undefined {
+      const document = opmFlowViewAt(outer, position.line);
+      if (!document) return undefined;
       const line = document.lineAt(position).text;
 
       // Same column-1 discipline as the docs panel: an indented uppercase
@@ -1806,10 +1834,10 @@ export function activate(context: vscode.ExtensionContext): void {
   const addColumnHeadersCommand = vscode.commands.registerCommand('opm-flow.addColumnHeaders', async () => {
     const editor = vscode.window.activeTextEditor;
     if (!editor) return;
-    const doc = editor.document;
     const pos = editor.selection.active;
-    const result = findRecordGroupAtLine(doc, pos.line);
-    if (!result) {
+    const doc = opmFlowViewAt(editor.document, pos.line);
+    const result = doc ? findRecordGroupAtLine(doc, pos.line) : null;
+    if (!doc || !result) {
       vscode.window.showInformationMessage('OPM Flow: no record table found at cursor');
       return;
     }
@@ -1903,19 +1931,20 @@ export function activate(context: vscode.ExtensionContext): void {
   const alignColumnsRecordCommand = vscode.commands.registerCommand('opm-flow.alignRecordColumnsRecord', async () => {
     const editor = vscode.window.activeTextEditor;
     if (!editor) return;
-    const group = findRecordGroupAtLine(editor.document, editor.selection.active.line);
-    if (!group || group.groupLines.length === 0) {
+    const document = opmFlowViewAt(editor.document, editor.selection.active.line);
+    const group = document ? findRecordGroupAtLine(document, editor.selection.active.line) : null;
+    if (!document || !group || group.groupLines.length === 0) {
       vscode.window.showInformationMessage('OPM Flow: no record group at the cursor to align');
       return;
     }
     const firstLine = group.groupLines[0];
     const lastLine = group.groupLines[group.groupLines.length - 1];
     const range = new vscode.Range(
-      firstLine, 0, lastLine, editor.document.lineAt(lastLine).text.length,
+      firstLine, 0, lastLine, document.lineAt(lastLine).text.length,
     );
-    const excludedKeywords = getAlignColumnsExcludedKeywords(editor.document.uri);
+    const excludedKeywords = getAlignColumnsExcludedKeywords(document.uri);
     const edits = computeAlignEdits(
-      editor.document, range, excludedKeywords, getAlignIndents(editor.document.uri),
+      document, range, excludedKeywords, getAlignIndents(document.uri),
     );
     if (edits.length === 0) {
       vscode.window.showInformationMessage('OPM Flow: nothing to align in the current record');
@@ -1930,8 +1959,8 @@ export function activate(context: vscode.ExtensionContext): void {
     if (!editor) return;
     const range = editor.selection.isEmpty ? undefined : editor.selection;
     const excludedKeywords = getAlignColumnsExcludedKeywords(editor.document.uri);
-    const edits = computeAlignEdits(
-      editor.document, range, excludedKeywords, getAlignIndents(editor.document.uri),
+    const edits = opmFlowViews(editor.document).flatMap(view =>
+      computeAlignEdits(view, range, excludedKeywords, getAlignIndents(editor.document.uri)),
     );
     if (edits.length === 0) {
       vscode.window.showInformationMessage('OPM Flow: no record groups to align in the current file');
@@ -2054,14 +2083,24 @@ export function activate(context: vscode.ExtensionContext): void {
 
   // --- File-reference link provider (INCLUDE / IMPORT / RESTART / GDFILE) ---
   const fileLinkProvider = vscode.languages.registerDocumentLinkProvider(
-    'opm-flow',
-    new FileReferenceLinkProvider()
+    opmFlowSelector,
+    {
+      provideDocumentLinks(document: vscode.TextDocument): vscode.DocumentLink[] {
+        const links = new FileReferenceLinkProvider();
+        return opmFlowViews(document).flatMap(view => links.provideDocumentLinks(view));
+      },
+    }
   );
 
   // --- Folding range provider ---
   const foldingProvider = vscode.languages.registerFoldingRangeProvider(
-    'opm-flow',
-    new OpmFlowFoldingRangeProvider()
+    opmFlowSelector,
+    {
+      provideFoldingRanges(document: vscode.TextDocument): vscode.FoldingRange[] {
+        const folding = new OpmFlowFoldingRangeProvider();
+        return opmFlowViews(document).flatMap(view => folding.provideFoldingRanges(view));
+      },
+    }
   );
 
   // --- Outline tree view: section -> keyword navigation ---
@@ -2119,20 +2158,22 @@ export function activate(context: vscode.ExtensionContext): void {
   const summaryPatterns = loadSummaryPatterns(context);
   const diagnostics = vscode.languages.createDiagnosticCollection('opm-flow');
   const refreshDiags = debounce((doc: vscode.TextDocument) => {
-    refreshDiagnostics(doc, index, diagnostics, summaryPatterns);
+    refreshDiagnostics(doc, index, diagnostics, summaryPatterns, opmFlowViews(doc));
   }, 250);
   for (const editor of vscode.window.visibleTextEditors) {
-    refreshDiagnostics(editor.document, index, diagnostics, summaryPatterns);
+    refreshDiagnostics(editor.document, index, diagnostics, summaryPatterns, opmFlowViews(editor.document));
   }
   context.subscriptions.push(
     diagnostics,
-    vscode.workspace.onDidOpenTextDocument(doc => refreshDiagnostics(doc, index, diagnostics, summaryPatterns)),
+    vscode.workspace.onDidOpenTextDocument(doc =>
+      refreshDiagnostics(doc, index, diagnostics, summaryPatterns, opmFlowViews(doc)),
+    ),
     vscode.workspace.onDidChangeTextDocument(e => refreshDiags(e.document)),
     vscode.workspace.onDidCloseTextDocument(doc => diagnostics.delete(doc.uri)),
     vscode.workspace.onDidChangeConfiguration(e => {
       if (!e.affectsConfiguration('opm-flow.diagnostics.excludedKeywords')) return;
       for (const doc of vscode.workspace.textDocuments) {
-        refreshDiagnostics(doc, index, diagnostics, summaryPatterns);
+        refreshDiagnostics(doc, index, diagnostics, summaryPatterns, opmFlowViews(doc));
       }
     }),
   );
