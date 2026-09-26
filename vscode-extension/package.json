@@ -146,6 +146,14 @@
         "language": "opm-flow",
         "scopeName": "source.opm-flow",
         "path": "./syntaxes/opm-flow.tmLanguage.json"
+      },
+      {
+        "language": "opm-simevents",
+        "scopeName": "source.opm-simevents",
+        "path": "./syntaxes/simevents.tmLanguage.json",
+        "embeddedLanguages": {
+          "meta.embedded.block.opm-flow": "opm-flow"
+        }
       }
     ],
     "commands": [
