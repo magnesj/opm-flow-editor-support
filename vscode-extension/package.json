@@ -31,6 +31,7 @@
   ],
   "activationEvents": [
     "onLanguage:opm-flow",
+    "onLanguage:opm-simevents",
     "onView:opm-flow.docsView",
     "onView:opm-flow.outlineView",
     "onStartupFinished"
@@ -127,6 +128,17 @@
           ".trans"
         ],
         "configuration": "./language-configuration.json"
+      },
+      {
+        "id": "opm-simevents",
+        "aliases": [
+          "SIMEVENTS"
+        ],
+        "extensions": [
+          ".events"
+        ],
+        "firstLine": "^\\s*SIMEVENTS\\b",
+        "configuration": "./language-configuration.simevents.json"
       }
     ],
     "grammars": [
