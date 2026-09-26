@@ -3,6 +3,7 @@ import { KeywordInfo, parseSimEvents, SimEventsDocument, Span, VarKind } from '.
 import {
   buildSimEventsOutline,
   foldingRanges,
+  hoverAt,
   isValidVariableName,
   OutlineItem,
   variableAt,
@@ -14,7 +15,7 @@ export const SIMEVENTS_LANGUAGE = 'opm-simevents';
 class DocumentCache {
   private readonly entries = new WeakMap<vscode.TextDocument, { version: number; doc: SimEventsDocument }>();
 
-  constructor(private readonly keywords: Map<string, KeywordInfo>) {}
+  constructor(readonly keywords: Map<string, KeywordInfo>) {}
 
   get(document: vscode.TextDocument): SimEventsDocument {
     const cached = this.entries.get(document);
@@ -151,4 +152,12 @@ export function registerSimEvents(context: vscode.ExtensionContext, keywords: Ma
   const cache = new DocumentCache(keywords);
   registerDiagnostics(context, cache);
   registerNavigation(context, cache);
+  context.subscriptions.push(
+    vscode.languages.registerHoverProvider(SIMEVENTS_LANGUAGE, {
+      provideHover: (document, position) => {
+        const hover = hoverAt(cache.get(document), position.line, position.character, cache.keywords);
+        return hover ? new vscode.Hover(new vscode.MarkdownString(hover.markdown), toRange(hover.span)) : undefined;
+      },
+    }),
+  );
 }

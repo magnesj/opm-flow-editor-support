@@ -2,7 +2,16 @@
 // Kept free of the vscode API so they can be unit-tested.
 
 import {
+  ATTRIBUTE_VALUES,
+  BlockKind,
+  BUILTIN_EVENT_ATTRIBUTES,
+  Declaration,
+  Duration,
+  FilterExpr,
   formatDate,
+  formatDuration,
+  KEYWORD_ITEM_ALIASES,
+  KeywordInfo,
   SimEventsDocument,
   Span,
   VarKind,
@@ -122,4 +131,118 @@ export function variableAt(doc: SimEventsDocument, line: number, character: numb
 
 export function isValidVariableName(name: string): boolean {
   return /^[A-Za-z_]\w*$/.test(name);
+}
+
+export const BUILTIN_EVENT_DOCS: Record<string, string> = {
+  PERFORATION: 'Perforation interval from MDSTART to MDEND. FILTER limits it to cells matching a cell filter.',
+  SEGMENT: 'Multi-segment tubing interval from MDSTART to MDEND.',
+  VALVE: 'Valve at measured depth MD.',
+  STATE: 'Change of well state.',
+  WELSPECS: 'Partial WELSPECS update. Omitted values keep the previous state.',
+  MEMBER: 'Shorthand for one GRUPTREE record per member, with the enclosing group as parent.',
+  INSERT_DATE: 'Adds a DATES entry, and so a summary report, at this date. EVERY repeats it until UNTIL (inclusive) or the last event.',
+  RESTART: 'Drops generated schedule output before this date. At most one per file.',
+  RAW_TEXT: 'Copies the lines up to END_RAW_TEXT into the schedule unchanged, at PLACEMENT.',
+};
+
+const BLOCK_INJECTED_ITEM: Partial<Record<BlockKind, string>> = { WELL: 'WELL', GROUP: 'GROUP' };
+
+function describeValue(decl: Declaration): string {
+  const value = decl.value;
+  if (value === undefined) {
+    return '';
+  }
+  switch (decl.kind) {
+    case 'DATE':
+      return formatDate(value as number);
+    case 'DURATION':
+      return formatDuration(value as Duration);
+    case 'WELL':
+      return `"${value as string}"`;
+    case 'FILTER':
+      return `"${(value as FilterExpr).raw}"`;
+  }
+}
+
+function describeAttributes(type: string): string {
+  const spec = BUILTIN_EVENT_ATTRIBUTES[type];
+  if (!spec) {
+    return '';
+  }
+  const parts: string[] = [];
+  if (spec.required.length) {
+    parts.push(`Required: ${spec.required.map(a => `\`${a}\``).join(', ')}`);
+  }
+  if (spec.optional.length) {
+    parts.push(`Optional: ${spec.optional.map(a => `\`${a}\``).join(', ')}`);
+  }
+  return parts.join('  \n');
+}
+
+// Markdown hover text for the construct at a position.
+export function hoverAt(
+  doc: SimEventsDocument,
+  line: number,
+  character: number,
+  keywords?: Map<string, KeywordInfo>,
+): { span: Span; markdown: string } | undefined {
+  const occurrences = variableAt(doc, line, character);
+  if (occurrences) {
+    const decl = doc.declarations.find(d => d.nameSpan === occurrences.definition);
+    if (!decl) {
+      return undefined;
+    }
+    const value = describeValue(decl);
+    return {
+      span: occurrences.span,
+      markdown: `${decl.kind} \`${decl.name}\`${value ? ` = \`${value}\`` : ''}`,
+    };
+  }
+
+  for (const block of doc.blocks) {
+    for (const event of block.events) {
+      if (event.line !== line) {
+        continue;
+      }
+      const type = event.type.toUpperCase();
+      if (contains(event.dateSpan, line, character) && event.date !== undefined) {
+        return { span: event.dateSpan, markdown: `Event date \`${formatDate(event.date)}\`` };
+      }
+      const keyword = keywords?.get(type);
+      if (contains(event.typeSpan, line, character)) {
+        if (BUILTIN_EVENT_DOCS[type]) {
+          const attributes = describeAttributes(type);
+          return {
+            span: event.typeSpan,
+            markdown: `**${type}** (SIMEVENTS)\n\n${BUILTIN_EVENT_DOCS[type]}${attributes ? `\n\n${attributes}` : ''}`,
+          };
+        }
+        if (keyword) {
+          const injected = BLOCK_INJECTED_ITEM[block.kind];
+          const note = injected ? `\n\nThe ${block.kind.toLowerCase()} name is passed as the ${injected} item.` : '';
+          return { span: event.typeSpan, markdown: `**${type}**\n\n${keyword.summary ?? ''}${note}` };
+        }
+        return undefined;
+      }
+      for (const attr of event.attributes.values()) {
+        if (!contains(attr.keySpan, line, character)) {
+          continue;
+        }
+        const options = ATTRIBUTE_VALUES[`${type}.${attr.key}`];
+        if (BUILTIN_EVENT_ATTRIBUTES[type]) {
+          const required = BUILTIN_EVENT_ATTRIBUTES[type].required.includes(attr.key) ? 'required' : 'optional';
+          const values = options ? `\n\nValues: ${options.map(o => `\`${o}\``).join(', ')}` : '';
+          return { span: attr.keySpan, markdown: `**${attr.key}** (${required} ${type} attribute)${values}` };
+        }
+        const item = KEYWORD_ITEM_ALIASES[type]?.[attr.key] ?? attr.key;
+        const description = keyword?.itemDescriptions?.[item];
+        if (description) {
+          const alias = item !== attr.key ? ` (written as ${attr.key})` : '';
+          return { span: attr.keySpan, markdown: `**${type} ${item}**${alias}\n\n${description}` };
+        }
+        return undefined;
+      }
+    }
+  }
+  return undefined;
 }

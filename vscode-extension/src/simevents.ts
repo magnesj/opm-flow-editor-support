@@ -107,6 +107,9 @@ export interface SimEventsDocument {
 export interface KeywordInfo {
   sections: string[];
   items: string[];
+  summary?: string;
+  itemDescriptions?: Record<string, string>;
+  itemOptions?: Record<string, string[]>;
 }
 
 export interface SimEventsOptions {
@@ -115,11 +118,31 @@ export interface SimEventsOptions {
 }
 
 export function keywordInfoFromIndex(
-  index: Record<string, { sections: string[]; parameters: Array<{ name: string }> }>,
+  index: Record<string, {
+    sections: string[];
+    summary?: string;
+    parameters: Array<{ name: string; description?: string; options?: string[] }>;
+  }>,
 ): Map<string, KeywordInfo> {
   const keywords = new Map<string, KeywordInfo>();
   for (const [name, entry] of Object.entries(index)) {
-    keywords.set(name, { sections: entry.sections, items: entry.parameters.map(p => p.name) });
+    const itemDescriptions: Record<string, string> = {};
+    const itemOptions: Record<string, string[]> = {};
+    for (const p of entry.parameters) {
+      if (p.description) {
+        itemDescriptions[p.name] = p.description;
+      }
+      if (p.options?.length) {
+        itemOptions[p.name] = p.options;
+      }
+    }
+    keywords.set(name, {
+      sections: entry.sections,
+      items: entry.parameters.map(p => p.name),
+      summary: entry.summary,
+      itemDescriptions,
+      itemOptions,
+    });
   }
   return keywords;
 }
