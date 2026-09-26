@@ -1,6 +1,12 @@
 import * as vscode from 'vscode';
 import { KeywordInfo, parseSimEvents, SimEventsDocument, Span, VarKind } from './simevents';
-import { buildSimEventsOutline, foldingRanges, OutlineItem } from './simevents-language';
+import {
+  buildSimEventsOutline,
+  foldingRanges,
+  isValidVariableName,
+  OutlineItem,
+  variableAt,
+} from './simevents-language';
 
 export const SIMEVENTS_LANGUAGE = 'opm-simevents';
 
@@ -91,6 +97,52 @@ function registerNavigation(context: vscode.ExtensionContext, cache: DocumentCac
       provideFoldingRanges: document =>
         foldingRanges(cache.get(document), documentLines(document))
           .map(r => new vscode.FoldingRange(r.startLine, r.endLine)),
+    }),
+  );
+
+  const at = (document: vscode.TextDocument, position: vscode.Position) =>
+    variableAt(cache.get(document), position.line, position.character);
+  context.subscriptions.push(
+    vscode.languages.registerDefinitionProvider(SIMEVENTS_LANGUAGE, {
+      provideDefinition: (document, position) => {
+        const definition = at(document, position)?.definition;
+        return definition ? new vscode.Location(document.uri, toRange(definition)) : undefined;
+      },
+    }),
+    vscode.languages.registerReferenceProvider(SIMEVENTS_LANGUAGE, {
+      provideReferences: (document, position, refContext) => {
+        const occurrences = at(document, position);
+        if (!occurrences) {
+          return undefined;
+        }
+        const spans = refContext.includeDeclaration
+          ? [...occurrences.declarations, ...occurrences.references]
+          : occurrences.references;
+        return spans.map(span => new vscode.Location(document.uri, toRange(span)));
+      },
+    }),
+    vscode.languages.registerRenameProvider(SIMEVENTS_LANGUAGE, {
+      prepareRename: (document, position) => {
+        const occurrences = at(document, position);
+        if (!occurrences) {
+          throw new Error('Only declared variables can be renamed');
+        }
+        return { range: toRange(occurrences.span), placeholder: occurrences.name };
+      },
+      provideRenameEdits: (document, position, newName) => {
+        const occurrences = at(document, position);
+        if (!occurrences) {
+          return undefined;
+        }
+        if (!isValidVariableName(newName)) {
+          throw new Error(`'${newName}' is not a valid variable name`);
+        }
+        const edit = new vscode.WorkspaceEdit();
+        for (const span of [...occurrences.declarations, ...occurrences.references]) {
+          edit.replace(document.uri, toRange(span), newName);
+        }
+        return edit;
+      },
     }),
   );
 }

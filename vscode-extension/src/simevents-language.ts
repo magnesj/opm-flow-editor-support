@@ -88,3 +88,38 @@ export function foldingRanges(doc: SimEventsDocument, lines: string[]): LineRang
   }
   return ranges;
 }
+
+export interface VariableOccurrences {
+  name: string;
+  // The occurrence under the cursor.
+  span: Span;
+  definition?: Span;
+  declarations: Span[];
+  references: Span[];
+}
+
+function contains(span: Span, line: number, character: number): boolean {
+  return span.line === line && span.start <= character && character <= span.end;
+}
+
+// All occurrences of the variable at a position. Occurrences are matched by
+// name, since redeclaring a variable replaces it.
+export function variableAt(doc: SimEventsDocument, line: number, character: number): VariableOccurrences | undefined {
+  const decl = doc.declarations.find(d => contains(d.nameSpan, line, character));
+  const ref = decl ? undefined : doc.references.find(r => contains(r.span, line, character));
+  const name = decl?.name ?? ref?.name;
+  if (name === undefined) {
+    return undefined;
+  }
+  return {
+    name,
+    span: (decl?.nameSpan ?? ref?.span)!,
+    definition: decl?.nameSpan ?? ref?.declaration?.nameSpan,
+    declarations: doc.declarations.filter(d => d.name === name).map(d => d.nameSpan),
+    references: doc.references.filter(r => r.name === name).map(r => r.span),
+  };
+}
+
+export function isValidVariableName(name: string): boolean {
+  return /^[A-Za-z_]\w*$/.test(name);
+}

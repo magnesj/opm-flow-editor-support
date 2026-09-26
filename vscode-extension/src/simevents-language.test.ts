@@ -1,5 +1,5 @@
 import { parseSimEvents } from './simevents';
-import { buildSimEventsOutline, foldingRanges } from './simevents-language';
+import { buildSimEventsOutline, foldingRanges, isValidVariableName, variableAt } from './simevents-language';
 
 const TEXT = [
   'SIMEVENTS 1.2', //                                          0
@@ -55,5 +55,40 @@ describe('foldingRanges', () => {
       { startLine: 11, endLine: 13 },
       { startLine: 1, endLine: 2 },
     ]);
+  });
+});
+
+describe('variableAt', () => {
+  it('finds a variable from a reference', () => {
+    // 'START' in "  START + 1d WCONHIST ..." on line 13.
+    const occurrences = variableAt(doc, 13, 4)!;
+    expect(occurrences.name).toBe('START');
+    expect(occurrences.span).toEqual({ line: 13, start: 2, end: 7 });
+    expect(occurrences.definition).toEqual({ line: 3, start: 5, end: 10 });
+    expect(occurrences.declarations).toEqual([{ line: 3, start: 5, end: 10 }]);
+    expect(occurrences.references.map(r => r.line)).toEqual([7, 12, 13]);
+  });
+
+  it('finds a variable from its declaration and alias uses', () => {
+    const occurrences = variableAt(doc, 4, 6)!;
+    expect(occurrences.name).toBe('A1');
+    expect(occurrences.references).toEqual([{ line: 11, start: 5, end: 7 }]);
+  });
+
+  it('returns nothing away from variables', () => {
+    expect(variableAt(doc, 12, 15)).toBeUndefined();
+  });
+
+  it('includes redeclarations', () => {
+    const redeclared = parseSimEvents('SIMEVENTS 1.2\nDATE A = 2024-01-01\nDATE A = 2024-01-02\nDATE B = A\n');
+    const occurrences = variableAt(redeclared, 3, 9)!;
+    expect(occurrences.definition).toEqual({ line: 2, start: 5, end: 6 });
+    expect(occurrences.declarations.map(d => d.line)).toEqual([1, 2]);
+  });
+
+  it('validates new names', () => {
+    expect(isValidVariableName('NEW_1')).toBe(true);
+    expect(isValidVariableName('1X')).toBe(false);
+    expect(isValidVariableName('A B')).toBe(false);
   });
 });
