@@ -235,7 +235,7 @@
           ]
         }
       },
-      "end": "^\\s*(END_RAW_TEXT)\\s*(?:#.*)?$",
+      "end": "^\\s*(END_RAW_TEXT)\\s*$",
       "endCaptures": {
         "1": {
           "name": "keyword.control.raw-text.simevents"
