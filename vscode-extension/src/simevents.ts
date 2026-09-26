@@ -153,6 +153,17 @@ export const KEYWORD_ITEM_ALIASES: Record<string, Record<string, string>> = {
   WELTARG: { VALUE: 'NEW_VALUE' },
 };
 
+// Event types with dedicated handling in a WELL block; others that look like
+// a misspelling of one of these are reported instead of passed through.
+const WELL_DISPATCH_TYPES = ['PERFORATION', 'SEGMENT', 'VALVE', 'STATE', 'WELSPECS', 'WCONHIST', 'WELTARG'];
+
+const PERF_NUMERIC = ['MDSTART', 'MDEND', 'DIAMETER', 'SKIN', 'COMPLETION_NUMBER'];
+const SEGMENT_NUMERIC = ['MDSTART', 'MDEND', 'INNER_DIAMETER', 'ROUGHNESS'];
+const VALVE_NUMERIC = [
+  'MD', 'CV', 'AREA', 'AICD_STRENGTH', 'AICD_DENSITY_CALIB_FLUID', 'AICD_VISCOSITY_CALIB_FLUID',
+  'AICD_VOL_FLOW_EXP', 'AICD_VISC_FUNC_EXP',
+];
+
 const RESULT_TYPE_ALIASES: Record<string, string> = {
   STATIC: 'STATIC_NATIVE',
   STATIC_NATIVE: 'STATIC_NATIVE',
@@ -393,6 +404,10 @@ function inferValue(raw: string): { value: string | number | boolean; valueType:
   return { value: raw, valueType: 'string' };
 }
 
+function isNumeric(attr: Attribute): boolean {
+  return attr.valueType === 'int' || attr.valueType === 'float';
+}
+
 // ---------------------------------------------------------------------------
 // Parser
 // ---------------------------------------------------------------------------
@@ -512,6 +527,13 @@ class Parser {
     this.checkRestarts();
     this.checkDuplicateWellspecs();
     this.checkInsertDates();
+    for (const block of this.doc.blocks) {
+      if (block.valid) {
+        for (const event of block.events) {
+          checkEvent(block, event, this.doc.issues);
+        }
+      }
+    }
     return this.doc;
   }
 
@@ -1244,6 +1266,139 @@ function unrecognizedLineMessage(text: string, first: string): string {
     return 'Single-quoted well names are not supported; open a well block with WELL "name"';
   }
   return `Unrecognized line: ${pyRepr(text)}${didYouMean(first, TOP_LEVEL_KEYWORDS)}`;
+}
+
+// ---------------------------------------------------------------------------
+// Event checks. rips performs these when applying a document to a project;
+// none of them need the project.
+// ---------------------------------------------------------------------------
+
+function checkEvent(block: Block, event: SimEvent, issues: SimEventsIssue[]): void {
+  const type = event.type.toUpperCase();
+  const error = (message: string, span = event.typeSpan): void => {
+    issues.push({ message, severity: 'error', span });
+  };
+  const warning = (message: string, span = event.typeSpan): void => {
+    issues.push({ message, severity: 'warning', span });
+  };
+
+  if (['INSERT_DATE', 'RAW_TEXT', 'RESTART'].includes(type)) {
+    return;
+  }
+
+  if (block.kind !== 'WELL') {
+    if (type === 'MEMBER') {
+      if (block.kind !== 'GROUP') {
+        error('MEMBER needs a GROUP block');
+        return;
+      }
+      checkAttributes(event, 'MEMBER', [], error, warning);
+      const members = event.attributes.get('MEMBERS');
+      if (members && String(members.value).split(',').some(m => !m.trim())) {
+        error('MEMBERS must be a comma-delimited list of non-empty names', members.valueSpan);
+      }
+      return;
+    }
+    if (COMPLETION_EVENT_TYPES.includes(type)) {
+      error(`${type} is a completion event and needs a WELL block, not GROUP or SCHEDULE`);
+      return;
+    }
+    warnIgnoredFilter(event, type, warning);
+    return;
+  }
+
+  switch (type) {
+    case 'PERFORATION':
+      checkAttributes(event, type, PERF_NUMERIC, error, warning);
+      return;
+    case 'SEGMENT': {
+      checkAttributes(event, type, SEGMENT_NUMERIC, error, warning);
+      const components = event.attributes.get('PRESSURE_COMPONENTS');
+      if (components && !ATTRIBUTE_VALUES['SEGMENT.PRESSURE_COMPONENTS'].includes(String(components.value).toUpperCase())) {
+        error('PRESSURE_COMPONENTS must be H--, HF-, or HFA', components.valueSpan);
+      }
+      return;
+    }
+    case 'VALVE':
+      checkAttributes(event, type, VALVE_NUMERIC, error, warning);
+      return;
+    case 'STATE':
+      checkAttributes(event, type, [], error, warning);
+      return;
+    case 'WELSPECS':
+      checkWelspecs(event, error);
+      return;
+  }
+
+  if (!WELL_DISPATCH_TYPES.includes(type)) {
+    const typo = type === 'TUBING' ? 'SEGMENT' : closeMatch(type, WELL_DISPATCH_TYPES, 0.8);
+    if (typo) {
+      warning(`Unknown event type '${event.type}'; did you mean '${typo}'?`);
+      return;
+    }
+  }
+  warnIgnoredFilter(event, type, warning);
+}
+
+function warnIgnoredFilter(event: SimEvent, type: string, warning: (message: string, span?: Span) => void): void {
+  const filter = event.attributes.get('FILTER');
+  if (filter) {
+    warning(`attribute 'FILTER' on ${type} is ignored (not yet supported)`, filter.keySpan);
+  }
+}
+
+function checkAttributes(
+  event: SimEvent,
+  type: string,
+  numeric: string[],
+  error: (message: string, span?: Span) => void,
+  warning: (message: string, span?: Span) => void,
+): void {
+  const spec = BUILTIN_EVENT_ATTRIBUTES[type];
+  const known = new Set([...spec.required, ...spec.optional]);
+  for (const attr of event.attributes.values()) {
+    if (attr.key === 'FILTER' && type !== 'PERFORATION' && type !== 'MEMBER') {
+      warning(`attribute 'FILTER' on ${type} is ignored (not yet supported)`, attr.keySpan);
+    } else if (!known.has(attr.key)) {
+      error(`Unknown ${type} attribute '${attr.key}'${didYouMean(attr.key, known)}`, attr.keySpan);
+    } else if (numeric.includes(attr.key) && !isNumeric(attr)) {
+      error(`Expected a numeric value, got ${pyRepr(attr.raw)}`, attr.valueSpan);
+    }
+  }
+  const missing = spec.required.filter(name => !event.attributes.has(name));
+  if (missing.length) {
+    error(`${type} missing required attribute(s): ${missing.join(', ')}`);
+  }
+}
+
+function checkWelspecs(event: SimEvent, error: (message: string, span?: Span) => void): void {
+  const spec = BUILTIN_EVENT_ATTRIBUTES.WELSPECS;
+  const known = new Set(spec.optional);
+  for (const attr of event.attributes.values()) {
+    if (!known.has(attr.key)) {
+      error(`Unknown WELSPECS attribute '${attr.key}'${didYouMean(attr.key, known)}`, attr.keySpan);
+    }
+  }
+  if (![...event.attributes.keys()].some(k => k !== 'COMMENT')) {
+    error('WELSPECS needs at least one setting attribute');
+    return;
+  }
+  const group = event.attributes.get('GROUP');
+  if (group && (group.valueType !== 'string' || !group.value)) {
+    error('GROUP must be a non-empty string', group.valueSpan);
+  }
+  const crossflow = event.attributes.get('CROSSFLOW');
+  if (crossflow && crossflow.valueType !== 'bool') {
+    error('CROSSFLOW must be True or False', crossflow.valueSpan);
+  }
+  const refdepth = event.attributes.get('REFDEPTH');
+  if (refdepth && !isNumeric(refdepth)) {
+    error('REFDEPTH must be numeric', refdepth.valueSpan);
+  }
+  const phase = event.attributes.get('PHASE');
+  if (phase && (phase.valueType !== 'string' || !ATTRIBUTE_VALUES['WELSPECS.PHASE'].includes((phase.value as string).toUpperCase()))) {
+    error('PHASE must be OIL, GAS, WATER, or LIQUID', phase.valueSpan);
+  }
 }
 
 export function parseSimEvents(text: string): SimEventsDocument {

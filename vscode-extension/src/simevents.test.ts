@@ -276,6 +276,54 @@ describe('SCHEDULE events', () => {
   });
 });
 
+describe('event checks', () => {
+  it('checks built-in completion attributes', () => {
+    const doc = parseSimEvents(HEADER + 'WELL "W"\n  2024-01-01 PERFORATION MDSTART=abc SKINN=1\n');
+    expect(messages(doc)).toEqual([
+      "Expected a numeric value, got 'abc'",
+      "Unknown PERFORATION attribute 'SKINN'; did you mean 'SKIN'?",
+      'PERFORATION missing required attribute(s): MDEND',
+    ]);
+    expect(errorsOf('WELL "W"\n  2024-01-01 VALVE MD=2100\n')).toEqual(['VALVE missing required attribute(s): TYPE']);
+    expect(errorsOf('WELL "W"\n  2024-01-01 SEGMENT MDSTART=1 MDEND=2 PRESSURE_COMPONENTS=XYZ\n'))
+      .toEqual(['PRESSURE_COMPONENTS must be H--, HF-, or HFA']);
+  });
+
+  it('warns about FILTER where it is ignored', () => {
+    const doc = parseSimEvents(HEADER + 'WELL "W"\n  2024-01-01 STATE STATE=SHUT FILTER="PORO > 1"\n');
+    expect(messages(doc, 'warning')).toEqual(["attribute 'FILTER' on STATE is ignored (not yet supported)"]);
+  });
+
+  it('checks WELSPECS values and duplicates', () => {
+    expect(errorsOf('WELL "W"\n  2024-01-01 WELSPECS COMMENT="x"\n'))
+      .toEqual(['WELSPECS needs at least one setting attribute']);
+    expect(errorsOf('WELL "W"\n  2024-01-01 WELSPECS GROUP=1 CROSSFLOW=yes REFDEPTH=deep PHASE=OIL\n')).toEqual([
+      'GROUP must be a non-empty string',
+      'CROSSFLOW must be True or False',
+      'REFDEPTH must be numeric',
+    ]);
+    expect(errorsOf('WELL "W"\n  2024-01-01 WELSPECS PHASE=gas\n  2024-01-01 WELSPECS PHASE=oil\n'))
+      .toEqual(['WELSPECS already defined (first definition on line 3)']);
+  });
+
+  it('warns about misspelled built-in event types', () => {
+    const doc = parseSimEvents(HEADER + 'WELL "W"\n  2024-01-01 PERFORATIONS MDSTART=1\n  2024-01-01 TUBING X=1\n');
+    expect(messages(doc, 'warning')).toEqual([
+      "Unknown event type 'PERFORATIONS'; did you mean 'PERFORATION'?",
+      "Unknown event type 'TUBING'; did you mean 'SEGMENT'?",
+    ]);
+  });
+
+  it('checks GROUP and SCHEDULE events', () => {
+    expect(errorsOf('GROUP "G"\n  2024-01-01 MEMBER MEMBERS="A,,B"\n'))
+      .toEqual(['MEMBERS must be a comma-delimited list of non-empty names']);
+    expect(errorsOf('GROUP "G"\n  2024-01-01 MEMBER\n')).toEqual(['MEMBER missing required attribute(s): MEMBERS']);
+    expect(errorsOf('SCHEDULE\n  2024-01-01 MEMBER MEMBERS="A"\n')).toEqual(['MEMBER needs a GROUP block']);
+    expect(errorsOf('SCHEDULE\n  2024-01-01 PERFORATION MDSTART=1 MDEND=2\n'))
+      .toEqual(['PERFORATION is a completion event and needs a WELL block, not GROUP or SCHEDULE']);
+  });
+});
+
 describe('helpers', () => {
   it('strips comments outside quotes', () => {
     expect(stripComment('A B="x # y" # tail')).toBe('A B="x # y" ');
