@@ -102,6 +102,28 @@ export interface SimEventsDocument {
   issues: SimEventsIssue[];
 }
 
+// What the keyword index knows about an Eclipse keyword, used to check the
+// keywords that SIMEVENTS passes through.
+export interface KeywordInfo {
+  sections: string[];
+  items: string[];
+}
+
+export interface SimEventsOptions {
+  // Known keywords by name. Without it, pass-through keywords are not checked.
+  keywords?: Map<string, KeywordInfo>;
+}
+
+export function keywordInfoFromIndex(
+  index: Record<string, { sections: string[]; parameters: Array<{ name: string }> }>,
+): Map<string, KeywordInfo> {
+  const keywords = new Map<string, KeywordInfo>();
+  for (const [name, entry] of Object.entries(index)) {
+    keywords.set(name, { sections: entry.sections, items: entry.parameters.map(p => p.name) });
+  }
+  return keywords;
+}
+
 export const SUPPORTED_VERSION = '1.2';
 export const TOP_LEVEL_KEYWORDS = ['SIMEVENTS', 'UNIT', 'DATE', 'DURATION', 'WELL', 'FILTER', 'GROUP', 'SCHEDULE'];
 export const UNIT_SYSTEMS = ['METRIC', 'FIELD', 'LAB'];
@@ -463,7 +485,7 @@ class Parser {
   private current?: Block;
   private ctx: LineContext = { line: 0, text: '', col: 0 };
 
-  constructor(private readonly lines: string[]) {}
+  constructor(private readonly lines: string[], private readonly options: SimEventsOptions) {}
 
   run(): SimEventsDocument {
     let headerSeen = false;
@@ -530,7 +552,7 @@ class Parser {
     for (const block of this.doc.blocks) {
       if (block.valid) {
         for (const event of block.events) {
-          checkEvent(block, event, this.doc.issues);
+          checkEvent(block, event, this.doc.issues, this.options.keywords);
         }
       }
     }
@@ -1273,7 +1295,12 @@ function unrecognizedLineMessage(text: string, first: string): string {
 // none of them need the project.
 // ---------------------------------------------------------------------------
 
-function checkEvent(block: Block, event: SimEvent, issues: SimEventsIssue[]): void {
+function checkEvent(
+  block: Block,
+  event: SimEvent,
+  issues: SimEventsIssue[],
+  keywords: Map<string, KeywordInfo> | undefined,
+): void {
   const type = event.type.toUpperCase();
   const error = (message: string, span = event.typeSpan): void => {
     issues.push({ message, severity: 'error', span });
@@ -1282,7 +1309,14 @@ function checkEvent(block: Block, event: SimEvent, issues: SimEventsIssue[]): vo
     issues.push({ message, severity: 'warning', span });
   };
 
-  if (['INSERT_DATE', 'RAW_TEXT', 'RESTART'].includes(type)) {
+  if (type === 'RAW_TEXT') {
+    const anchor = event.attributes.get('ANCHOR');
+    if (anchor && keywords && !keywords.has(anchor.raw.toUpperCase())) {
+      warning(`Unknown keyword '${anchor.raw}'`, anchor.valueSpan);
+    }
+    return;
+  }
+  if (['INSERT_DATE', 'RESTART'].includes(type)) {
     return;
   }
 
@@ -1304,6 +1338,7 @@ function checkEvent(block: Block, event: SimEvent, issues: SimEventsIssue[]): vo
       return;
     }
     warnIgnoredFilter(event, type, warning);
+    checkKeyword(event, type, keywords, warning);
     return;
   }
 
@@ -1338,6 +1373,42 @@ function checkEvent(block: Block, event: SimEvent, issues: SimEventsIssue[]): vo
     }
   }
   warnIgnoredFilter(event, type, warning);
+  checkKeyword(event, type, keywords, warning);
+}
+
+function checkKeyword(
+  event: SimEvent,
+  type: string,
+  keywords: Map<string, KeywordInfo> | undefined,
+  warning: (message: string, span?: Span) => void,
+): void {
+  if (!keywords) {
+    return;
+  }
+  const info = keywords.get(type);
+  if (!info) {
+    const scheduleKeywords = [...keywords].filter(([, k]) => k.sections.includes('SCHEDULE')).map(([name]) => name);
+    warning(`Unknown keyword '${event.type}'${didYouMean(type, scheduleKeywords, 0.8)}`);
+    return;
+  }
+  if (!info.sections.includes('SCHEDULE')) {
+    warning(`${type} is not a SCHEDULE section keyword`);
+    return;
+  }
+  // Mnemonic-list keywords such as RPTRST take their options as attributes.
+  if (!info.items.length || info.items.some(item => item.includes('MNEMONIC'))) {
+    return;
+  }
+  const aliases = KEYWORD_ITEM_ALIASES[type] ?? {};
+  for (const attr of event.attributes.values()) {
+    if (attr.key === 'COMMENT' || attr.key === 'FILTER') {
+      continue;
+    }
+    const item = aliases[attr.key] ?? attr.key;
+    if (!info.items.includes(item)) {
+      warning(`Unknown ${type} item '${attr.key}'${didYouMean(item, info.items)}`, attr.keySpan);
+    }
+  }
 }
 
 function warnIgnoredFilter(event: SimEvent, type: string, warning: (message: string, span?: Span) => void): void {
@@ -1401,8 +1472,8 @@ function checkWelspecs(event: SimEvent, error: (message: string, span?: Span) =>
   }
 }
 
-export function parseSimEvents(text: string): SimEventsDocument {
-  const doc = new Parser(text.split(/\r\n|\r|\n/)).run();
+export function parseSimEvents(text: string, options: SimEventsOptions = {}): SimEventsDocument {
+  const doc = new Parser(text.split(/\r\n|\r|\n/), options).run();
   // An empty message marks a follow-on failure already reported elsewhere.
   doc.issues = doc.issues.filter(issue => issue.message !== '');
   return doc;

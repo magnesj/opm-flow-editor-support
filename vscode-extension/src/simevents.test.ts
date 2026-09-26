@@ -4,6 +4,7 @@ import {
   closeMatch,
   formatDate,
   formatDuration,
+  keywordInfoFromIndex,
   parseSimEvents,
   SimEventsDocument,
   stripComment,
@@ -12,6 +13,10 @@ import {
 const examplesDir = path.join(__dirname, '..', '..', 'examples', 'simevents');
 
 const HEADER = 'SIMEVENTS 1.2\n';
+
+const keywords = keywordInfoFromIndex(
+  JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'keyword_index_compact.json'), 'utf8')),
+);
 
 function messages(doc: SimEventsDocument, severity = 'error'): string[] {
   return doc.issues.filter(i => i.severity === severity).map(i => i.message);
@@ -321,6 +326,37 @@ describe('event checks', () => {
     expect(errorsOf('SCHEDULE\n  2024-01-01 MEMBER MEMBERS="A"\n')).toEqual(['MEMBER needs a GROUP block']);
     expect(errorsOf('SCHEDULE\n  2024-01-01 PERFORATION MDSTART=1 MDEND=2\n'))
       .toEqual(['PERFORATION is a completion event and needs a WELL block, not GROUP or SCHEDULE']);
+  });
+});
+
+describe('keyword checks', () => {
+  const warningsOf = (text: string): string[] => messages(parseSimEvents(HEADER + text, { keywords }), 'warning');
+
+  it('accepts the sample files', () => {
+    for (const file of fs.readdirSync(examplesDir).filter(f => f.endsWith('.events'))) {
+      const doc = parseSimEvents(fs.readFileSync(path.join(examplesDir, file), 'utf8'), { keywords });
+      expect({ file, issues: doc.issues }).toEqual({ file, issues: [] });
+    }
+  });
+
+  it('warns about unknown keywords and non-SCHEDULE keywords', () => {
+    expect(warningsOf('SCHEDULE\n  2024-01-01 GCONPORD CONTROL_MODE=ORAT\n  2024-01-01 PERMX X=1\n')).toEqual([
+      "Unknown keyword 'GCONPORD'; did you mean 'GCONPROD'?",
+      'PERMX is not a SCHEDULE section keyword',
+    ]);
+  });
+
+  it('checks item names after rips aliases', () => {
+    expect(warningsOf('WELL "W"\n  2024-01-01 WCONHIST STATUS=OPEN VFP=1 ORATE=5 COMMENT="x"\n')).toEqual([
+      "Unknown WCONHIST item 'ORATE'; did you mean 'ORAT'?",
+    ]);
+    expect(warningsOf('WELL "W"\n  2024-01-01 WELTARG CMODE=BHP VALUE=50\n')).toEqual([]);
+    expect(warningsOf('SCHEDULE\n  2024-01-01 RPTRST BASIC=2 FREQ=1\n')).toEqual([]);
+  });
+
+  it('checks RAW_TEXT anchors', () => {
+    expect(warningsOf('SCHEDULE\n  2024-01-01 RAW_TEXT PLACEMENT=AFTER_KEYWORD ANCHOR=COMPDATT\nX\nEND_RAW_TEXT\n'))
+      .toEqual(["Unknown keyword 'COMPDATT'"]);
   });
 });
 
