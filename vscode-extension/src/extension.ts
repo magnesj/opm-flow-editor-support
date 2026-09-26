@@ -49,6 +49,8 @@ import {
   SimulatorConfig,
   SimulatorMode,
 } from './simulator';
+import { keywordInfoFromIndex } from './simevents';
+import { registerSimEvents } from './simevents-provider';
 
 interface Parameter {
   index: number | string;
@@ -1398,6 +1400,7 @@ async function runSimulatorOnDeck(
 export function activate(context: vscode.ExtensionContext): void {
   const index = loadKeywordIndex(context);
   const keywords = Object.keys(index);
+  registerSimEvents(context, keywordInfoFromIndex(index));
 
   // --- Additional file extensions ---
   // Retag any open file whose extension is listed in
