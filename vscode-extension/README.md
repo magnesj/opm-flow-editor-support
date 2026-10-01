@@ -390,6 +390,30 @@ path is translated to its `/mnt/<drive>` mount automatically.
 Markdown document listing all keywords grouped by section — useful for uploading
 as context to an AI chat session.
 
+### SIMEVENTS Well-Event Files
+
+`.events` files (and files whose first line is `SIMEVENTS`) are SIMEVENTS 1.2
+well-event timelines, the format ResInsight's
+[`rips.simulator_events`](https://github.com/OPM/ResInsight/blob/dev/GrpcInterface/Python/rips/simulator_events.py)
+turns into SCHEDULE keywords. They get their own language, `opm-simevents`:
+
+- **Syntax highlighting** for declarations, blocks, dates, durations, event
+  types, attributes and filter expressions. `RAW_TEXT … END_RAW_TEXT` bodies are
+  highlighted as OPM Flow deck text.
+- **Diagnostics** matching the errors `python -m rips.simulator_events` reports:
+  header and unit, undeclared or mistyped variables, malformed dates and
+  durations, filter expressions, block placement of events, `INSERT_DATE`,
+  `RESTART` and `RAW_TEXT` rules, and the attributes of the built-in events.
+  Warnings flag misspelled event types and pass-through keywords or items that
+  are not in the keyword index.
+- **Completion** for statements, variables of the expected type, event types
+  that fit the block (built-ins plus matching Eclipse keywords), attribute
+  names and attribute values.
+- **Hover** shows the resolved value of a variable or event date, and docs for
+  built-in events and for pass-through keywords and their items.
+- **Go to Definition, Find References and Rename** for declared variables.
+- **Outline and folding** for declarations, blocks, events and `RAW_TEXT` bodies.
+
 ## Settings
 
 Configure via **File → Preferences → Settings** and search for `opm-flow`,
@@ -476,9 +500,11 @@ Section data files (Eclipse/OPM include conventions): `.aqucon`, `.aqunum`, `.di
 For project-specific extensions not covered by this list, set
 `opm-flow.additionalFileExtensions` (see [Settings](#settings)).
 
+SIMEVENTS well-event files: `.events`.
+
 ## Language ID
 
-The language is registered as `opm-flow`.
+The language is registered as `opm-flow`. SIMEVENTS files use `opm-simevents`.
 
 ## Requirements
 

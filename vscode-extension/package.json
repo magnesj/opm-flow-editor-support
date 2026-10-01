@@ -31,6 +31,7 @@
   ],
   "activationEvents": [
     "onLanguage:opm-flow",
+    "onLanguage:opm-simevents",
     "onView:opm-flow.docsView",
     "onView:opm-flow.outlineView",
     "onStartupFinished"
@@ -127,6 +128,17 @@
           ".trans"
         ],
         "configuration": "./language-configuration.json"
+      },
+      {
+        "id": "opm-simevents",
+        "aliases": [
+          "SIMEVENTS"
+        ],
+        "extensions": [
+          ".events"
+        ],
+        "firstLine": "^\\s*SIMEVENTS\\b",
+        "configuration": "./language-configuration.simevents.json"
       }
     ],
     "grammars": [
@@ -134,6 +146,14 @@
         "language": "opm-flow",
         "scopeName": "source.opm-flow",
         "path": "./syntaxes/opm-flow.tmLanguage.json"
+      },
+      {
+        "language": "opm-simevents",
+        "scopeName": "source.opm-simevents",
+        "path": "./syntaxes/simevents.tmLanguage.json",
+        "embeddedLanguages": {
+          "meta.embedded.block.opm-flow": "opm-flow"
+        }
       }
     ],
     "commands": [
@@ -178,12 +198,12 @@
       "editor/context": [
         {
           "command": "opm-flow.alignRecordColumnsRecord",
-          "when": "resourceLangId == opm-flow",
+          "when": "resourceLangId == opm-flow || resourceLangId == opm-simevents",
           "group": "opmflow_1_format@1"
         },
         {
           "command": "opm-flow.alignRecordColumns",
-          "when": "resourceLangId == opm-flow",
+          "when": "resourceLangId == opm-flow || resourceLangId == opm-simevents",
           "group": "opmflow_1_format@2"
         },
         {
@@ -193,7 +213,7 @@
         },
         {
           "command": "opm-flow.addColumnHeaders",
-          "when": "resourceLangId == opm-flow",
+          "when": "resourceLangId == opm-flow || resourceLangId == opm-simevents",
           "group": "opmflow_1_format@4"
         },
         {
@@ -421,6 +441,8 @@
     "@types/vscode": "^1.74.0",
     "jest": "^30.5.1",
     "ts-jest": "^29.4.12",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "vscode-oniguruma": "^2.0.1",
+    "vscode-textmate": "^9.3.2"
   }
 }

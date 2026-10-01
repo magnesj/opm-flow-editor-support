@@ -105,6 +105,9 @@ Marketplace listing: <https://marketplace.visualstudio.com/items?itemName=magne-
   `/mnt/<drive>` mount automatically.
 - **Generate Keyword Reference** — opens a Markdown document listing all
   keywords grouped by section, useful for uploading as AI-chat context.
+- **SIMEVENTS well-event files** (`.events`, read by ResInsight's
+  `rips.simulator_events`) — highlighting, diagnostics matching the rips
+  validator, completion, hover, go to definition, rename, outline and folding.
 
 ## References
 

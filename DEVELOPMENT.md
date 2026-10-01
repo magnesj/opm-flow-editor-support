@@ -117,6 +117,50 @@ It writes a triage report to `vscode-extension/corpus-report.md` (gitignored)
 grouping suspected false positives by diagnostic type and keyword, plus the
 noisiest files.
 
+## Update the SIMEVENTS grammar
+
+SIMEVENTS (`.events` files) is ResInsight's well-event-timeline format. The
+extension's support for it is a hand-written port of ResInsight's
+`rips.simulator_events` parser, not generated from anything upstream, so when
+that format changes (new event type, new attribute, new enum value, a bumped
+format version, …) the port has to be updated by hand in several places:
+
+1. **`vscode-extension/src/simevents.ts`** — the parser/validator. Update
+   whichever of these describe the change: `SUPPORTED_VERSION`,
+   `TOP_LEVEL_KEYWORDS`, `BUILTIN_EVENT_ATTRIBUTES` (required/optional
+   attributes per event type), `ATTRIBUTE_VALUES` (enumerated attribute
+   values), `KEYWORD_ITEM_ALIASES` (SIMEVENTS attribute names that rips
+   renames before passing a keyword through), `WELL_DISPATCH_TYPES`, and the
+   per-event validators further down the file. Keep messages and regexes
+   aligned with the Python source so both report the same problems.
+2. **`vscode-extension/syntaxes/simevents.tmLanguage.json`** — the TextMate
+   grammar used for syntax highlighting. New built-in event types go in the
+   `support.function.builtin-event.simevents` alternation inside
+   `event-line`; new top-level keywords or block openers need their own
+   patterns (see `header`, `unit`, `declaration`, `block-opener`).
+3. **`vscode-extension/src/simevents-language.ts`** — editor features built
+   on the parsed document: `BUILTIN_EVENT_DOCS` (hover text per event type),
+   `BLOCK_EVENT_TYPES` (which event types a completion offers per block
+   kind), and the `completionContext` regexes if the new construct doesn't
+   fit the existing line shapes.
+4. **`vscode-extension/src/simevents-provider.ts`** — wires the above into
+   VS Code's completion/hover APIs; usually needs no changes unless a new
+   kind of `CompletionContext` was added.
+5. **`examples/simevents/*.events`** — add a sample exercising the new
+   construct; `simevents-grammar.test.ts`'s "every event type in the samples
+   has an event scope" check walks these files, so new event types need at
+   least one example line.
+6. **Tests** — extend `simevents.test.ts` (parsing/validation),
+   `simevents-language.test.ts` (hover/completion/outline), and
+   `simevents-grammar.test.ts` (tokenization) to cover the change.
+
+Run the extension's Jest suite after updating:
+
+```sh
+cd vscode-extension
+npx jest simevents
+```
+
 ## Regenerate the keyword index
 
 The shipped `vscode-extension/data/keyword_index_compact.json` is generated

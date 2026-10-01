@@ -1,0 +1,345 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "SIMEVENTS",
+  "scopeName": "source.opm-simevents",
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#raw-text"
+    },
+    {
+      "include": "#header"
+    },
+    {
+      "include": "#unit"
+    },
+    {
+      "include": "#filter-declaration"
+    },
+    {
+      "include": "#declaration"
+    },
+    {
+      "include": "#block-opener"
+    },
+    {
+      "include": "#stray-end-raw-text"
+    },
+    {
+      "include": "#event-line"
+    },
+    {
+      "include": "#filter-attribute"
+    },
+    {
+      "include": "#attribute"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#date-expression"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "name": "comment.line.number-sign.simevents",
+      "match": "#.*$"
+    },
+    "strings": {
+      "name": "string.quoted.double.simevents",
+      "match": "\"[^\"]*\"?"
+    },
+    "header": {
+      "match": "^\\s*(SIMEVENTS)(?:\\s+(\\d+\\.\\d+))?(?=\\s*(?:#|$))",
+      "captures": {
+        "1": {
+          "name": "keyword.control.header.simevents"
+        },
+        "2": {
+          "name": "constant.numeric.version.simevents"
+        }
+      }
+    },
+    "unit": {
+      "match": "^\\s*(UNIT)(?:\\s+(METRIC|FIELD|LAB)\\b)?",
+      "captures": {
+        "1": {
+          "name": "keyword.other.unit.simevents"
+        },
+        "2": {
+          "name": "constant.language.unit.simevents"
+        }
+      }
+    },
+    "declaration": {
+      "match": "^\\s*(DATE|DURATION|WELL)\\s+([A-Za-z_]\\w*)\\s*(=)",
+      "captures": {
+        "1": {
+          "name": "storage.type.simevents"
+        },
+        "2": {
+          "name": "entity.name.variable.simevents"
+        },
+        "3": {
+          "name": "keyword.operator.assignment.simevents"
+        }
+      }
+    },
+    "filter-declaration": {
+      "begin": "^\\s*(FILTER)\\s+([A-Za-z_]\\w*)\\s*(=)\\s*(\")",
+      "beginCaptures": {
+        "1": {
+          "name": "storage.type.simevents"
+        },
+        "2": {
+          "name": "entity.name.variable.simevents"
+        },
+        "3": {
+          "name": "keyword.operator.assignment.simevents"
+        },
+        "4": {
+          "name": "punctuation.definition.string.begin.simevents"
+        }
+      },
+      "end": "\"|$",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.end.simevents"
+        }
+      },
+      "contentName": "meta.filter-expression.simevents",
+      "patterns": [
+        {
+          "include": "#filter-expression"
+        }
+      ]
+    },
+    "filter-attribute": {
+      "begin": "\\b(FILTER)\\s*(=)\\s*(\")",
+      "beginCaptures": {
+        "1": {
+          "name": "variable.parameter.attribute.simevents"
+        },
+        "2": {
+          "name": "keyword.operator.assignment.simevents"
+        },
+        "3": {
+          "name": "punctuation.definition.string.begin.simevents"
+        }
+      },
+      "end": "\"|$",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.end.simevents"
+        }
+      },
+      "contentName": "meta.filter-expression.simevents",
+      "patterns": [
+        {
+          "include": "#filter-expression"
+        }
+      ]
+    },
+    "filter-expression": {
+      "patterns": [
+        {
+          "name": "keyword.operator.logical.simevents",
+          "match": "\\b(AND|OR)\\b"
+        },
+        {
+          "name": "keyword.operator.comparison.simevents",
+          "match": ">=|<=|>|<"
+        },
+        {
+          "match": "\\b([A-Za-z_]+)(\\.)(?=[A-Za-z_])",
+          "captures": {
+            "1": {
+              "name": "support.type.result-type.simevents"
+            },
+            "2": {
+              "name": "punctuation.accessor.simevents"
+            }
+          }
+        },
+        {
+          "name": "constant.numeric.simevents",
+          "match": "[-+]?(?:\\d+\\.?\\d*|\\.\\d+)(?:[eE][-+]?\\d+)?"
+        },
+        {
+          "name": "variable.other.property.result.simevents",
+          "match": "\\b[A-Za-z_]\\w*\\b"
+        }
+      ]
+    },
+    "block-opener": {
+      "patterns": [
+        {
+          "match": "^\\s*(WELL)\\s+(?:(\"[^\"]*\")|([A-Za-z_]\\w*))(?=\\s*(?:#|$))",
+          "captures": {
+            "1": {
+              "name": "keyword.control.block.simevents"
+            },
+            "2": {
+              "name": "string.quoted.double.simevents"
+            },
+            "3": {
+              "name": "variable.other.well.simevents"
+            }
+          }
+        },
+        {
+          "match": "^\\s*(GROUP)\\s+(\"[^\"]*\")(?=\\s*(?:#|$))",
+          "captures": {
+            "1": {
+              "name": "keyword.control.block.simevents"
+            },
+            "2": {
+              "name": "string.quoted.double.simevents"
+            }
+          }
+        },
+        {
+          "match": "^\\s*(SCHEDULE)(?=\\s*(?:#|$))",
+          "captures": {
+            "1": {
+              "name": "keyword.control.block.simevents"
+            }
+          }
+        }
+      ]
+    },
+    "raw-text": {
+      "begin": "^\\s*((?:\\d{4}-\\d{2}-\\d{2}(?:T[\\d:.]+)?|[A-Za-z_]\\w*)(?:\\s*[-+]\\s*[-+]?[A-Za-z0-9_.]+)*)\\s+(RAW_TEXT)\\b(.*)$",
+      "beginCaptures": {
+        "1": {
+          "patterns": [
+            {
+              "include": "#date-expression"
+            }
+          ]
+        },
+        "2": {
+          "name": "keyword.control.raw-text.simevents"
+        },
+        "3": {
+          "patterns": [
+            {
+              "include": "#comments"
+            },
+            {
+              "include": "#attribute"
+            }
+          ]
+        }
+      },
+      "end": "^\\s*(END_RAW_TEXT)\\s*$",
+      "endCaptures": {
+        "1": {
+          "name": "keyword.control.raw-text.simevents"
+        }
+      },
+      "contentName": "meta.embedded.block.opm-flow",
+      "patterns": [
+        {
+          "include": "source.opm-flow"
+        }
+      ]
+    },
+    "stray-end-raw-text": {
+      "name": "invalid.illegal.end-raw-text.simevents",
+      "match": "^\\s*END_RAW_TEXT\\b"
+    },
+    "event-line": {
+      "match": "^\\s*((?:\\d{4}-\\d{2}-\\d{2}(?:T[\\d:.]+)?|[A-Za-z_]\\w*)(?:\\s*[-+]\\s*[-+]?[A-Za-z0-9_.]+)*)\\s+([A-Za-z_][A-Za-z0-9_]*)(?=\\s|#|$)",
+      "captures": {
+        "1": {
+          "patterns": [
+            {
+              "include": "#date-expression"
+            }
+          ]
+        },
+        "2": {
+          "patterns": [
+            {
+              "name": "support.function.builtin-event.simevents",
+              "match": "\\b(PERFORATION|SEGMENT|VALVE|STATE|WELSPECS|MEMBER|INSERT_DATE|RESTART)\\b"
+            },
+            {
+              "name": "entity.name.function.keyword.simevents",
+              "match": "\\b[A-Za-z_]\\w*\\b"
+            }
+          ]
+        }
+      }
+    },
+    "attribute": {
+      "match": "\\b([A-Za-z_]\\w*)\\s*(=)\\s*(?:(\"[^\"]*\"?)|([^\\s\"#]+))?",
+      "captures": {
+        "1": {
+          "name": "variable.parameter.attribute.simevents"
+        },
+        "2": {
+          "name": "keyword.operator.assignment.simevents"
+        },
+        "3": {
+          "name": "string.quoted.double.simevents"
+        },
+        "4": {
+          "patterns": [
+            {
+              "include": "#value"
+            }
+          ]
+        }
+      }
+    },
+    "value": {
+      "patterns": [
+        {
+          "include": "#date-literal"
+        },
+        {
+          "include": "#duration-literal"
+        },
+        {
+          "name": "constant.numeric.simevents",
+          "match": "[-+]?(?:\\d+\\.?\\d*|\\.\\d+)(?:[eE][-+]?\\d+)?"
+        },
+        {
+          "name": "string.unquoted.value.simevents",
+          "match": "\\S+"
+        }
+      ]
+    },
+    "date-expression": {
+      "patterns": [
+        {
+          "include": "#date-literal"
+        },
+        {
+          "include": "#duration-literal"
+        },
+        {
+          "name": "keyword.operator.arithmetic.simevents",
+          "match": "[-+]"
+        },
+        {
+          "name": "variable.other.simevents",
+          "match": "\\b[A-Za-z_]\\w*\\b"
+        }
+      ]
+    },
+    "date-literal": {
+      "name": "constant.numeric.date.simevents",
+      "match": "\\b\\d{4}-\\d{2}-\\d{2}(?:T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?)?(?![\\w.:])"
+    },
+    "duration-literal": {
+      "name": "constant.numeric.duration.simevents",
+      "match": "(?<![\\w.])(?:\\d+(?:\\.\\d+)?(?:mon|d|h|m|s))+(?![\\w.])"
+    }
+  }
+}
