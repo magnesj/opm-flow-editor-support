@@ -157,7 +157,8 @@ describe('hoverAt', () => {
     expect(at(6, 32)).toEqual({ keyword: 'WCONHIST', item: 'STATUS' });
     expect(at(6, 38)).toEqual({ keyword: 'WCONHIST', item: 'STATUS' });
     expect(at(6, 44)).toEqual({ keyword: 'WCONHIST', item: 'VFP_TABLE' });
-    expect(at(5, 20)).toBeUndefined();
+    expect(at(5, 20)).toEqual({ keyword: 'PERFORATION' });
+    expect(at(5, 32)).toEqual({ keyword: 'PERFORATION', item: 'MDSTART' });
     expect(at(1, 6)).toBeUndefined();
   });
 });

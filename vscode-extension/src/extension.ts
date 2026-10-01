@@ -49,7 +49,8 @@ import {
   SimulatorConfig,
   SimulatorMode,
 } from './simulator';
-import { keywordInfoFromIndex } from './simevents';
+import { keywordInfoFromIndex, BUILTIN_EVENT_ATTRIBUTES, ATTRIBUTE_VALUES } from './simevents';
+import { BUILTIN_EVENT_DOCS } from './simevents-language';
 import { registerSimEvents, SIMEVENTS_LANGUAGE } from './simevents-provider';
 import { MaskedTextDocument } from './masked-document';
 
@@ -257,6 +258,40 @@ function resolveKeyword(index: KeywordIndex, kw: string): KeywordEntry | undefin
     bestLen = name.length;
   }
   return best;
+}
+
+/**
+ * Synthesise a docs-panel entry for a built-in SIMEVENTS event type
+ * (PERFORATION, SEGMENT, …) — these have no opm-common keyword, so their
+ * description and attribute list come from `BUILTIN_EVENT_DOCS` /
+ * `BUILTIN_EVENT_ATTRIBUTES` / `ATTRIBUTE_VALUES` instead of the index.
+ */
+function builtinEventEntry(type: string): KeywordEntry | undefined {
+  const summary = BUILTIN_EVENT_DOCS[type];
+  const spec = BUILTIN_EVENT_ATTRIBUTES[type];
+  if (summary === undefined && spec === undefined) return undefined;
+  const attrs = [...(spec?.required ?? []), ...(spec?.optional ?? [])];
+  const parameters: Parameter[] = attrs.map((key, i) => {
+    const required = spec!.required.includes(key);
+    const options = ATTRIBUTE_VALUES[`${type}.${key}`];
+    const optionsNote = options ? ` Values: ${options.join(', ')}.` : '';
+    return {
+      index: i + 1,
+      name: key,
+      description: `${required ? 'Required' : 'Optional'} attribute.${optionsNote}`,
+      units: {},
+      default: '',
+      options,
+    };
+  });
+  return {
+    name: type,
+    sections: ['SIMEVENTS'],
+    supported: true,
+    summary: summary ?? '',
+    parameters,
+    example: '',
+  };
 }
 
 // ---------------------------------------------------------------------------
@@ -1456,7 +1491,7 @@ export function activate(context: vscode.ExtensionContext): void {
     const pos = editor.selection.active;
     if (editor.document.languageId === SIMEVENTS_LANGUAGE) {
       const found = simEvents.simulatorKeywordAt(editor.document, pos);
-      const entry = found ? index[found.keyword] : undefined;
+      const entry = found ? index[found.keyword] ?? builtinEventEntry(found.keyword) : undefined;
       if (entry) {
         docsProvider.update(entry, entry.parameters?.find(p => p.name === found?.item));
         return;

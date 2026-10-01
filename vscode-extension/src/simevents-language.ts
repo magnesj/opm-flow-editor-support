@@ -263,7 +263,7 @@ export function simulatorKeywordAt(
         continue;
       }
       const keyword = event.type.toUpperCase();
-      if (!keywords.has(keyword)) {
+      if (!keywords.has(keyword) && !BUILTIN_EVENT_ATTRIBUTES[keyword]) {
         return undefined;
       }
       for (const attr of event.attributes.values()) {
